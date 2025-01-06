@@ -7,7 +7,7 @@ using UnityEngine.Rendering.VirtualTexturing;
 public class ReturnToPool : MonoBehaviour
 {
     public ObjectPool<ParticleSystem> Pool;
-    private ParticleSystem particleSystem;
+    private new ParticleSystem particleSystem;
 
     private void Awake()
     {

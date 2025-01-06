@@ -6,10 +6,12 @@ public class ShootBullet : MonoBehaviour
     [SerializeField]
     private ParticleSystem bullet;
     private ObjectPool<ParticleSystem> pool;
+    [SerializeField]
+    private Transform shootPos;
 
     void CreatePool()
     {
-        pool = ObjectPooling.Instance.CreateNewObjectPool(10, 100, bullet, transform);
+        pool = ObjectPooling.Instance.CreateNewObjectPool(10, 100, bullet, shootPos);
     }
     // Start is called before the first frame update
     void Start()
