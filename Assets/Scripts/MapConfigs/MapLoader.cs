@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace MapConfig
+namespace MapConfigs
 {
-    [CreateAssetMenu(fileName = "MapConfig", menuName = "TowerDefense/MapConfig", order = 1)]
+    [CreateAssetMenu(fileName = "NewMapConfig", menuName = "TowerDefense/MapConfig", order = 1)]
     public class MapConfig : ScriptableObject
     {
         [System.Serializable]
@@ -14,9 +14,10 @@ namespace MapConfig
             public Vector3 rotation;
         }
             public string mapName;
-            public List<Vector3> turretPositions;
             public SpawnPosition mainGatePosition;
             public SpawnPosition spawnGatePosition;
+            public Dictionary<int, Vector3> TurretBasePositions;
             public List<WaveConfig> waves;
+            public List <Vector3> waypoints;
      }
 }
