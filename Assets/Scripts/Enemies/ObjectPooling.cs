@@ -41,7 +41,7 @@ public class ObjectPooling: MonoBehaviour
 
     private GameObject CreatePool()
     {
-        GameObject instanceObject = Instantiate(prefab, transform);
+        GameObject instanceObject = Instantiate(prefab, transform.position, transform.rotation);
         return instanceObject;
     }
 

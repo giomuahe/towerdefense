@@ -12,7 +12,7 @@ public class ShootBullet : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        InvokeRepeating("Shoot", 1, 2);
+        Invoke("Shoot", 5);
     }
 
     void Shoot()
