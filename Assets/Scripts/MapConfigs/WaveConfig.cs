@@ -1,19 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MapConfig
+namespace MapConfigs
 {
     [CreateAssetMenu(fileName = "New Wave", menuName = "TowerDefense/WaveConfig")]
     public class WaveConfig : ScriptableObject
     {
+        public List<EnemySpawnConfig> enemies;
+        
         [System.Serializable]
         public class EnemySpawnConfig
         {
-            public string type;
+            public EnemyType type;
             public int amount;
             public float spawnDelay;
         }
 
-        public List<EnemySpawnConfig> enemies;
+    }
+    
+    public enum EnemyType
+    {
+        Scout,
+        Invisible,
+        Tank,
+        Boss
     }
 }

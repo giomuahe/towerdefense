@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace MapConfig
+namespace MapConfigs
 {
     public class MapBuilder : MonoBehaviour
     {
@@ -16,10 +16,13 @@ namespace MapConfig
         private void Start()
         {
 
-            foreach (var turret in mapConfig.turretPositions)
+            foreach (var turret in mapConfig.TurretBasePositions)
             {
+                int baseId = turret.Key;
+                Vector3 position = turret.Value;
+                
                 Debug.Log("Turret position: " + turret);
-                Instantiate(turretSpotPrefab, turret, Quaternion.identity);
+                Instantiate(turretSpotPrefab, position, Quaternion.identity);
             }
             
             Quaternion gateRotation = Quaternion.Euler(mapConfig.spawnGatePosition.rotation);
