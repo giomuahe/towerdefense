@@ -4,27 +4,20 @@ using UnityEngine.Pool;
 public class ShootBullet : MonoBehaviour
 {
     [SerializeField]
-    private ParticleSystem bullet;
-    private ObjectPool<ParticleSystem> pool;
+    private GameObject bullet;
+    private ObjectPool<GameObject> pool;
     [SerializeField]
     private Transform shootPos;
 
-    void CreatePool()
+    // Update is called once per frame
+    private void Start()
     {
-        pool = ObjectPooling.Instance.CreateNewObjectPool(10, 100, bullet, shootPos);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        CreatePool();
+        InvokeRepeating("Shoot", 1, 2);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Shoot()
     {
-        if (Input.GetKey(KeyCode.A))
-        {
-            pool.Get();
-        }
+        ObjectPooling.Instance.SetPositionAndPrefab(shootPos, bullet);
+        ObjectPooling.Instance.Pool.Get();
     }
 }

@@ -14,5 +14,6 @@ public class EnemyConfig : ScriptableObject
     public float AttackRange;
     public int GoldDropAmount;
     [Header("Others")]
-    public int enemyID;
+    public int EnemyID;
+    public GameObject EnemyPrefab;
 }
