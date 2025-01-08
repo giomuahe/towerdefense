@@ -8,17 +8,11 @@ public class ObjectPooling: MonoBehaviour
     public ObjectPool<GameObject> Pool;
     private GameObject prefab;
     private Transform parentTranform;
-    public static ObjectPooling Instance;
 
-    private void Awake()
+    public void CreateNewObjectPool(GameObject prefab)
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
         Pool = new ObjectPool<GameObject>(CreatePool, OnGetFromPool, OnReleaseFromPool, OnDestroyObject, true, 1000, 10000);
-        parentTranform = gameObject.transform;
-        prefab = gameObject;
+        this.prefab = prefab;
     }
 
     private void OnDestroyObject(GameObject instance)
@@ -45,9 +39,24 @@ public class ObjectPooling: MonoBehaviour
         return instanceObject;
     }
 
-    public void SetPositionAndPrefab(Transform parentTranform,GameObject prefab)
+    public void SetPositionAndPrefab(Transform parentTranform)
     {
         this.parentTranform = parentTranform;
-        this.prefab = prefab;
     }
 }
+
+[Serializable]
+public class Bullet1
+{
+    public int BulletID;
+    public GameObject BulletPrefab;
+}
+
+[CreateAssetMenu]
+public class BulletConfig : ScriptableObject
+{
+    public List<Bullet1> Bullets;
+}
+
+
+

@@ -4,7 +4,7 @@ using MapConfigs;
 
 namespace Managers
 {
-    public class MapManager : MonoBehaviour
+    public class MapManager: MonoBehaviour
     {
         public MapConfig mapConfig;
         public Dictionary<Vector3, GameObject> PlacedTurrets = new Dictionary<Vector3, GameObject>();

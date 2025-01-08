@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Managers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +10,6 @@ public class AttackTurretEnemy : EnemyBase
     protected float attackSpeed;
     protected float bulletSpeed;
     [SerializeField]
-    private LayerMask turretLayerMask;
-    [SerializeField]
     private Transform shootPos;
     public override void SetUp(EnemyConfig enemyConfig, List<Vector3> moveLocations, int enemyInGameID)
     {
@@ -20,9 +19,19 @@ public class AttackTurretEnemy : EnemyBase
         base.SetUp(enemyConfig, moveLocations, enemyInGameID);
     }
 
-    IEnumerator Attack(int turretID)
+    //IEnumerator Attack()
+    //{
+    //    yield return new WaitForSeconds(attackRange/bulletSpeed);
+    //    GameManager.Instance.NotifyOnHitTurret();
+    //}
+
+    private void MoveController()
     {
-        yield return new WaitForSeconds(attackRange/bulletSpeed);
-        GameManager.Instance.NotifyOnTurretHit(turretID);
+        
+    }
+
+    private void Update()
+    {
+        
     }
 }
