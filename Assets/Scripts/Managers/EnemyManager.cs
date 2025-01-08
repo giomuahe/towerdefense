@@ -6,6 +6,7 @@ namespace Managers
 {
     public class EnemyManager
     {
+        //test
         private static EnemyManager instance;   
         public static EnemyManager Instance
         {
