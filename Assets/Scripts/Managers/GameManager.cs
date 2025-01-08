@@ -1,4 +1,5 @@
 using Managers;
+using MapConfigs;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,12 @@ public class GameManager : MonoBehaviour
 
     public MapManager MapManager;
 
-    public EnemyManager EnemyManager;
+    public PoolManager PoolManager;
+
+    private int waveNumericalOrder;
+    
+    [SerializeField]
+    private EnemySpawner enemySpawner;
 
     public static GameManager Instance {  get; private set; }
 
@@ -26,20 +32,32 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if(MapManager == null)
+        {
+            MapManager = new MapManager();
+        }
+
         if (UIManager)
             UIManager.Init();
         else
             Debug.LogError("NotFund UIManager");
 
-       
-        if (EnemyManager != null)
+        EnemyManager.Instance.Init();
+
+        if (PoolManager != null)
         {
-            EnemyManager.Init();
+            PoolManager.CreateAllPool();
         }
         else
         {
-            Debug.LogError("NotFund UIManager");
-        }    
+            PoolManager = new PoolManager();
+            PoolManager.CreateAllPool();
+        }
+
+        if(enemySpawner != null)
+        {
+            enemySpawner = new EnemySpawner();
+        }
     }
 
     #region UI
@@ -55,6 +73,13 @@ public class GameManager : MonoBehaviour
     #endregion UI
 
     #region Enemy
+    private void CreateWave()
+    {
+        WaveConfig waveConfig = MapManager.GetWaveConfig(waveNumericalOrder);
+        Vector3 spawnPos = MapManager.GetSpawnGatePosition().position;
+        StartCoroutine(enemySpawner.WaveSpawn(waveConfig,spawnPos));
+    }
+
     public void NotifyOnHitTurret()
     {
 
