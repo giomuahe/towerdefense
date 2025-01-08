@@ -1,21 +1,41 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    //UI
+    public UIManager UIManager;
+
+    public static GameManager Instance {  get; private set; }
 
     private void Awake()
     {
-        if(Instance == null)
+        if(Instance != null && Instance != this)
         {
-            Instance = this;
+            Destroy(gameObject);
+            return;
         }
+        Instance = this;
     }
 
-    public void NotifyOnTurretHit(int ID)
+    private void Start()
     {
-        // lấy đc trụ từ ID xong gọi OnHit của trụ
+        if (UIManager)
+            UIManager.Init();
+        else
+            Debug.LogError("NotFund UIManager");
     }
+
+    #region UI
+    /// UI -------------
+    #region Lobby
+
+    #endregion Lobby
+
+    #region GamePlay
+
+    #endregion GamePlay
+    /// UI -------------
+    #endregion UI
 }
