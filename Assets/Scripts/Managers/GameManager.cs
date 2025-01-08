@@ -1,3 +1,4 @@
+using Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,10 @@ public class GameManager : MonoBehaviour
 {
     //UI
     public UIManager UIManager;
+
+    public MapManager MapManager;
+
+    public EnemyManager EnemyManager;
 
     public static GameManager Instance {  get; private set; }
 
@@ -25,6 +30,16 @@ public class GameManager : MonoBehaviour
             UIManager.Init();
         else
             Debug.LogError("NotFund UIManager");
+
+       
+        if (EnemyManager != null)
+        {
+            EnemyManager.Init();
+        }
+        else
+        {
+            Debug.LogError("NotFund UIManager");
+        }    
     }
 
     #region UI
@@ -39,5 +54,10 @@ public class GameManager : MonoBehaviour
     /// UI -------------
     #endregion UI
 
+    #region Enemy
+    public void NotifyOnHitTurret()
+    {
 
+    }
+    #endregion
 }

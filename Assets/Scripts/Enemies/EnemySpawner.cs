@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private void SpawnEnemy(int enemyID, GameObject enemyPrefab, Vector3 spawnPos, List<Vector3> moveLocations)
+    public static int EnemyInGameID = 1000;
+
+    private void SpawnEnemy(int enemyID, GameObject enemyPrefab, Vector3 spawnPos)
     {
         // tìm enemy config theo ID
         GameObject spawnObj = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);

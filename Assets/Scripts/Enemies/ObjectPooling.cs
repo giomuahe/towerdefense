@@ -5,60 +5,58 @@ using UnityEngine.Pool;
 
 public class ObjectPooling: MonoBehaviour
 {
-    private ObjectPool<ParticleSystem> pool;
-    private ParticleSystem prefab;
+    public ObjectPool<GameObject> Pool;
+    private GameObject prefab;
     private Transform parentTranform;
-    public static ObjectPooling Instance;
 
-    private void Awake()
+    public void CreateNewObjectPool(GameObject prefab)
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
-
-    // tạo 1 biến ObjectPool<GameObject> để giữ lưu lại giá trị pool còn sử dụng để Release và get.
-    public ObjectPool<ParticleSystem> CreateNewObjectPool(int defaultCapacity, int maxCapacity, ParticleSystem prefab, Transform parentTranform)
-    {
-        this.parentTranform = parentTranform;
+        Pool = new ObjectPool<GameObject>(CreatePool, OnGetFromPool, OnReleaseFromPool, OnDestroyObject, true, 1000, 10000);
         this.prefab = prefab;
-        pool = new ObjectPool<ParticleSystem>(CreatePool, OnGetFromPool, OnReleaseFromPool, OnDestroyObject, true, defaultCapacity, maxCapacity);
-        return pool;
     }
 
-    private void OnDestroyObject(ParticleSystem instance)
+    private void OnDestroyObject(GameObject instance)
     {
-        //Destroy(instance.gameObject);
+        Destroy(instance.gameObject);
     }
 
-    private void OnReleaseFromPool(ParticleSystem instance)
+    private void OnReleaseFromPool(GameObject instance)
     {
         instance.gameObject.SetActive(false);
     }
 
-    private void OnGetFromPool(ParticleSystem instance)
+    private void OnGetFromPool(GameObject instance)
     {
-        // Set object to the default tranform
-        instance.transform.position = parentTranform.transform.position;
-        instance.transform.right = parentTranform.transform.right;
+        instance.transform.position = parentTranform.position;
+        instance.transform.right = parentTranform.right;
         // Set active for object
         instance.gameObject.SetActive(true);
-
     }
 
-    private ParticleSystem CreatePool()
+    private GameObject CreatePool()
     {
-        ParticleSystem instanceObject = Instantiate(prefab, parentTranform);
-        var returnToPool = instanceObject.GetComponent<ReturnToPool>();
-        if(returnToPool == null)
-        {
-            Debug.Log("Add script ReturnToPool to the bullet prefab");
-        }
-        else
-        {
-            returnToPool.Pool = pool;
-        }
+        GameObject instanceObject = Instantiate(prefab, transform.position, transform.rotation);
         return instanceObject;
     }
+
+    public void SetPositionAndPrefab(Transform parentTranform)
+    {
+        this.parentTranform = parentTranform;
+    }
 }
+
+[Serializable]
+public class Bullet1
+{
+    public int BulletID;
+    public GameObject BulletPrefab;
+}
+
+[CreateAssetMenu]
+public class BulletConfig : ScriptableObject
+{
+    public List<Bullet1> Bullets;
+}
+
+
+
