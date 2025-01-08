@@ -12,15 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290bc4bdf97ce47bcbc695e85d836036, type: 3}
   m_Name: Map1
   m_EditorClassIdentifier: 
-  mapName: 
-  turretPositions:
-  - {x: 28, y: 0, z: 12}
-  - {x: 28, y: 0, z: -12}
-  - {x: 44, y: 0, z: -0.01}
-  - {x: 58, y: 0, z: 12}
-  - {x: 58, y: 0, z: -12}
-  - {x: 85, y: 0, z: -19}
-  - {x: 85, y: 0, z: 19}
+  mapName: Map 1
+  TurretBaseEntries:
+  - BaseId: 1
+    Position: {x: 28, y: 0, z: 12}
+  - BaseId: 2
+    Position: {x: 28, y: 0, z: -12}
+  - BaseId: 3
+    Position: {x: 44, y: 0, z: 0}
+  - BaseId: 4
+    Position: {x: 58, y: 0, z: 12}
+  - BaseId: 5
+    Position: {x: 58, y: 0, z: -12}
+  - BaseId: 6
+    Position: {x: 85, y: 0, z: 19}
+  - BaseId: 7
+    Position: {x: 85, y: 0, z: -19}
   mainGatePosition:
     position: {x: 90, y: 4, z: 0}
     rotation: {x: 0, y: 90, z: 0}
@@ -28,3 +35,4 @@ MonoBehaviour:
     position: {x: 0, y: 3, z: 0}
     rotation: {x: 0, y: 90, z: 0}
   waves: []
+  waypoints: []

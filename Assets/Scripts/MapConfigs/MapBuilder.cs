@@ -15,7 +15,14 @@ namespace MapConfigs
 
         private void Start()
         {
+            mapConfig.InitializeDictionary();
 
+            if (mapConfig.TurretBasePositions == null || mapConfig.TurretBasePositions.Count == 0)
+            {
+                Debug.LogError($"No turret base positions defined!");
+                return;
+            }
+            
             foreach (var turret in mapConfig.TurretBasePositions)
             {
                 int baseId = turret.Key;
