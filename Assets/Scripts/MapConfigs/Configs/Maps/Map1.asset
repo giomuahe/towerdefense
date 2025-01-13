@@ -13,26 +13,19 @@ MonoBehaviour:
   m_Name: Map1
   m_EditorClassIdentifier: 
   mapName: Map 1
-  TurretBaseEntries:
-  - BaseId: 1
-    Position: {x: 28, y: 0, z: 12}
-  - BaseId: 2
-    Position: {x: 28, y: 0, z: -12}
-  - BaseId: 3
-    Position: {x: 44, y: 0, z: 0}
-  - BaseId: 4
-    Position: {x: 58, y: 0, z: 12}
-  - BaseId: 5
-    Position: {x: 58, y: 0, z: -12}
-  - BaseId: 6
-    Position: {x: 85, y: 0, z: 19}
-  - BaseId: 7
-    Position: {x: 85, y: 0, z: -19}
   mainGatePosition:
     position: {x: 90, y: 4, z: 0}
     rotation: {x: 0, y: 90, z: 0}
   spawnGatePosition:
     position: {x: 0, y: 3, z: 0}
     rotation: {x: 0, y: 90, z: 0}
+  turretBasePositions:
+  - {x: 28, y: 0, z: 12}
+  - {x: 28, y: 0, z: -12}
+  - {x: 44, y: 0, z: 0}
+  - {x: 58, y: 0, z: 12}
+  - {x: 58, y: 0, z: -12}
+  - {x: 85, y: 0, z: 19}
+  - {x: 85, y: 0, z: -19}
   waves: []
   waypoints: []
