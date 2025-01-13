@@ -22,7 +22,7 @@ public class HS_ParticleCollisionInstance : MonoBehaviour
         part = GetComponent<ParticleSystem>();
     }
     void OnParticleCollision(GameObject other)
-    {      
+    {
         int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);     
         for (int i = 0; i < numCollisionEvents; i++)
         {
@@ -40,9 +40,9 @@ public class HS_ParticleCollisionInstance : MonoBehaviour
                 Destroy(instance, DestroyTimeDelay);
             }
         }
-        if (DestoyMainEffect == true)
-        {
-            Destroy(gameObject, DestroyTimeDelay + 0.5f);
-        }
+        //if (DestoyMainEffect == true)
+        //{
+        //    Destroy(gameObject, DestroyTimeDelay + 0.5f);
+        //}
     }
 }

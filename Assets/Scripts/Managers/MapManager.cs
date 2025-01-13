@@ -5,7 +5,7 @@ using MapConfigs;
 
 namespace Managers
 {
-    public class MapManager : MonoBehaviour
+    public class MapManager: MonoBehaviour
     {
         public MapConfig mapConfig;
         private readonly Dictionary<int, TurretBase> _turretBases = new Dictionary<int, TurretBase>();
