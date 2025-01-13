@@ -1,27 +1,38 @@
-﻿using System;
+﻿using Managers;
+using MapConfigs;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField]
+    private EnemyManager enemyManager;
+
     public static int EnemyInGameID = 1000;
 
-    private void SpawnEnemy(int enemyID, GameObject enemyPrefab, Vector3 spawnPos)
+    private void SpawnEnemy(EnemyConfig enemyConfig, Vector3 spawnPos)
     {
-        // tìm enemy config theo ID
-        GameObject spawnObj = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-        //SetUp Enemy theo id tim duoc
-        //spawnObj.GetComponent<EnemyBase>().SetUp();
+        GameObject spawnObj = Instantiate(enemyConfig.EnemyPrefab, spawnPos, Quaternion.identity);
+        List<Vector3> moveLocations = GameManager.Instance.MapManager.GetWaypoints();
+        spawnObj.GetComponent<EnemyBase>().SetUp(enemyConfig, moveLocations, EnemyInGameID);
+        EnemyInGameID++;
+        enemyManager.AddEnemiesToDic(EnemyInGameID, spawnObj.GetComponent<EnemyBase>());
     }
 
-    // WaveSpawn()
+    public IEnumerator WaveSpawn(WaveConfig waveConfig, Vector3 spawnPos)
+    {
+        foreach(var enemy in waveConfig.enemies)
+        {
+            float delayTime = enemy.spawnDelay;
+            EnemyConfig enemyConfig = GameConfigManager.Instance.GetEnemyConfig((int)enemy.type);
+            for(int i = 0; i < enemy.amount; i++)
+            {
+                yield return new WaitForSeconds(delayTime);
+                SpawnEnemy(enemyConfig, spawnPos);
+            }
+        }
+    }
 }
 
-[Serializable]
-public class EnemySpawnConfig
-{
-    //Tạo id để tìm prefab
-    //public GameObject enemyPrefab;
-    public int numberInstance;
-}

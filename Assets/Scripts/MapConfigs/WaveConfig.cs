@@ -20,9 +20,10 @@ namespace MapConfigs
     
     public enum EnemyType
     {
-        Scout,
-        Invisible,
-        Tank,
-        Boss
+        DroneScout,
+        MechBrute,
+        StealthInfiltrator,
+        EMPDrone,
+        CyberLeviathan
     }
 }

@@ -45,18 +45,7 @@ public class ObjectPooling: MonoBehaviour
     }
 }
 
-[Serializable]
-public class Bullet1
-{
-    public int BulletID;
-    public GameObject BulletPrefab;
-}
 
-[CreateAssetMenu]
-public class BulletConfig : ScriptableObject
-{
-    public List<Bullet1> Bullets;
-}
 
 
 
