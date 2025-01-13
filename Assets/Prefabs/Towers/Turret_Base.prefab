@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 5147376360630343970}
   - component: {fileID: 2413862676378476320}
   - component: {fileID: 2085597618219751694}
-  m_Layer: 0
+  - component: {fileID: -3451154186191488964}
+  m_Layer: 3
   m_Name: Turret_Base
   m_TagString: Turret Base
   m_Icon: {fileID: 0}
@@ -127,3 +128,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.0090404, y: 1.18827, z: 3.0090404}
   m_Center: {x: -0.00000023841858, y: 0.5941346, z: 0}
+--- !u!114 &-3451154186191488964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4467630842506281840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3368b0148b604879a56048c34874f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
