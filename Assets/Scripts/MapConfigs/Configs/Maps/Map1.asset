@@ -34,5 +34,13 @@ MonoBehaviour:
   spawnGatePosition:
     position: {x: 0, y: 3, z: 0}
     rotation: {x: 0, y: 90, z: 0}
+  turretBasePositions:
+  - {x: 28, y: 0, z: 12}
+  - {x: 28, y: 0, z: -12}
+  - {x: 44, y: 0, z: 0}
+  - {x: 58, y: 0, z: 12}
+  - {x: 58, y: 0, z: -12}
+  - {x: 85, y: 0, z: 19}
+  - {x: 85, y: 0, z: -19}
   waves: []
   waypoints: []
