@@ -1,10 +1,5 @@
 public class DroneScout : EnemyBase, IHittable 
 {
-    public void OnHit(float damage)
-    {
-        
-    }
-
     private void MoveController()
     {
         if(moveLocations.Count == 0)

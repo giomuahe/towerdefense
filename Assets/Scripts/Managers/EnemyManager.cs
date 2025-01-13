@@ -1,29 +1,23 @@
-using System.Collections;
+using MapConfigs;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Managers
 {
-    public class EnemyManager
+    public class EnemyManager: MonoBehaviour
     {
-        //test
-        private static EnemyManager instance;   
-        public static EnemyManager Instance
+        [SerializeField]
+        private EnemySpawner spawner;
+        private Dictionary<int, EnemyBase> dictionaryOfEnemiesOnMap = new();
+        
+        public void AddEnemiesToDic(int id, EnemyBase enemy)
         {
-            get 
-            {
-                if(instance == null)
-                {
-                    instance = new EnemyManager();
-                }
-                return instance;
-            }
+            dictionaryOfEnemiesOnMap.Add(id, enemy);
         }
-        public List<Vector3> moveLocations;
 
-        public void Init()
+        public void SpawnEnemies(WaveConfig waveConfig, Vector3 spawnPos)
         {
-            moveLocations = GameManager.Instance.MapManager.GetWaypoints();
+            StartCoroutine(spawner.WaveSpawn(waveConfig, spawnPos));
         }
     }
 }

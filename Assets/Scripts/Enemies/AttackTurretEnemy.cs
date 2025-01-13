@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class AttackTurretEnemy : EnemyBase
 {
@@ -10,11 +11,15 @@ public class AttackTurretEnemy : EnemyBase
     protected float attackRange;
     protected float attackSpeed;
     protected float bulletSpeed;
-    private StateMachine enemyStateMachine;
+    protected int baseTurretID;
+    protected StateMachine enemyStateMachine;
     private StateMachine.State moveState;
-    private StateMachine.State attackState;
-    private StateMachine.State detectState;
-    private bool hasTurretOnRange;
+    protected StateMachine.State attackState;
+    protected bool hasTurretOnRange;
+    private bool isTargetBeingDestroy;
+
+    private int bulletID;
+    private ObjectPool<GameObject> bulletPool;
 
     [SerializeField]
     private Transform shootPos;
@@ -25,100 +30,104 @@ public class AttackTurretEnemy : EnemyBase
         attackSpeed = enemyConfig.AttackSpeed;
         enemyTurretDamage = enemyConfig.EnemyTurretDamage;
         base.SetUp(enemyConfig, moveLocations, enemyInGameID);
+        bulletPool = GameManager.Instance.PoolManager.GetPoolThroughID(bulletID).Pool;
         enemyStateMachine = new StateMachine();
         CreateState();
     }
 
-    void CreateState()
+    protected virtual void CreateState()
     {
         moveState = enemyStateMachine.CreateState("move");
         moveState.onEnter = delegate
         {
-            if (hasTurretOnRange)
-            {
-                // Move to turret
-            }
-            else
-            {
-                Move(moveLocations[locationIndex]);
-            }
+            List<Vector3> turretLocations = new List<Vector3>();
+            DecideMoveLocation(turretLocations);
         };
         moveState.onFrame = delegate
         {
-            if(!enemyAgent.pathPending && enemyAgent.remainingDistance < remainDistance)
+            if(hasTurretOnRange && isTargetBeingDestroy)
             {
-                
+                enemyStateMachine.TransitionTo(moveState);
             }
-            // if isAttaking and turret explode, move to next location
+            if (!enemyAgent.pathPending && enemyAgent.remainingDistance < remainDistance)
+            {
+                if(hasTurretOnRange)
+                {
+                    enemyStateMachine.TransitionTo(attackState);
+                }
+                else
+                {
+                    enemyStateMachine.TransitionTo(moveState);
+                }
+            }
+        };
+        attackState.onEnter += delegate
+        {
+            StartCoroutine(Attack());
+        };
+        attackState.onFrame = delegate
+        {
+
         };
     }
 
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(attackRange / bulletSpeed);
-        
+        while(!isTargetBeingDestroy)
+        {
+            yield return new WaitForSeconds(1 / attackSpeed);
+            bulletPool.Get();
+            Invoke("DamageTurret", attackRange / bulletSpeed);
+        }
     }
 
-    
-
-    private void MoveController()
+    private void DamageTurret()
     {
-        if (moveLocations.Count == 0)
+        // goi den tru gay dmg
+    }
+
+    private void DecideMoveLocation(List<Vector3> turretPositions)
+    {
+        float distance = float.MaxValue;
+        Vector3 pos = Vector3.zero;
+        if(turretPositions == null ||  turretPositions.Count == 0)
         {
+            Move(moveLocations[++locationIndex]);
+            hasTurretOnRange = false;
             return;
         }
-        //Neu dang attack ko di chuyen, khi tru ma con nay dang attack bi pha moi di chuyen tiep
-        if (!enemyAgent.pathPending && enemyAgent.remainingDistance < remainDistance)
+        foreach(var position in turretPositions)
         {
-            if (moveLocations.Count == locationIndex + 1)
+            float distance1 = CalculateDistance(transform.position, position);
+            if(distance1 < distance)
             {
-                // Gây damage lên nhà chính và destroy object
-                return;
+                distance = distance1;
+                // set base turretID
+                pos = position;
             }
-            List<Vector3> turretLocation = EnemyManager.Instance.moveLocations;
-            if (turretLocation == null)
-            {
-                MoveAlongAvailablePath();
-                Debug.Log("Enemy move locations is missing");
-                return;
-            }
-            if(turretLocation.Count == 0)
-            {
-                MoveAlongAvailablePath();
-                return;
-            }
-            float distance1 = CalculateDistance(moveLocations[locationIndex], moveLocations[locationIndex + 1]);
-            Vector3 destination = Vector3.zero;
-            float distance2 = Mathf.Infinity;
-            foreach(var location in turretLocation)
-            {
-                float distance = CalculateDistance(location, moveLocations[locationIndex]);
-                if(distance < distance2)
-                {
-                    distance2 = distance;
-                    destination = location;
-                }
-            }
-            if(distance1 < distance2 )
-            {
-                MoveAlongAvailablePath();
-            }
-            else
-            {
-                Move(destination);
-            } 
         }
-    }
-
-    private void MoveAlongAvailablePath()
-    {
-        locationIndex += 1;
-        Move(moveLocations[locationIndex]);
+        float distance2 = CalculateDistance(transform.position, moveLocations[locationIndex + 1]);
+        if(distance2 < distance)
+        {
+            Move(moveLocations[++locationIndex]);
+            hasTurretOnRange = false;
+        }
+        else
+        {
+            Move(pos);
+            hasTurretOnRange = true;
+            enemyAgent.stoppingDistance = attackRange;
+        }
     }
 
     private float CalculateDistance(Vector3 point1, Vector3 point2)
     {
         return Mathf.Sqrt((point1 - point2).magnitude);
+    }
+
+    private void CheckTarget()
+    {
+
     }
 
     private void Update()

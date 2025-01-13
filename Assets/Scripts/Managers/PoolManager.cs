@@ -19,8 +19,8 @@ public class PoolManager : MonoBehaviour
         Resources.UnloadAsset(bulletConfig);
     }
 
-    public ObjectPool<GameObject> GetPoolThroughID(int bulletID)
+    public ObjectPooling GetPoolThroughID(int bulletID)
     {
-        return bulletPools[bulletID].Pool;
+        return bulletPools[bulletID];
     }
 }

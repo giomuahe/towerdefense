@@ -7,14 +7,18 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField]
+    private EnemyManager enemyManager;
+
     public static int EnemyInGameID = 1000;
 
     private void SpawnEnemy(EnemyConfig enemyConfig, Vector3 spawnPos)
     {
         GameObject spawnObj = Instantiate(enemyConfig.EnemyPrefab, spawnPos, Quaternion.identity);
-        List<Vector3> moveLocations = EnemyManager.Instance.moveLocations;
+        List<Vector3> moveLocations = GameManager.Instance.MapManager.GetWaypoints();
         spawnObj.GetComponent<EnemyBase>().SetUp(enemyConfig, moveLocations, EnemyInGameID);
         EnemyInGameID++;
+        enemyManager.AddEnemiesToDic(EnemyInGameID, spawnObj.GetComponent<EnemyBase>());
     }
 
     public IEnumerator WaveSpawn(WaveConfig waveConfig, Vector3 spawnPos)

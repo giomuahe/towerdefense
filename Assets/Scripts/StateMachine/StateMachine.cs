@@ -76,10 +76,7 @@ public class StateMachine
             Debug.LogErrorFormat("Cannot transition to a null state!");
             return;
         }
-        if (currentState == newState)
-        {
-            return;
-        }
+
         // If we have a current state and that state has an onExit
         // method, call it
         if (currentState != null && currentState.onExit != null)
