@@ -1,65 +1,80 @@
 using UnityEngine;
 using System;
 using MapConfigs;
+using System.Collections.Generic;
 
 namespace Managers
 {
     public class WaveManager : MonoBehaviour
     {
         public MapConfig mapConfig;
-        private int _currentWaveIndex = 0;
-        private readonly bool _isWaveInProgress = false;
-        
-        //Event for wave states: Call to UI 
-        public event Action<int> OnWaveStarted; //Call when current wave is completed
-        public event Action<int> OnWaveComplete; //Call when next wave is started
+
+        private List<WaveConfig> _waves;
+        private int _currentWaveIndex;
         
         void Start()
         {
+            InitializeWaves();
+        }
+
+        private void InitializeWaves()
+        {
+            if (mapConfig == null || mapConfig.waves == null || mapConfig.waves.Count == 0)
+            {
+                Debug.LogError("MapConfig or waves in MapConfig is not properly configured");
+                _waves = new List<WaveConfig>();
+                return;
+            }
             
+            _waves = new List<WaveConfig>(mapConfig.waves);
+            _currentWaveIndex = -1;
+            
+            Debug.Log($"Initialized {_waves.Count} wave");
         }
 
-        public void StartNextWave()
+        public List<WaveConfig> GetWaves()
         {
-            if (_currentWaveIndex < mapConfig.waves.Count && !_isWaveInProgress)
+            return new List<WaveConfig>(_waves);
+        }
+
+        public WaveConfig GetCurrentWave()
+        {
+            if (_currentWaveIndex >= 0 && _currentWaveIndex < _waves.Count)
             {
-                Debug.Log("Starting wave" + (_currentWaveIndex + 1));
-                NotifyWaveStarted(_currentWaveIndex + 1);
-                //StartCoroutine(SpawnWave(mapConfig.waves[_currentWaveIndex]));
+                return _waves[_currentWaveIndex];
+            }
+            
+            Debug.LogWarning($"Current wave index {_currentWaveIndex} not found");
+            return null;
+        }
+
+        public bool AdvanceToNextWave()
+        {
+            if (_currentWaveIndex + 1 < _waves.Count)
+            {
                 _currentWaveIndex++;
+                Debug.LogWarning($"Advanced to wave {_currentWaveIndex + 1}");
             }
-            else if (_currentWaveIndex >= mapConfig.waves.Count)
+            Debug.LogWarning($"No more waves to advance to next wave");
+            return false;
+        }
+
+        public bool AreAllWavesCompleted()
+        {
+            return _currentWaveIndex >= _waves.Count - 1 ;
+        }
+
+        public int GetTotalEnemyCount()
+        {
+            int totalCount = 0;
+            foreach (WaveConfig wave in _waves)
             {
-                Debug.Log("All waves finished");
+                foreach (var enemySpawn in wave.enemies)
+                {
+                    totalCount += enemySpawn.amount;
+                }
             }
+            return totalCount;
         }
-
-        // private IEnumerator SpawnWave(WaveConfig waveConfig)
-        // {
-        //     _isWaveInProgress = true;
-        //
-        //     foreach (var enemyConfig in waveConfig.enemies)
-        //     {
-        //         for (int i = 0; i < enemyConfig.amount; i++)
-        //         {
-        //             yield return new WaitForSeconds(enemyConfig.spawnDelay);
-        //         }
-        //     }
-        //     
-        //     _isWaveInProgress = false;
-        //
-        //     NotifyWaveCompleted();
-        // }
-
-        private void NotifyWaveStarted(int waveNumber)
-        {
-            OnWaveStarted?.Invoke(waveNumber);
-        }
-
-        private void NotifyWaveCompleted()
-        {
-            OnWaveComplete?.Invoke(_currentWaveIndex);
-        }
-        
     }
 }

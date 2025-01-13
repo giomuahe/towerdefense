@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Managers;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,33 +13,53 @@ namespace MapConfigs
         public GameObject mainGatePrefab;
         public GameObject spawnGatePrefab;
         public MapConfig mapConfig;
+        public MapManager mapManager;
 
         private void Start()
         {
-            mapConfig.InitializeDictionary();
+            CreateMainGates();
+            CreateSpawnGates();
+            CreateTurretBases();
+        }
 
-            if (mapConfig.TurretBasePositions == null || mapConfig.TurretBasePositions.Count == 0)
+        private void CreateTurretBases()
+        {
+            if (turretSpotPrefab == null)
             {
-                Debug.LogError($"No turret base positions defined!");
+                Debug.LogError($"No turret spot prefab assigned");
                 return;
             }
             
-            foreach (var turret in mapConfig.TurretBasePositions)
+            for (int i = 0; i < mapConfig.turretBasePositions.Count; i++)
             {
-                int baseId = turret.Key;
-                Vector3 position = turret.Value;
+                Vector3 position = mapConfig.turretBasePositions[i];
                 
-                Debug.Log("Turret position: " + turret);
-                Instantiate(turretSpotPrefab, position, Quaternion.identity);
+                GameObject turretSpot = Instantiate(turretSpotPrefab, position, Quaternion.identity);
+                turretSpot.name = $"TurretSpot_{i}";
+                
+                TurretBase turretBase = turretSpot.GetComponent<TurretBase>();
+                if (turretBase != null)
+                {
+                    turretBase.Initialize(position);
+                    mapManager.RegisterTurretBase(i, turretBase);
+                }
+                else
+                {
+                    Debug.LogError($"Script TurretBase is not attached to prefab {turretSpotPrefab.name}");
+                }
             }
-            
+        }
+
+        private void CreateMainGates()
+        {
             Quaternion gateRotation = Quaternion.Euler(mapConfig.spawnGatePosition.rotation);
             Instantiate(mainGatePrefab, mapConfig.mainGatePosition.position, gateRotation);
-            
+        }
+
+        private void CreateSpawnGates()
+        {
             Quaternion spawnRotation = Quaternion.Euler(mapConfig.spawnGatePosition.rotation);
             Instantiate(spawnGatePrefab, mapConfig.spawnGatePosition.position, spawnRotation);
-            
-            Debug.Log("Map built successfully!");
         }
     }
 }

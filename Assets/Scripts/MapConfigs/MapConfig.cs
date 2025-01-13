@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MapConfigs
 {
@@ -14,28 +14,21 @@ namespace MapConfigs
             public Vector3 rotation;
         }
         
-        [System.Serializable]
-        public struct TurretBaseEntry
-        {
-            public int BaseId;
-            public Vector3 Position;
-        }
-        public Dictionary<int, Vector3> TurretBasePositions = new Dictionary<int, Vector3>();
+        [Header("Map Name")]
         public string mapName;
-        public List<TurretBaseEntry> TurretBaseEntries =  new List<TurretBaseEntry>();
+        
+        [Header("Gate Settings")]
         public SpawnPosition mainGatePosition;
         public SpawnPosition spawnGatePosition;
+        
+        [Header("Turret Base Positions")]
+        public List<Vector3> turretBasePositions =  new List<Vector3>();
+        
+        [Header("Wave Settings")]
         public List<WaveConfig> waves;
+        
+        [Header("Waypoints Settings")]
         public List <Vector3> waypoints;
-
-        public void InitializeDictionary()
-        {
-            TurretBasePositions.Clear();
-            foreach(var entry in TurretBaseEntries)
-                if (!TurretBasePositions.ContainsKey(entry.BaseId))
-                {
-                    TurretBasePositions.Add(entry.BaseId, entry.Position);
-                }
-        }
+        
      }
 }
