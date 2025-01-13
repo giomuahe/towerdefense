@@ -1,3 +1,4 @@
+using MapConfigs;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,6 @@ public class EnemyConfig : ScriptableObject
     public float AttackRange;
     public int GoldDropAmount;
     [Header("Others")]
-    public int EnemyID;
+    public EnemyType EnemyType;
     public GameObject EnemyPrefab;
 }

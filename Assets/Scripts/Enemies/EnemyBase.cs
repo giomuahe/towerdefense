@@ -1,3 +1,4 @@
+using MapConfigs;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class EnemyBase : MonoBehaviour
     protected float enemyHealth;
     protected float enemySpeed;
     protected float enemyNexusDamage;
-    protected int enemyID;
+    protected EnemyType enemyType;
 
     protected List<Vector3> moveLocations;
     protected int locationIndex = 0;
@@ -35,10 +36,9 @@ public class EnemyBase : MonoBehaviour
         enemyHealth = enemyConfig.EnemyHealth;
         enemySpeed = enemyConfig.EnemySpeed;
         enemyNexusDamage = enemyConfig.EnemyNexusDamage;
-        enemyID = enemyConfig.EnemyID;
+        enemyType = enemyConfig.EnemyType;
         this.moveLocations = moveLocations;
         enemyAgent = GetComponent<NavMeshAgent>();
-        Move(this.moveLocations[locationIndex]);
     }
 
     public int GetEnemyInGameID()
