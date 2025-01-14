@@ -18,5 +18,7 @@ MonoBehaviour:
   AtkDamage: 30
   AtkSpeed: 1
   AtkRange: 8
-  TurretType: 5
-  UpgradeList: 0600000007000000
+  TurretType: 6
+  Cost: 20
+  prefabName: ShotgunTurret
+  UpgradeList: 0800000007000000

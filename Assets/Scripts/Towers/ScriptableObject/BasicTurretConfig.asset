@@ -18,5 +18,7 @@ MonoBehaviour:
   AtkDamage: 40
   AtkSpeed: 1
   AtkRange: 8
-  TurretType: 0
-  UpgradeList: 010000000300000005000000
+  TurretType: 1
+  Cost: 10
+  prefabName: BasicTurret
+  UpgradeList: 040000000200000006000000
