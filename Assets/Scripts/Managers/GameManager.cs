@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public PoolManager PoolManager;
 
+    public TurretManager TurretManager;
+
     private int waveNumericalOrder;
     
     [SerializeField]
