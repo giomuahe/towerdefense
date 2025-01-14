@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-        PoolManager.CreateAllPool();
+        if(PoolManager)
+            PoolManager.CreateAllPool();
     }
 
     private void Start()
