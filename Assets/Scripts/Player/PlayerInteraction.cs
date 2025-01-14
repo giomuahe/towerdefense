@@ -18,9 +18,9 @@ namespace Player
         
         private PlayerControl _playerControl;
         private TurretBase _currentTurretBase;
-        private bool _isInteracting = false;
         
-        private float _interactionCheckInterval = 0.5f;
+        private bool _isInteracting = false;
+        private readonly float _interactionCheckInterval = 0.2f;
         private float _interactionCheckTimer;
         
         public event Action<TurretBase> OnTurretBaseNearby;
@@ -30,8 +30,9 @@ namespace Player
         {
             _playerControl = new PlayerControl();
 
-            _playerControl.PlayerInteraction.Interaction.started += ctx => Interact();
-            _playerControl.PlayerInteraction.Interaction.canceled += ctx => Interact();
+            // _playerControl.PlayerInteraction.Interaction.started += ctx => Interact();
+            // _playerControl.PlayerInteraction.Interaction.canceled += ctx => Interact();
+            _playerControl.PlayerInteraction.Interaction.performed += ctx => Interact();
         }
 
         private void Update()
