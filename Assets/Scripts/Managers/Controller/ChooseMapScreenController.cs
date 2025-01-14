@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class ChooseMapScreenController : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public void OnClickSelectMap()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameManager.Instance.UIManager.ShowScreen(ESCREEN.IN_BATTLE);
+        SceneManager.LoadScene("Map_01");
     }
 }

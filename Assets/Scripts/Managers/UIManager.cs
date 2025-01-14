@@ -52,6 +52,7 @@ public class UIManager : MonoBehaviour
                 break;
             case ESCREEN.IN_BATTLE:
                 HideAllScreen();
+                InBattleScreenController.gameObject.SetActive(true);
                 break;
             default:
                 break;
