@@ -1,4 +1,5 @@
 ﻿using Managers;
+using MapConfigs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ public class AttackTurretEnemy : EnemyBase
     protected float attackSpeed;
     protected float bulletSpeed;
     protected int baseTurretID;
+    private GameObject turretTarget;
     protected StateMachine enemyStateMachine;
     private StateMachine.State moveState;
     protected StateMachine.State attackState;
@@ -40,7 +42,7 @@ public class AttackTurretEnemy : EnemyBase
         moveState = enemyStateMachine.CreateState("move");
         moveState.onEnter = delegate
         {
-            List<Vector3> turretLocations = new List<Vector3>();
+            Dictionary<int, TurretBase> turretLocations = GameManager.Instance.MapManager.GetTurretBases();
             DecideMoveLocation(turretLocations);
         };
         moveState.onFrame = delegate
@@ -67,7 +69,10 @@ public class AttackTurretEnemy : EnemyBase
         };
         attackState.onFrame = delegate
         {
-
+            if (isTargetBeingDestroy)
+            {
+                enemyStateMachine.TransitionTo(moveState);
+            }
         };
     }
 
@@ -75,8 +80,8 @@ public class AttackTurretEnemy : EnemyBase
     {
         while(!isTargetBeingDestroy)
         {
-            //yield return new WaitForSeconds(1 / attackSpeed);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1 / attackSpeed);
+            //yield return new WaitForSeconds(1);
             bulletPool.SetPosition(shootPos);
             bulletPool.Pool.Get();
             Invoke("DamageTurret", 1);
@@ -95,24 +100,26 @@ public class AttackTurretEnemy : EnemyBase
         // goi den tru gay dmg
     }
 
-    private void DecideMoveLocation(List<Vector3> turretPositions)
+    private void DecideMoveLocation(Dictionary<int,TurretBase> turretBases)
     {
         float distance = float.MaxValue;
-        Vector3 pos = Vector3.zero;
-        if(turretPositions == null ||  turretPositions.Count == 0)
+        Vector3 tempPos = Vector3.zero;
+        if(turretBases == null ||  turretBases.Count == 0)
         {
             Move(moveLocations[++locationIndex]);
             hasTurretOnRange = false;
             return;
         }
-        foreach(var position in turretPositions)
+        foreach(var turretBase in turretBases)
         {
-            float distance1 = CalculateDistance(transform.position, position);
+            Vector3 turretPos = turretBase.Value.Position;
+            float distance1 = CalculateDistance(transform.position, turretPos);
             if(distance1 < distance)
             {
                 distance = distance1;
-                // set base turretID
-                pos = position;
+                baseTurretID = turretBase.Key;
+                tempPos = turretPos;
+                turretTarget = turretBase.Value.Turret;
             }
         }
         float distance2 = CalculateDistance(transform.position, moveLocations[locationIndex + 1]);
@@ -120,10 +127,11 @@ public class AttackTurretEnemy : EnemyBase
         {
             Move(moveLocations[++locationIndex]);
             hasTurretOnRange = false;
+            isTargetBeingDestroy = false;
         }
         else
         {
-            Move(pos);
+            Move(tempPos);
             hasTurretOnRange = true;
             enemyAgent.stoppingDistance = attackRange;
         }
@@ -136,7 +144,10 @@ public class AttackTurretEnemy : EnemyBase
 
     private void CheckTarget()
     {
-
+        if (!GameManager.Instance.MapManager.HasTurret(baseTurretID))
+        {
+            isTargetBeingDestroy = true;
+        }
     }
 
     private void Update()
