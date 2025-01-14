@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6970abb7280f61f4588ea8cf8b8570fe, type: 3}
   m_Name: GatlingTurret1Config
   m_EditorClassIdentifier: 
-  TurretName: Gatling Level 1
+  TurretName: Gatling
   TurretDescription: ssss
   TurretHealth: 5000
   AtkDamage: 50
   AtkSpeed: 0.3
   AtkRange: 8
-  TurretType: 1
-  UpgradeList: 02000000
+  TurretType: 2
+  Cost: 20
+  prefabName: GatlingTurret1
+  UpgradeList: 03000000

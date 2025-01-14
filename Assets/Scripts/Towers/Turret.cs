@@ -6,12 +6,14 @@ using UnityEngine.Animations.Rigging;
 
 public class Turret : MonoBehaviour
 {
+    public int id;
     public Transform aimTransform;
     public Transform target;
     public Transform firePos;
     public LayerMask enemyLayer;
     public Rig turretRig;
     public TurretConfig turretConfig;
+    public GameObject TurretMain;
     // turret Property
     public string TurretName;
     public string TurretDescription;
@@ -22,22 +24,24 @@ public class Turret : MonoBehaviour
     public TurretType TurretType;
     public List<TurretType> UpgradeList;
 
+    public float currentHp;
     void Start()
     {
         target = null;
         turretRig = GetComponentInChildren<Rig>();
         LoadConfig();
+        currentHp = TurretHealth;
     }
     void LoadConfig()
     {
         TurretName = turretConfig.TurretName;
-        TurretDescription=turretConfig.TurretDescription;
-        TurretHealth=turretConfig.TurretHealth;
-        AtkDamage=turretConfig.AtkDamage;
-        AtkSpeed=turretConfig.AtkSpeed;
-        AtkRange=turretConfig.AtkRange;
-        TurretType=turretConfig.TurretType;
-        UpgradeList=turretConfig.UpgradeList;
+        TurretDescription = turretConfig.TurretDescription;
+        TurretHealth = turretConfig.TurretHealth;
+        AtkDamage = turretConfig.AtkDamage;
+        AtkSpeed = turretConfig.AtkSpeed;
+        AtkRange = turretConfig.AtkRange;
+        TurretType = turretConfig.TurretType;
+        UpgradeList = turretConfig.UpgradeList;
     }
 
     void Update()
@@ -52,20 +56,31 @@ public class Turret : MonoBehaviour
         }
         if (CanAim())
         {
+            if (TurretType == TurretType.Base)
+            {
+                return;
+            }
             aimTransform.position = target.position;
             turretRig.weight = 1;
         }
         else
         {
+            if (TurretType == TurretType.Base)
+            {
+                return;
+            }
             aimTransform.position = firePos.position;
             turretRig.weight = 0;
         }
     }
-    void UpGrade(TurretType type){
+    void UpGrade(TurretType type)
+    {
 
     }
-    void ButtonUpgradePress(){
-        TuretManager.Instance.ShowUIUpgrade(UpgradeList);
+   
+    public void SetID(int currentId)
+    {
+        this.id = currentId;
     }
     bool CanUpdateEnemy()
     {
@@ -115,11 +130,60 @@ public class Turret : MonoBehaviour
         {
             return false;
         }
+        if (TurretType == TurretType.Base)
+        {
+            return false;
+        }
+        if (firePos == null)
+        {
+            return false;
+        }
         if (target != null)
         {
             return true;
         }
         return false;
+
+    }
+    public void TakeDamage(float damage)
+    {
+        if(CanTakeDamage()){
+        currentHp = currentHp - damage;
+        if (currentHp <= 0)
+        {
+            Die();
+            return;
+        }}else{
+            return;
+        }
+
+    }
+    public bool CanTakeDamage(){
+        if(currentHp<=0){
+            return false;
+        }
+        if(currentHp>0){
+            return true;
+        }
+        return false;
+    }
+    public void Die()
+    {
+        TurretMain.SetActive(false);
+    }
+
+ public void ButtonUpgradePress()
+    {
+        TurretManager.Instance.ShowUIUpgrade(this.id);
+        Debug.Log("id upgrade:" + this.id);
+    }
+    public void ButtonTakeDamagePress()
+    {
+
+        TurretManager.Instance.SendDamage(this.id);
+    }
+    public GameObject bullet;
+    public void Attack(){
 
     }
 
