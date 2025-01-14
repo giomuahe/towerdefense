@@ -180,9 +180,9 @@ GameObject:
   - component: {fileID: 9557324}
   - component: {fileID: 6523008}
   - component: {fileID: 5125466051982634515}
-  - component: {fileID: 3264672561929183862}
+  - component: {fileID: 1206160176025717376}
   m_Layer: 0
-  m_Name: Enemy_MG
+  m_Name: DroneScout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -321,7 +321,7 @@ NavMeshAgent:
   m_BaseOffset: 0.26192564
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3264672561929183862
+--- !u!114 &1206160176025717376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,11 +330,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 165244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca0fabedf0732da44a501f1292fff03e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7942ed236a15c3449af090ff1f9c7ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 198470652497635546, guid: 70cd80e6e8517904da249485ffde005f, type: 3}
-  shootPos: {fileID: 8067296241723721706}
+  remainDistance: 0.2
 --- !u!1 &180682
 GameObject:
   m_ObjectHideFlags: 0

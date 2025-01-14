@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Pool;
 
 public class ObjectPooling: MonoBehaviour
@@ -35,15 +33,17 @@ public class ObjectPooling: MonoBehaviour
 
     private GameObject CreatePool()
     {
-        GameObject instanceObject = Instantiate(prefab, transform.position, transform.rotation);
+        GameObject instanceObject = Instantiate(prefab, transform);
+        instanceObject.GetComponent<ReturnToPool>().Pool = Pool;
         return instanceObject;
     }
 
-    public void SetPositionAndPrefab(Transform parentTranform)
+    public void SetPosition(Transform parentTranform)
     {
         this.parentTranform = parentTranform;
     }
 }
+
 
 
 

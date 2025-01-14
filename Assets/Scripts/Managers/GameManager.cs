@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+        PoolManager.CreateAllPool();
     }
 
     private void Start()
@@ -42,17 +43,15 @@ public class GameManager : MonoBehaviour
         else
             Debug.LogError("NotFound UIManager");
 
-        
-
-        if (PoolManager != null)
-        {
-            PoolManager.CreateAllPool();
-        }
-        else
-        {
-            PoolManager = new PoolManager();
-            PoolManager.CreateAllPool();
-        }
+        //if (PoolManager != null)
+        //{
+        //    PoolManager.CreateAllPool();
+        //}
+        //else
+        //{
+        //    PoolManager = new PoolManager();
+        //    PoolManager.CreateAllPool();
+        //}
     }
 
     #region UI

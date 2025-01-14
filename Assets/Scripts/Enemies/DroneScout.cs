@@ -8,13 +8,17 @@ public class DroneScout : EnemyBase, IHittable
         }
         if(!enemyAgent.pathPending && enemyAgent.remainingDistance < remainDistance)
         {
-            if(moveLocations.Count == locationIndex + 1)
+            if (moveLocations.Count == locationIndex + 1)
             {
                 // Gây damage lên nhà chính và destroy object
                 return;
             }
-            locationIndex += 1;
-            Move(moveLocations[locationIndex]);  
+            Move(moveLocations[++locationIndex]);
         }
+    }
+
+    private void Update()
+    {
+        MoveController();
     }
 }
