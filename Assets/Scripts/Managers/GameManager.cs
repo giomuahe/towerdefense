@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public MapManager MapManager;
 
+    public WaveManager WaveManager;
+
     public PoolManager PoolManager;
 
     public TurretManager TurretManager;

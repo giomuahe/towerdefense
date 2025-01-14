@@ -84,7 +84,7 @@ namespace Player
                     {
                         Debug.Log($"Nearby turret base at {_currentTurretBase.name} with Id {_cunrentTurretBaseId}");
 
-                        GameManager.Instance.UIManager.InBattleScreenController.OnClickShowUpgradeUI();
+                        GameManager.Instance.UIManager.InBattleScreenController.OnClickShowUpgradeUI(_cunrentTurretBaseId);
                         _isInteracting = true;
                     }
                 }

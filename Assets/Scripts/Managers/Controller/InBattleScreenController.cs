@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class InBattleScreenController : MonoBehaviour
 {
     public GameObject PopupUpgrade;
-    public Button UpgradeBtn;
     public int TurretBaseId = 1;
     public TurretInfoSelect TurretSelect;
 
@@ -16,20 +15,17 @@ public class InBattleScreenController : MonoBehaviour
         
     }
 
-    private void OnEnable()
-    {
-        UpgradeBtn.onClick.AddListener(OnClickUpgradeTurret);
-    }
-
     // Update is called once per frame
     void Update()
     {
         
     }
 
-    public void OnClickShowUpgradeUI()
+    public void OnClickShowUpgradeUI(int turretBaseId)
     {
-        if(PopupUpgrade)
+        Debug.Log("OnClickShowUpgradeUI " + turretBaseId);
+        TurretBaseId = turretBaseId;
+        if (PopupUpgrade)
             PopupUpgrade.SetActive(true);
         //Info
         //GameManager.Instance.TurretManager.TurretInfoDictionNary();
@@ -43,8 +39,10 @@ public class InBattleScreenController : MonoBehaviour
             PopupUpgrade.SetActive(false);
     }
 
+
     public void OnClickUpgradeTurret()
     {
+        Debug.Log("ClickUpgrade");
         TurretType type = TurretType.Basic;
         Debug.Log("ClickUpgrade Turret Id = " + TurretBaseId + ", type = " + type);
         GameManager.Instance.TurretManager.UpGradeTurret(TurretBaseId, type);
