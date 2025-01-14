@@ -18,6 +18,7 @@ namespace Player
         
         private PlayerControl _playerControl;
         private TurretBase _currentTurretBase;
+        private int _cunrentTurretBaseId = -1;
         
         private bool _isInteracting = false;
         private readonly float _interactionCheckInterval = 0.2f;
@@ -70,10 +71,18 @@ namespace Player
                 if (_currentTurretBase != nearestTurretBase)
                 {
                     _currentTurretBase = nearestTurretBase;
+                    foreach (var kvp in mapManager.GetTurretBases())
+                    {
+                        if (kvp.Value == _currentTurretBase)
+                        {
+                            _cunrentTurretBaseId = kvp.Key;
+                            break;
+                        }
+                    }
                     OnTurretBaseNearby?.Invoke(_currentTurretBase);
                     if (!_isInteracting)
                     {
-                        Debug.Log($"Nearby turret base at {_currentTurretBase.name}");
+                        Debug.Log($"Nearby turret base at {_currentTurretBase.name} with Id {_cunrentTurretBaseId}");
 
                         GameManager.Instance.UIManager.InBattleScreenController.OnClickShowUpgradeUI();
                         _isInteracting = true;
@@ -104,15 +113,16 @@ namespace Player
 
             int IdBase;
 
+            int id = _cunrentTurretBaseId;
             if (_currentTurretBase.Turret == null)
             {
-                Debug.Log("Turret built!");
+                Debug.Log($"Player interaction: Request BUILD turret at turret base with ID {id}!");
                 //Notify to UI to display build turret panel
                 //GameManager.Instance.UIManager.InBattleScreenController.BuiltTurret(IdBase);
             }
             else
             {
-                Debug.Log("Turret upgraded!");
+                Debug.Log($"Player interaction: Request UPGRADE turret at turret base with ID {id}!");
                 //Notify UI to display upgrade turret panel
                 
                 int CurrentTurretType;
