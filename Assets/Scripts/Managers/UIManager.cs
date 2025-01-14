@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public void Init()
     {
         currentScreen = ESCREEN.LOBBY;
+        ShowScreen(currentScreen);
     }
 
     /// <summary>

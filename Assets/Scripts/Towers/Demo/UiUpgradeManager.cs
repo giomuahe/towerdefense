@@ -1,60 +1,80 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UiUpgradeManager : MonoBehaviour
 {
-    public static UiUpgradeManager Instance; 
-   public Transform parentPanel;
-   public LoadPrefab loadPrefab=new LoadPrefab();
-   public List<GameObject> listButton;
-   public List<TurretType> listTurret;
-   
-   void Awake(){
-        Instance=this;
+    public static UiUpgradeManager Instance;
+    public Transform buttonParentPanel;
+    public LoadPrefab loadPrefab = new LoadPrefab();
+    public int id;
+    public List<GameObject> listButton;
+    public List<TurretType> listTurretNextLevel;
+
+    void Awake()
+    {
+        Instance = this;
     }
     void Start()
     {
         
+       
     }
 
-  
+
     void Update()
     {
-        
+
     }
-    public void SetListTurret(List<TurretType> turrets){
-        listTurret=turrets;
+
+    public void SetID(int idTurret)
+    {
+        this.id = idTurret;
     }
-    List<GameObject> CreateListButton(List<TurretType> listUpgrade){
-        foreach(TurretType turretType in listUpgrade){
-            GameObject newButton= loadPrefab.LoadButtonUpgradeTurret(turretType);
-            listButton.Add(newButton);
+    public void SetListTurret()
+    {
+        listTurretNextLevel = TurretManager.Instance.GetListTypeTurretToUpgradeById(this.id);
+    }
+    public void Clear(){
+         foreach (Transform child in buttonParentPanel)
+        {
+            Destroy(child.gameObject);
         }
-        return listButton;
     }
-    void CreateSelectTurretButtons(){
-        if(listTurret.Count!=0){
-            listButton=CreateListButton(listTurret);
-            foreach(GameObject gameObject in listButton){
-                CreateButton(gameObject, listButton.IndexOf(gameObject));
+    public void SpawnButton()
+    {
+        Clear();
+        foreach (TurretType turretType in listTurretNextLevel)
+        {
+            GameObject newButtonPrefab = TurretManager.Instance.loadPrefab.LoadSelecTurretButton();
+            GameObject newButton = Instantiate(newButtonPrefab, buttonParentPanel);
+            TextMeshProUGUI buttonTextName = newButton.transform.Find("TextName").GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI buttonTextDescription = newButton.transform.Find("TextDescription").GetComponent<TextMeshProUGUI>();
+            buttonTextName.text = TurretManager.Instance.TurretNameDictionNary()[turretType].TurretName;
+            buttonTextDescription.text = TurretManager.Instance.TurretNameDictionNary()[turretType].TurretDescription;
+            Debug.Log("button: " + TurretManager.Instance.TurretNameDictionNary()[turretType]);
+
+            Button button = newButton.GetComponent<Button>();
+
+            if (button != null)
+            {
+                SelectTurretButton param = newButton.GetComponent<SelectTurretButton>();
+                param.SetParam(this.id, turretType);
+                button.onClick.AddListener(() => OnButtonClicked(this.id, turretType));
             }
         }
-        else{
-            return;
-        }
+
     }
-    void CreateButton(GameObject buttonPrefab, int index)
+    void OnButtonClicked(int idTurret, TurretType turretType)
     {
-       
-        GameObject newButton = Instantiate(buttonPrefab, parentPanel);
-       
-        newButton.GetComponent<RectTransform>().anchoredPosition += new Vector2(0, -50 * index);
-       
-        
-        Button buttonComponent = newButton.GetComponent<Button>();
-        
+        TurretManager.Instance.UpGradeTurret(idTurret, turretType);
+        this.gameObject.SetActive(false);
+
     }
-   
+    void OnEnable()
+    {
+
+    }
 }

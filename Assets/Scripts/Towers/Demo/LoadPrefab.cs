@@ -1,21 +1,42 @@
 
 
+using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class LoadPrefab 
+public class LoadPrefab
 {
-    private const string LINK_UI_PREFAB="UItest/Prefab/";
-    public GameObject LoadButtonUpgradeTurret(TurretType turretType){
-        GameObject button=null;
-        switch(turretType){
-            case TurretType.Gatling_Level_1:
-            button= Resources.Load<GameObject>(LINK_UI_PREFAB+"ButtonGatling1");
-            break;
-            case TurretType.Sniper_Level_1:
-            button= Resources.Load<GameObject>(LINK_UI_PREFAB+"ButtonSnipper1");
-            break;
+
+    private const string LINK_UI_PREFAB = "UItest/Prefab/";
+    private const string LINK_TURRET_PREFAB = "Turrets/Prefab/";
+
+    public Dictionary<TurretType, string> TurretPrefabDic;
+
+    public static Dictionary<TurretEnum, string> LoadEnumToPrefabDic<TurretEnum>() where TurretEnum : Enum
+    {
+        Dictionary<TurretEnum, string> tDictionary = new Dictionary<TurretEnum, string>();
+        foreach (TurretEnum value in Enum.GetValues(typeof(TurretEnum)))
+        {
+            tDictionary[value] = value.ToString();
         }
-        return button;
-        
+        return tDictionary;
     }
+    public GameObject LoadTurret(TurretType turretType)
+    {
+        TurretPrefabDic = LoadEnumToPrefabDic<TurretType>();
+        GameObject turret = null;
+        turret = Resources.Load<GameObject>(LINK_TURRET_PREFAB + TurretPrefabDic[turretType]);
+        return turret;
+    }
+
+    public GameObject LoadSelecTurretButton()
+    {
+        GameObject button = null;
+        button = Resources.Load<GameObject>(LINK_UI_PREFAB + "SelectTurretButton");
+
+        return button;
+
+    }
+
 }

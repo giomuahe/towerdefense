@@ -18,5 +18,7 @@ MonoBehaviour:
   AtkDamage: 200
   AtkSpeed: 1
   AtkRange: 15
-  TurretType: 3
-  UpgradeList: 04000000
+  TurretType: 4
+  Cost: 20
+  prefabName: SnipperTurret1
+  UpgradeList: 05000000
