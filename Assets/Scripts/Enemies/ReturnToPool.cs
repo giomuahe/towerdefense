@@ -6,9 +6,9 @@ using UnityEngine.Rendering.VirtualTexturing;
 
 public class ReturnToPool : MonoBehaviour
 {
+    public ObjectPool<GameObject> Pool;
     void OnParticleSystemStopped()
     {
-        // Return to the pool
-        
+        Pool.Release(gameObject);   
     }
 }

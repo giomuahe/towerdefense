@@ -4856,6 +4856,7 @@ GameObject:
   - component: {fileID: 114319064964325080}
   - component: {fileID: 199541557569965598}
   - component: {fileID: 108468018855002760}
+  - component: {fileID: 4599494376434305038}
   m_Layer: 0
   m_Name: Projectile 3 black fire
   m_TagString: Untagged
@@ -9863,6 +9864,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &4599494376434305038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294834399362254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8fc43ee0e53234a8de8cb017808d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1456710836072950
 GameObject:
   m_ObjectHideFlags: 0

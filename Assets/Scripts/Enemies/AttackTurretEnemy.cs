@@ -19,7 +19,7 @@ public class AttackTurretEnemy : EnemyBase
     private bool isTargetBeingDestroy;
 
     private int bulletID;
-    private ObjectPool<GameObject> bulletPool;
+    private ObjectPooling bulletPool;
 
     [SerializeField]
     private Transform shootPos;
@@ -30,7 +30,7 @@ public class AttackTurretEnemy : EnemyBase
         attackSpeed = enemyConfig.AttackSpeed;
         enemyTurretDamage = enemyConfig.EnemyTurretDamage;
         base.SetUp(enemyConfig, moveLocations, enemyInGameID);
-        bulletPool = GameManager.Instance.PoolManager.GetPoolThroughID(bulletID).Pool;
+        bulletPool = GameManager.Instance.PoolManager.GetPoolThroughID(bulletID);
         enemyStateMachine = new StateMachine();
         CreateState();
     }
@@ -75,11 +75,20 @@ public class AttackTurretEnemy : EnemyBase
     {
         while(!isTargetBeingDestroy)
         {
-            yield return new WaitForSeconds(1 / attackSpeed);
-            bulletPool.Get();
-            Invoke("DamageTurret", attackRange / bulletSpeed);
+            //yield return new WaitForSeconds(1 / attackSpeed);
+            yield return new WaitForSeconds(1);
+            bulletPool.SetPosition(shootPos);
+            bulletPool.Pool.Get();
+            Invoke("DamageTurret", 1);
         }
     }
+
+    //private void Start()
+    //{
+    //    bulletID = 100;
+    //    bulletPool = GameManager.Instance.PoolManager.GetPoolThroughID(bulletID);
+    //    StartCoroutine(Attack());
+    //}
 
     private void DamageTurret()
     {
