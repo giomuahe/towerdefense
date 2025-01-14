@@ -43,10 +43,6 @@ namespace MapConfigs
                     turretBase.Initialize(position);
                     mapManager.RegisterTurretBase(i, turretBase);
                 }
-                else
-                {
-                    Debug.LogError($"Script TurretBase is not attached to prefab {turretSpotPrefab.name}");
-                }
             }
         }
 
