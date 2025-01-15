@@ -12,6 +12,12 @@ namespace MapConfigs
             Position = position;
             Turret = null; // No turret placed as default
         }
+
+        public TurretType GetTurretType()
+        {
+            TurretType result = TurretType.Base;
+            return result;
+        }
     }
     
 }

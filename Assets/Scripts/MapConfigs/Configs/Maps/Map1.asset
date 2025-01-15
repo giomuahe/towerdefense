@@ -27,5 +27,8 @@ MonoBehaviour:
   - {x: 58, y: 0, z: -12}
   - {x: 85, y: 0, z: 19}
   - {x: 85, y: 0, z: -19}
-  waves: []
-  waypoints: []
+  waves:
+  - {fileID: 11400000, guid: 101d50ffd5fc245c6854b634709d5179, type: 2}
+  waypoints:
+  - {x: 5, y: 0, z: 5}
+  - {x: 10, y: 0, z: 10}

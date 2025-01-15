@@ -70,6 +70,13 @@ public class UIManager : MonoBehaviour
     /// <param name="callbackCancel">callback Cancel</param>
     public void ShowPopup(EPOPUP popup, string header, string message, Action callbackOk = null, Action callbackCancel = null)
     {
-
+        switch (popup) {
+            case EPOPUP.CONFIRM_POPUP:
+                break;
+            case EPOPUP.COMMAND_POPUP:
+                break;
+            default:
+                break;
+        }
     }
 }

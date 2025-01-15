@@ -12,23 +12,22 @@ public class TurretManager : MonoBehaviour
     public LoadPrefab loadPrefab;
     public List<TurretConfig> turretConfigs;
     //Lay tu MapManager
-   
     //Lay tu MapManager
     void Awake()
     {
         loadPrefab = new LoadPrefab();
         TurretOnMapDic = new Dictionary<int, GameObject>();
+
     }
+  
   
     void Start()
     {
-     
         
-
     }
     void BuildTurret(int id, TurretType turretType)
     {
-        if (TurretOnMapDic[id] != null)
+        if (TurretOnMapDic.ContainsKey(id))
         {
             Destroy(TurretOnMapDic[id]);
         }
@@ -48,9 +47,17 @@ public class TurretManager : MonoBehaviour
         BuildTurret(id, newTurret);
     }
     public List<TurretType> GetListTypeTurretToUpgradeById(int id){
-        GameObject turret= TurretOnMapDic[id];
-        Turret currentturret= turret.GetComponent<Turret>();
-        return currentturret.UpgradeList;
+        if (TurretOnMapDic.ContainsKey(id))
+        {
+            GameObject turret = TurretOnMapDic[id];
+            Turret currentturret = turret.GetComponent<Turret>();
+            return currentturret.UpgradeList;
+        }
+        else
+        {
+            return new List<TurretType>(){ TurretType.Basic};
+        }
+        
     }
     public Dictionary<TurretType, TurretConfig> TurretInfoDictionNary(){
         Dictionary<TurretType, TurretConfig> tDic= new Dictionary<TurretType, TurretConfig>();

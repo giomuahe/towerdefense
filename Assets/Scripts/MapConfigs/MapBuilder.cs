@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
 using Managers;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace MapConfigs
 {
@@ -42,10 +38,6 @@ namespace MapConfigs
                 {
                     turretBase.Initialize(position);
                     mapManager.RegisterTurretBase(i, turretBase);
-                }
-                else
-                {
-                    Debug.LogError($"Script TurretBase is not attached to prefab {turretSpotPrefab.name}");
                 }
             }
         }

@@ -19,5 +19,15 @@ namespace Managers
         {
             StartCoroutine(spawner.WaveSpawn(waveConfig, spawnPos));
         }
+
+        public void SendDamage(int enemyDataID, int damgage)
+        {
+            if (!dictionaryOfEnemiesOnMap.ContainsKey(enemyDataID))
+            {
+                Debug.Log("Wrong ID");
+                return;
+            }
+            dictionaryOfEnemiesOnMap[enemyDataID].OnHit(damgage);
+        }
     }
 }

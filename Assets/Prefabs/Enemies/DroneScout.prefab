@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 6523008}
   - component: {fileID: 5125466051982634515}
   - component: {fileID: 1206160176025717376}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DroneScout
   m_TagString: Untagged
   m_Icon: {fileID: 0}

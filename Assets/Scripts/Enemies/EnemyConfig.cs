@@ -14,6 +14,7 @@ public class EnemyConfig : ScriptableObject
     public float EnemyTurretDamage;
     public float AttackRange;
     public int GoldDropAmount;
+    public int BulletID;
     [Header("Others")]
     public EnemyType EnemyType;
     public GameObject EnemyPrefab;
