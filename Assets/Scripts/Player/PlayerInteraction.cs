@@ -2,14 +2,12 @@ using System;
 using Managers;
 using MapConfigs;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace Player
 {
     public class PlayerInteraction : MonoBehaviour
     {
         [Header("References")]
-        //public UIManager;
         public MapManager mapManager;
         
         [Header("Interaction Settings")]
@@ -30,9 +28,7 @@ namespace Player
         private void Awake()
         {
             _playerControl = new PlayerControl();
-
-            // _playerControl.PlayerInteraction.Interaction.started += ctx => Interact();
-            // _playerControl.PlayerInteraction.Interaction.canceled += ctx => Interact();
+            
             _playerControl.PlayerInteraction.Interaction.performed += ctx => Interact();
         }
 
@@ -105,8 +101,7 @@ namespace Player
                 }
             }
         }
-
-
+        
         private void Interact()
         {
             if (_currentTurretBase == null) return;
@@ -134,7 +129,6 @@ namespace Player
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, interactionDistance);
-            
         }
 
         private void OnEnable()
