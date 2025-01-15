@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 9505346}
   - component: {fileID: 6504276}
   - component: {fileID: -8067256176727437107}
-  m_Layer: 0
+  - component: {fileID: 6186030831402480695}
+  m_Layer: 6
   m_Name: MechBrute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,6 +38,7 @@ Transform:
   - {fileID: 468558}
   - {fileID: 411742}
   - {fileID: 419312}
+  - {fileID: 7310134566789368608}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3352370
@@ -143,8 +145,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c350a1ee959dfb40ad3d0452ae65026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remainDistance: 0
-  shootPos: {fileID: 0}
+  remainDistance: 0.5
+  shootPos: {fileID: 7310134566789368608}
+--- !u!195 &6186030831402480695
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108728}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.9737408
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.7453851
+  m_BaseOffset: 0.37269256
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &108964
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,3 +418,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6484888442248264032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7310134566789368608}
+  m_Layer: 0
+  m_Name: ShootPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7310134566789368608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484888442248264032}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.00000011920929, z: -1.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 445614}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

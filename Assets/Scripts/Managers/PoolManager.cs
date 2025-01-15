@@ -23,6 +23,10 @@ public class PoolManager : MonoBehaviour
 
     public ObjectPooling GetPoolThroughID(int bulletID)
     {
+        if (!bulletPools.ContainsKey(bulletID))
+        {
+            Debug.LogError("Add bulletId into object");
+        }
         return bulletPools[bulletID];
     }
 }

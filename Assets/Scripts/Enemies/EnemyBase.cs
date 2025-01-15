@@ -50,7 +50,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    private void OnDead()
+    protected void OnDead()
     {
         // gui Enemy Type va destroy object
 

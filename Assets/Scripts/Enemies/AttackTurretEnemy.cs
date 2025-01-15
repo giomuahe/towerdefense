@@ -17,6 +17,7 @@ public class AttackTurretEnemy : EnemyBase
     protected StateMachine enemyStateMachine;
     private StateMachine.State moveState;
     protected StateMachine.State attackState;
+    private StateMachine.State deadState;
     protected bool hasTurretOnRange;
     private bool isTargetBeingDestroy;
 
@@ -32,6 +33,7 @@ public class AttackTurretEnemy : EnemyBase
         attackSpeed = enemyConfig.AttackSpeed;
         enemyTurretDamage = enemyConfig.EnemyTurretDamage;
         base.SetUp(enemyConfig, moveLocations, enemyInGameID);
+        bulletID = enemyConfig.BulletID;
         bulletPool = GameManager.Instance.PoolManager.GetPoolThroughID(bulletID);
         enemyStateMachine = new StateMachine();
         CreateState();
@@ -42,6 +44,13 @@ public class AttackTurretEnemy : EnemyBase
         moveState = enemyStateMachine.CreateState("move");
         moveState.onEnter = delegate
         {
+            if(moveLocations.Count == locationIndex + 1)
+            {
+                // damge nexus
+                enemyStateMachine.TransitionTo(deadState);
+                OnDead();
+                return;
+            }
             Dictionary<int, TurretBase> turretLocations = GameManager.Instance.MapManager.GetTurretBases();
             DecideMoveLocation(turretLocations);
         };
@@ -63,6 +72,7 @@ public class AttackTurretEnemy : EnemyBase
                 }
             }
         };
+        attackState = enemyStateMachine.CreateState("attack");
         attackState.onEnter += delegate
         {
             StartCoroutine(Attack());
@@ -74,30 +84,24 @@ public class AttackTurretEnemy : EnemyBase
                 enemyStateMachine.TransitionTo(moveState);
             }
         };
+        deadState = enemyStateMachine.CreateState("dead");
     }
 
     IEnumerator Attack()
     {
         while(!isTargetBeingDestroy)
         {
-            //yield return new WaitForSeconds(1 / attackSpeed);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1 / attackSpeed);
             bulletPool.SetPosition(shootPos);
             bulletPool.Pool.Get();
             Invoke("DamageTurret", 1);
         }
     }
 
-    private void Start()
-    {
-        bulletID = 100;
-        bulletPool = GameManager.Instance.PoolManager.GetPoolThroughID(bulletID);
-        StartCoroutine(Attack());
-    }
-
     private void DamageTurret()
     {
-        // goi den tru gay dmg
+        if(turretTarget is null) { return; }
+        
     }
 
     private void DecideMoveLocation(Dictionary<int,TurretBase> turretBases)
@@ -152,6 +156,6 @@ public class AttackTurretEnemy : EnemyBase
 
     private void Update()
     {
-        
+        enemyStateMachine.Update();
     }
 }

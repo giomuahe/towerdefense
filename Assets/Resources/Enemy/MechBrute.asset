@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbd1d353525f5840aa772af1a4dee02, type: 3}
   m_Name: MechBrute
   m_EditorClassIdentifier: 
-  EnemyHealth: 0
-  EnemySpeed: 0
-  AttackSpeed: 0
-  EnemyNexusDamage: 0
-  EnemyTurretDamage: 0
-  AttackRange: 0
-  GoldDropAmount: 0
+  EnemyHealth: 5
+  EnemySpeed: 5
+  AttackSpeed: 5
+  EnemyNexusDamage: 5
+  EnemyTurretDamage: 5
+  AttackRange: 5
+  GoldDropAmount: 5
+  BulletID: 100
   EnemyType: 1
-  EnemyPrefab: {fileID: 0}
+  EnemyPrefab: {fileID: 108728, guid: cfb5214bbbff623469f862867b0c706c, type: 3}
