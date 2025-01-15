@@ -5,19 +5,10 @@ using UnityEngine;
 public class GameConfigManager
 {
     private Dictionary<int, EnemyConfig> enemiesConfigDictionary;
-    public static GameConfigManager Instance;
-   
-    private void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = new GameConfigManager();
-        }
-        LoadEnemiesConfig();
-    }
 
-    private void LoadEnemiesConfig()
+    public void LoadEnemiesConfig()
     {
+        enemiesConfigDictionary = new Dictionary<int, EnemyConfig>();
         EnemyConfig[] enemiesConfig = Resources.LoadAll<EnemyConfig>("Enemy");
         foreach(var enemyConfig in enemiesConfig)
         {
