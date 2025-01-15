@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 54332171404887420}
   - component: {fileID: 135036271185326364}
   - component: {fileID: 5674659321163275499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Projectile 4 yellow arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 605a456cfc02f6b499a64717539a27e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 2
   hitOffset: 0.1
   UseFirePointRotation: 0
   rotationOffset: {x: 0, y: 0, z: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 7911176973815245866}
   - component: {fileID: 5430419219330635096}
   - component: {fileID: 1869699810370702778}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5035,7 +5035,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5151797348264054196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5072,9 +5072,21 @@ PrefabInstance:
       propertyPath: parentObject
       value: 
       objectReference: {fileID: 5151797348264054196}
+    - target: {fileID: 1019973222207576, guid: 1be2572052efd584296895036cceb277, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1373498804365708, guid: 1be2572052efd584296895036cceb277, type: 3}
       propertyPath: m_Name
       value: Flash 4 yellow arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1373498804365708, guid: 1be2572052efd584296895036cceb277, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982642041703820, guid: 1be2572052efd584296895036cceb277, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4936422987408500, guid: 1be2572052efd584296895036cceb277, type: 3}
       propertyPath: m_RootOrder
@@ -5158,6 +5170,30 @@ PrefabInstance:
     - target: {fileID: 1153730961705006, guid: f1aeeba2f9003904da5c0a24ba150198, type: 3}
       propertyPath: m_Name
       value: Hit 4 yellow arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153730961705006, guid: f1aeeba2f9003904da5c0a24ba150198, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202874937387896, guid: f1aeeba2f9003904da5c0a24ba150198, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1279583530123320, guid: f1aeeba2f9003904da5c0a24ba150198, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858531462895266, guid: f1aeeba2f9003904da5c0a24ba150198, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911044941202370, guid: f1aeeba2f9003904da5c0a24ba150198, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917503916707706, guid: f1aeeba2f9003904da5c0a24ba150198, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4831422832165140, guid: f1aeeba2f9003904da5c0a24ba150198, type: 3}
       propertyPath: m_RootOrder

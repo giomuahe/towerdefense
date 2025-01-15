@@ -31,6 +31,7 @@ public class Turret : MonoBehaviour
         turretRig = GetComponentInChildren<Rig>();
         LoadConfig();
         currentHp = TurretHealth;
+        Starts();
     }
     void LoadConfig()
     {
@@ -62,6 +63,8 @@ public class Turret : MonoBehaviour
             }
             aimTransform.position = target.position;
             turretRig.weight = 1;
+            InvokeRepeating("Attack", 1, 1);
+        
         }
         else
         {
@@ -170,21 +173,18 @@ public class Turret : MonoBehaviour
     public void Die()
     {
         TurretMain.SetActive(false);
-    }
-
- public void ButtonUpgradePress()
-    {
-        TurretManager.Instance.ShowUIUpgrade(this.id);
-        Debug.Log("id upgrade:" + this.id);
-    }
-    public void ButtonTakeDamagePress()
-    {
-
-        TurretManager.Instance.SendDamage(this.id);
+    
     }
     public GameObject bullet;
+    public int bulletID = 102;
+    public ObjectPooling objectPooling;
+    void Starts(){
+        objectPooling= GameManager.Instance.PoolManager.GetPoolThroughID(bulletID);
+        
+    }
     public void Attack(){
-
+        objectPooling.SetPosition(firePos);
+        objectPooling.Pool.Get();
     }
 
 

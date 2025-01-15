@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2742976354699986773}
   - component: {fileID: 602348239841604955}
   - component: {fileID: 5511150050362947056}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 506591385044784975}
   - component: {fileID: 6560463619400954744}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rig 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 2011410351112197841}
   - component: {fileID: 1200744607667368812}
   - component: {fileID: 720433392744452394}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2977833296553092547}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6520141408411338132}
   - component: {fileID: 2242249452513192458}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BaseAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 8471598273846378419}
   - component: {fileID: 5285058354827160645}
   - component: {fileID: 8939356327060705378}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 3131688101420663088}
   - component: {fileID: 5532496080317331948}
   - component: {fileID: 6958818835201547135}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,6 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c0392197c87074998334736768243d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   aimTransform: {fileID: 6820517251746881942}
   target: {fileID: 0}
   firePos: {fileID: 2977833296553092547}
@@ -643,6 +644,7 @@ MonoBehaviour:
     m_Bits: 64
   turretRig: {fileID: 0}
   turretConfig: {fileID: 11400000, guid: 79172427ca794814a99ddc9219cbaf7f, type: 2}
+  TurretMain: {fileID: 0}
   TurretName: 
   TurretDescription: 
   TurretHealth: 0
@@ -651,6 +653,10 @@ MonoBehaviour:
   AtkRange: 0
   TurretType: 0
   UpgradeList: 
+  currentHp: 0
+  bullet: {fileID: 0}
+  bulletID: 102
+  objectPooling: {fileID: 0}
 --- !u!1 &4345764307537188778
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6820517251746881942}
   - component: {fileID: 21985226752193238}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,7 +712,7 @@ GameObject:
   - component: {fileID: 3369448031415961420}
   - component: {fileID: 448163084945088215}
   - component: {fileID: 4366330695908046874}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gatling_Up_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -789,7 +795,7 @@ GameObject:
   - component: {fileID: 3425675614461599880}
   - component: {fileID: 8472952786909120408}
   - component: {fileID: 8802041795187735116}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gatling_Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +879,7 @@ GameObject:
   - component: {fileID: 755670140402950092}
   - component: {fileID: 6658975447137395717}
   - component: {fileID: 94715677317052593}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gatling_Up_Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -956,7 +962,7 @@ GameObject:
   - component: {fileID: 889583383296406966}
   - component: {fileID: 4081019451235425775}
   - component: {fileID: 6320093081648554281}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1089,7 +1095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2432708449070192122}
   - component: {fileID: 2315797644036939481}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GunAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1177,7 +1183,7 @@ GameObject:
   - component: {fileID: 613469895766175027}
   - component: {fileID: 8339393211977844489}
   - component: {fileID: 2986612625077175347}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gatling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1284,7 +1290,7 @@ GameObject:
   - component: {fileID: 761978970876532523}
   - component: {fileID: 5115056956560160687}
   - component: {fileID: 1699877325769039933}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gatling_Up_Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
