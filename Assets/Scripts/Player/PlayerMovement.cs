@@ -1,8 +1,6 @@
 using UnityEngine;
 using Managers;
-using Unity.VisualScripting;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Player
 {
