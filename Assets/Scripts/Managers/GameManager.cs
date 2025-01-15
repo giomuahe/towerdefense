@@ -1,5 +1,6 @@
 using Managers;
 using MapConfigs;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -85,7 +86,8 @@ public class GameManager : MonoBehaviour
     {
         WaveConfig waveConfig = MapManager.GetWaveConfig(WaveNumericalOrder);
         Vector3 spawnPos = MapManager.GetSpawnGatePosition().position;
-        EnemyManager.SpawnEnemies(waveConfig, spawnPos);
+        print("Createwave " + JsonConvert.SerializeObject(waveConfig) + ",spaw " + spawnPos);
+        EnemyManager.SpawnEnemies(waveConfig, spawnPos); 
     }
 
     public void NotifyOnHitTurret()

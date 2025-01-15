@@ -327,7 +327,7 @@ MonoBehaviour:
   PoolManager: {fileID: 2179930624277890261}
   WaveNumericalOrder: 0
   TurretManager: {fileID: 1471148643}
-  EnemyManager: {fileID: 0}
+  EnemyManager: {fileID: 1018464945}
 --- !u!1 &67125070
 GameObject:
   m_ObjectHideFlags: 0
@@ -7157,7 +7157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1105728337
 RectTransform:
   m_ObjectHideFlags: 0
