@@ -31,7 +31,11 @@ public class PopupUpgradeController : MonoBehaviour
         curretTurretIdSelect = curretTurretId;
         //Lấy danh sách turret có thể upgrade
         List<TurretType> lsTurretUpgrade = GameManager.Instance.TurretManager.GetListTypeTurretToUpgradeById(curretTurretId);
-        Dictionary<TurretType, TurretConfig> turretCfgs = GameManager.Instance.TurretManager.TurretNameDictionNary();
+        if(lsTurretUpgrade == null || lsTurretUpgrade.Count == 0){
+            //TODO
+            return;
+        }
+        Dictionary<TurretType, TurretConfig> turretCfgs = GameManager.Instance.TurretManager.TurretInfoDictionNary();
 
         // Xóa các phần tử cũ
         foreach (Transform child in contentParent)

@@ -87,5 +87,19 @@ namespace Managers
         {
             return mapConfig.waypoints;
         }
+
+        /// <summary>
+        /// Enemy bi tieu diet
+        /// </summary>
+        public void OnEnemyDie(){
+
+        }
+
+        /// <summary>
+        /// Enemy den diem cuoi
+        /// </summary>
+        public void OnEnemyPass(){
+
+        }
     }
 }

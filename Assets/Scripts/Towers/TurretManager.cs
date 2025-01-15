@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MapConfigs;
+using Newtonsoft.Json;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -27,12 +29,15 @@ public class TurretManager : MonoBehaviour
     }
     void BuildTurret(int id, TurretType turretType)
     {
+        print("TURRET BUILD id = " + id + ", type = " + turretType);
         if (TurretOnMapDic.ContainsKey(id))
         {
             Destroy(TurretOnMapDic[id]);
         }
         GameObject gameObject = loadPrefab.LoadTurret(turretType);
-        GameObject newTurret = Instantiate(gameObject, GameManager.Instance.MapManager.GetTurretBase(id).Position, Quaternion.identity);
+        TurretBase turret = GameManager.Instance.MapManager.GetTurretBase(id);
+        //print("TURRET BUILD " + JsonConvert.SerializeObject(turret));
+        GameObject newTurret = Instantiate(gameObject, turret.Position, Quaternion.identity);
         Turret newTurretClass=newTurret.GetComponent<Turret>();
         newTurretClass.SetID(id);
 

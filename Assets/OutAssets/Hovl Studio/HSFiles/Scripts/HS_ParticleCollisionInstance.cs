@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UIElements;
 
 public class HS_ParticleCollisionInstance : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class HS_ParticleCollisionInstance : MonoBehaviour
     void Start()
     {
         part = GetComponent<ParticleSystem>();
+        transform.position+= new Vector3(11,0,0);
     }
     
     void OnParticleCollision(GameObject other)
