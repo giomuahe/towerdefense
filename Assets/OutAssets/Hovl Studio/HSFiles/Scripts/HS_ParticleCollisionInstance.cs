@@ -21,8 +21,10 @@ public class HS_ParticleCollisionInstance : MonoBehaviour
     {
         part = GetComponent<ParticleSystem>();
     }
+    
     void OnParticleCollision(GameObject other)
     {
+        if(other.CompareTag("Enemy")){
         int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);     
         for (int i = 0; i < numCollisionEvents; i++)
         {
@@ -45,4 +47,6 @@ public class HS_ParticleCollisionInstance : MonoBehaviour
         //    Destroy(gameObject, DestroyTimeDelay + 0.5f);
         //}
     }
+    }
+    
 }
