@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class InBattleScreenController : MonoBehaviour
 {
-    public GameObject PopupUpgrade;
+    public PopupUpgradeController PopupUpgrade;
+    public GameObject ButtonUpgrade;
     public int TurretBaseId = 1;
-    public TurretInfoSelect TurretSelect;
 
     // Start is called before the first frame update
     void Start()
@@ -21,30 +21,30 @@ public class InBattleScreenController : MonoBehaviour
         
     }
 
-    public void OnClickShowUpgradeUI(int turretBaseId)
+    public void ShowUpgradeButton(int turretBaseId)
     {
         Debug.Log("OnClickShowUpgradeUI " + turretBaseId);
         TurretBaseId = turretBaseId;
-        if (PopupUpgrade)
-            PopupUpgrade.SetActive(true);
-        //Info
-        //GameManager.Instance.TurretManager.TurretInfoDictionNary();
-
-
+        if (ButtonUpgrade)
+            ButtonUpgrade.SetActive(true);
     }
 
-    public void OnClickHideUpgradeUI()
+    public void HideUpgradeButton()
     {
-        if (PopupUpgrade)
-            PopupUpgrade.SetActive(false);
+        TurretBaseId = 0;
+        if (ButtonUpgrade)
+            ButtonUpgrade.SetActive(false);
+        if(PopupUpgrade)
+            PopupUpgrade.ClosePopup();
     }
 
-
+    /// <summary>
+    /// ShowUpgrade UI
+    /// </summary>
     public void OnClickUpgradeTurret()
     {
         Debug.Log("ClickUpgrade");
-        TurretType type = TurretType.Basic;
-        Debug.Log("ClickUpgrade Turret Id = " + TurretBaseId + ", type = " + type);
-        GameManager.Instance.TurretManager.UpGradeTurret(TurretBaseId, type);
+        if (PopupUpgrade)
+            PopupUpgrade.ShowPopupUpgrade(TurretBaseId);
     }
 }

@@ -84,7 +84,7 @@ namespace Player
                     {
                         Debug.Log($"Nearby turret base at {_currentTurretBase.name} with Id {_cunrentTurretBaseId}");
 
-                        GameManager.Instance.UIManager.InBattleScreenController.OnClickShowUpgradeUI(_cunrentTurretBaseId);
+                        GameManager.Instance.UIManager.InBattleScreenController.ShowUpgradeButton(_cunrentTurretBaseId);
                         _isInteracting = true;
                     }
                 }
@@ -99,7 +99,7 @@ namespace Player
                     if (_isInteracting)
                     {
                         Debug.Log($"No longer nearby any turret base");
-                        GameManager.Instance.UIManager.InBattleScreenController.OnClickHideUpgradeUI();
+                        GameManager.Instance.UIManager.InBattleScreenController.HideUpgradeButton();
                         _isInteracting = false;
                     }
                 }

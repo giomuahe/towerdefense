@@ -75,9 +75,17 @@ public class TurretManager : MonoBehaviour
         BuildTurret(id, newTurret);
     }
     public List<TurretType> GetListTypeTurretToUpgradeById(int id){
-        GameObject turret= TurretOnMapDic[id];
-        Turret currentturret= turret.GetComponent<Turret>();
-        return currentturret.UpgradeList;
+        if (TurretOnMapDic.ContainsKey(id))
+        {
+            GameObject turret = TurretOnMapDic[id];
+            Turret currentturret = turret.GetComponent<Turret>();
+            return currentturret.UpgradeList;
+        }
+        else
+        {
+            return new List<TurretType>(){ TurretType.Basic};
+        }
+        
     }
     public Dictionary<TurretType, TurretConfig> TurretNameDictionNary(){
         Dictionary<TurretType, TurretConfig> tDic= new Dictionary<TurretType, TurretConfig>();

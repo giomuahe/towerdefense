@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6698991058885669892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 356839187567959272}
+  - component: {fileID: 6394517244512430410}
+  m_Layer: 0
+  m_Name: TurretManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &356839187567959272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6698991058885669892}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.316856, y: 0, z: 8.493631}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6394517244512430410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6698991058885669892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921bafad4af9b56419a342069b86e31e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretConfigs:
+  - {fileID: 11400000, guid: 4d1b1cb9cca82c04a9aa408777e668d9, type: 2}
+  - {fileID: 11400000, guid: 79172427ca794814a99ddc9219cbaf7f, type: 2}
+  - {fileID: 11400000, guid: dbd6116225f748f4d9c6d77cdfd40ead, type: 2}
+  - {fileID: 11400000, guid: c436a30a54915ac4c922a69c492652fa, type: 2}
+  - {fileID: 11400000, guid: 74f7335836e5b6f4ebb490d63e1eb080, type: 2}
+  - {fileID: 11400000, guid: da4611bfe1433694ab28521687b0ed6f, type: 2}
+  - {fileID: 11400000, guid: fa17182ec6ee1824eb6acbd81859b30a, type: 2}
+  - {fileID: 11400000, guid: 1b57e92bd8c992b4cab23816042f2050, type: 2}
+  - {fileID: 11400000, guid: 86487d2b3142876488c71b0f304ef35e, type: 2}
+  TurretTransformsList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
