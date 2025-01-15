@@ -23,7 +23,9 @@ namespace Player
         private Vector2 _currentMovementInput;
         
         private bool _isMovementPressed;
-        
+
+        public VariableJoystick variableJoystick;
+
         private void Awake()
         {
             _playerControl = new PlayerControl();
@@ -43,6 +45,16 @@ namespace Player
             currentMovement.x = _currentMovementInput.x;
             currentMovement.z = _currentMovementInput.y;
             _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
+        }
+
+        private void OnMovementInputJoyStick()
+        {
+            Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
+            float x = variableJoystick.Vertical;
+            currentMovement.x = x;
+            float y = variableJoystick.Horizontal;
+            currentMovement.z = y;
+            _isMovementPressed = x != 0 || y != 0;
         }
 
 

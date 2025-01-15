@@ -25,7 +25,6 @@ public class TurretManager : MonoBehaviour
             dictionary.Add(TurretTransformsList.IndexOf(transform), transform);
         }
         return dictionary;
-
     }
     //Lay tu MapManager
     void Awake()
@@ -41,7 +40,7 @@ public class TurretManager : MonoBehaviour
         TurretTransformDic = InitializeDictionaryTurretTransform();
         foreach (int id in TurretTransformDic.Keys)
         {
-            TurretOnMapDic[id] = null;
+           TurretOnMapDic[id] = null;
            BuildTurret(id, TurretType.Base);
         }
 
@@ -49,13 +48,11 @@ public class TurretManager : MonoBehaviour
     void Start()
     {
         InitializeStartGame();
-        
-
     }
 
     void BuildTurret(int id, TurretType turretType)
     {
-        if (TurretOnMapDic[id] != null)
+        if (TurretOnMapDic.ContainsKey(id))
         {
             Destroy(TurretOnMapDic[id]);
         }
