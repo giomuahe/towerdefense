@@ -11,11 +11,17 @@ public class GameManager : MonoBehaviour
 
     public MapManager MapManager;
 
+    public WaveManager WaveManager;
+
     public PoolManager PoolManager;
 
     public GameConfigManager GameConfigManager;
 
     private int waveNumericalOrder = 0;
+    
+    public TurretManager TurretManager;
+
+    private int waveNumericalOrder;
     
     [SerializeField]
     private EnemyManager enemyManager;
