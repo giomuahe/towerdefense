@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy(EnemyConfig enemyConfig, Vector3 spawnPos)
     {
         GameObject spawnObj = Instantiate(enemyConfig.EnemyPrefab, spawnPos, Quaternion.identity);
+        spawnObj.transform.SetParent(transform);
         List<Vector3> moveLocations = GameManager.Instance.MapManager.GetWaypoints();
         spawnObj.GetComponent<EnemyBase>().SetUp(enemyConfig, moveLocations, EnemyInGameID);
         EnemyInGameID++;
@@ -26,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
         foreach(var enemy in waveConfig.enemies)
         {
             float delayTime = enemy.spawnDelay;
-            EnemyConfig enemyConfig = GameConfigManager.Instance.GetEnemyConfig((int)enemy.type);
+            EnemyConfig enemyConfig = GameManager.Instance.GameConfigManager.GetEnemyConfig((int)enemy.type);
             for(int i = 0; i < enemy.amount; i++)
             {
                 yield return new WaitForSeconds(delayTime);

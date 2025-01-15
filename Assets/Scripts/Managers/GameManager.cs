@@ -13,7 +13,9 @@ public class GameManager : MonoBehaviour
 
     public PoolManager PoolManager;
 
-    private int waveNumericalOrder;
+    public GameConfigManager GameConfigManager;
+
+    private int waveNumericalOrder = 0;
     
     [SerializeField]
     private EnemyManager enemyManager;
@@ -30,14 +32,15 @@ public class GameManager : MonoBehaviour
         Instance = this;
         if(PoolManager)
             PoolManager.CreateAllPool();
+        if(GameConfigManager is null)
+        {
+            GameConfigManager = new GameConfigManager();
+        }
+        GameConfigManager.LoadEnemiesConfig();
     }
 
     private void Start()
     {
-        if(MapManager == null)
-        {
-            MapManager = new MapManager();
-        }
 
         if (UIManager)
             UIManager.Init();
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour
         //    PoolManager = new PoolManager();
         //    PoolManager.CreateAllPool();
         //}
+        CreateWave();
     }
 
     #region UI
