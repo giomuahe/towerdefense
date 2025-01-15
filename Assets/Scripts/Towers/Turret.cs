@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
@@ -25,6 +27,8 @@ public class Turret : MonoBehaviour
     public List<TurretType> UpgradeList;
 
     public float currentHp;
+    float nextAttackTime = 0;
+
     void Start()
     {
         target = null;
@@ -63,8 +67,9 @@ public class Turret : MonoBehaviour
             }
             aimTransform.position = target.position;
             turretRig.weight = 1;
-            InvokeRepeating("Attack", 1, 1);
-        
+            //InvokeRepeating("Attack", 1, 1);
+            if(Time.realtimeSinceStartup > nextAttackTime)
+                Attack();
         }
         else
         {
@@ -183,8 +188,12 @@ public class Turret : MonoBehaviour
         
     }
     public void Attack(){
+        nextAttackTime = Time.realtimeSinceStartup + 1;
+        //
         objectPooling.SetPosition(firePos);
+        //Debug.Log("ATTACK 1");
         objectPooling.Pool.Get();
+        //Debug.Log("ATTACK 2");
     }
 
 

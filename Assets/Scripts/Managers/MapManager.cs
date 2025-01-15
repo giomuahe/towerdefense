@@ -8,8 +8,12 @@ namespace Managers
     {
         public MapConfig mapConfig;
         private readonly Dictionary<int, TurretBase> _turretBases = new Dictionary<int, TurretBase>();
-        
 
+
+        private void OnEnable()
+        {
+           
+        }
         public void RegisterTurretBase(int baseId, TurretBase turretBase)
         {
             if (!_turretBases.ContainsKey(baseId))

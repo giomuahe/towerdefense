@@ -5,6 +5,7 @@ using MapConfigs;
 using Newtonsoft.Json;
 using Unity.Mathematics;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class TurretManager : MonoBehaviour
@@ -72,6 +73,7 @@ public class TurretManager : MonoBehaviour
         return tDic;
     }
     public void SendDamage(int id, float damage){
+        
         TurretOnMapDic[id].GetComponent<Turret>().TakeDamage(damage);
     }
    

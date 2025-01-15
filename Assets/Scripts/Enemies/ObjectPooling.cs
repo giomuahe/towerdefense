@@ -10,6 +10,8 @@ public class ObjectPooling: MonoBehaviour
     public void CreateNewObjectPool(GameObject prefab)
     {
         Pool = new ObjectPool<GameObject>(CreatePool, OnGetFromPool, OnReleaseFromPool, OnDestroyObject, true, 1000, 10000);
+        print("ALL POOL " + Pool.CountAll);
+        print("ALL POOL ACTIVE " + Pool.CountActive);
         this.prefab = prefab;
     }
 

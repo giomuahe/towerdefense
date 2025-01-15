@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Turret Base
   - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
