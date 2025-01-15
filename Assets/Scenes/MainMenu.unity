@@ -323,6 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIManager: {fileID: 2064033864}
   MapManager: {fileID: 0}
+  WaveManager: {fileID: 0}
   PoolManager: {fileID: 0}
   TurretManager: {fileID: 0}
   enemyManager: {fileID: 0}
@@ -1244,7 +1245,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b039289606f5f734c9ad99d323f548c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e30950e1d1435794786a6f9e5adfd227, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3574,7 +3575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &534106023
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5049,7 +5050,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 51494f00bba9407408f72548bd960775, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55e767f48d6aee043913edf39cda5831, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5405,7 +5406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3aec77c400357145bf4cb794b45527b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e22cbeb62a193ac449109ac9da551a0c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6154,7 +6155,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: df395b61f064a3f4caf1226547780654, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6974217af2fbb984db1dc74988471b16, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6424,7 +6425,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2de594dece406b4498bb42c2cc1f0c93, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c27d2190a9ed08944875bb4b81443d9b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6903,7 +6904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1105728337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6983,7 +6984,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PopupUpgrade: {fileID: 227089049}
-  UpgradeBtn: {fileID: 197074332}
   TurretBaseId: 0
   TurretSelect: {fileID: 0}
 --- !u!1 &1110694619
@@ -9107,9 +9107,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: bb6ae7e42bfd34e498e3e9f63a742930, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: b963b9f436988dd4284c8b5a8faad311, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: b963b9f436988dd4284c8b5a8faad311, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: cff134799f6444e4398ebb8a6f8a948e, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: eca0e562e80b71f42b9df5199f619ef9, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: eca0e562e80b71f42b9df5199f619ef9, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -9142,7 +9142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb6ae7e42bfd34e498e3e9f63a742930, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eca0e562e80b71f42b9df5199f619ef9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10303,7 +10303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c0d60c615a5f9c649b8257364b5a7cc9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e33315ed21fa4b44fad6317865dcc4ad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10570,9 +10570,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: bb6ae7e42bfd34e498e3e9f63a742930, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: b963b9f436988dd4284c8b5a8faad311, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: b963b9f436988dd4284c8b5a8faad311, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: cff134799f6444e4398ebb8a6f8a948e, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: eca0e562e80b71f42b9df5199f619ef9, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: eca0e562e80b71f42b9df5199f619ef9, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -10605,7 +10605,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb6ae7e42bfd34e498e3e9f63a742930, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eca0e562e80b71f42b9df5199f619ef9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11302,7 +11302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b039289606f5f734c9ad99d323f548c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e30950e1d1435794786a6f9e5adfd227, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11634,7 +11634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 64cbe50794dc5454784b7f9daef2f383, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e3df6a274b004f4fa3b30fa9cf9c5da, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
