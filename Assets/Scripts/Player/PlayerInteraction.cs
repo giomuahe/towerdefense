@@ -83,6 +83,8 @@ namespace Player
                     if (!_isInteracting)
                     {
                         Debug.Log($"Nearby turret base at {_currentTurretBase.name} with Id {_cunrentTurretBaseId}");
+
+                        GameManager.Instance.UIManager.InBattleScreenController.OnClickShowUpgradeUI(_cunrentTurretBaseId);
                         _isInteracting = true;
                     }
                 }
@@ -97,6 +99,7 @@ namespace Player
                     if (_isInteracting)
                     {
                         Debug.Log($"No longer nearby any turret base");
+                        GameManager.Instance.UIManager.InBattleScreenController.OnClickHideUpgradeUI();
                         _isInteracting = false;
                     }
                 }
@@ -107,17 +110,23 @@ namespace Player
         private void Interact()
         {
             if (_currentTurretBase == null) return;
-            
+
+            int IdBase;
+
             int id = _cunrentTurretBaseId;
             if (_currentTurretBase.Turret == null)
             {
                 Debug.Log($"Player interaction: Request BUILD turret at turret base with ID {id}!");
                 //Notify to UI to display build turret panel
+                //GameManager.Instance.UIManager.InBattleScreenController.BuiltTurret(IdBase);
             }
             else
             {
                 Debug.Log($"Player interaction: Request UPGRADE turret at turret base with ID {id}!");
                 //Notify UI to display upgrade turret panel
+                
+                int CurrentTurretType;
+                //GameManager.Instance.UIManager.InBattleScreenController.UpgradeTurret(IdBase, CurrentTurretType);
             }
         }
 
