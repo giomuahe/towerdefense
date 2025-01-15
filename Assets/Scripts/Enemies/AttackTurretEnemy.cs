@@ -102,7 +102,7 @@ public class AttackTurretEnemy : EnemyBase
     {
         Turret turret = turretTarget?.GetComponent<Turret>();
         if (turret == null) return;
-        TurretManager.Instance.SendDamage(turret.id);
+        GameManager.Instance.TurretManager.SendDamage(turret.id,200f);
     }
 
     private void DecideMoveLocation(Dictionary<int,TurretBase> turretBases)

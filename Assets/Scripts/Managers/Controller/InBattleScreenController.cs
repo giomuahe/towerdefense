@@ -47,4 +47,9 @@ public class InBattleScreenController : MonoBehaviour
         if (PopupUpgrade)
             PopupUpgrade.ShowPopupUpgrade(TurretBaseId);
     }
+
+    public void OnClickNextWave(){
+        GameManager.Instance.WaveNumericalOrder = 0;
+        GameManager.Instance.CreateWave();
+    }
 }

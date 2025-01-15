@@ -3,6 +3,7 @@ using MapConfigs;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,12 +18,12 @@ public class GameManager : MonoBehaviour
 
     public GameConfigManager GameConfigManager;
 
-    private int waveNumericalOrder = 0;
+    public int WaveNumericalOrder = 0;
     
     public TurretManager TurretManager;
 
     [SerializeField]
-    private EnemyManager enemyManager;
+    public EnemyManager EnemyManager;
 
     public static GameManager Instance {  get; private set; }
 
@@ -43,6 +44,10 @@ public class GameManager : MonoBehaviour
         GameConfigManager.LoadEnemiesConfig();
     }
 
+    private void OnEnable(){
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     private void Start()
     {
 
@@ -60,7 +65,7 @@ public class GameManager : MonoBehaviour
         //    PoolManager = new PoolManager();
         //    PoolManager.CreateAllPool();
         //}
-        CreateWave();
+        //CreateWave();
     }
 
     #region UI
@@ -76,11 +81,11 @@ public class GameManager : MonoBehaviour
     #endregion UI
 
     #region Enemy
-    private void CreateWave()
+    public void CreateWave()
     {
-        WaveConfig waveConfig = MapManager.GetWaveConfig(waveNumericalOrder);
+        WaveConfig waveConfig = MapManager.GetWaveConfig(WaveNumericalOrder);
         Vector3 spawnPos = MapManager.GetSpawnGatePosition().position;
-        enemyManager.SpawnEnemies(waveConfig, spawnPos);
+        EnemyManager.SpawnEnemies(waveConfig, spawnPos);
     }
 
     public void NotifyOnHitTurret()
@@ -88,4 +93,15 @@ public class GameManager : MonoBehaviour
 
     }
     #endregion
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode){
+        print("LOADED SCENE " + scene.name);
+        if(scene.name.Equals("MainMenu"))
+            return;
+        GameObject mapInfo =  GameObject.Find("Map Manager");
+        if(mapInfo)
+            MapManager = mapInfo.GetComponent<MapManager>();
+        else
+            print("Not found Map Manager");
+    }
 }
