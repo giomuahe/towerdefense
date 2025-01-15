@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviour
     
     public TurretManager TurretManager;
 
-    private int waveNumericalOrder;
-    
     [SerializeField]
     private EnemyManager enemyManager;
 
