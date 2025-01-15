@@ -80,20 +80,20 @@ public class AttackTurretEnemy : EnemyBase
     {
         while(!isTargetBeingDestroy)
         {
-            yield return new WaitForSeconds(1 / attackSpeed);
-            //yield return new WaitForSeconds(1);
+            //yield return new WaitForSeconds(1 / attackSpeed);
+            yield return new WaitForSeconds(1);
             bulletPool.SetPosition(shootPos);
             bulletPool.Pool.Get();
             Invoke("DamageTurret", 1);
         }
     }
 
-    //private void Start()
-    //{
-    //    bulletID = 100;
-    //    bulletPool = GameManager.Instance.PoolManager.GetPoolThroughID(bulletID);
-    //    StartCoroutine(Attack());
-    //}
+    private void Start()
+    {
+        bulletID = 100;
+        bulletPool = GameManager.Instance.PoolManager.GetPoolThroughID(bulletID);
+        StartCoroutine(Attack());
+    }
 
     private void DamageTurret()
     {

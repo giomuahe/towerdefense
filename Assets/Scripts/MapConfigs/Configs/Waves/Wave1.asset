@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - type: 0
-    amount: 0
+    amount: 5
     spawnDelay: 0.92
