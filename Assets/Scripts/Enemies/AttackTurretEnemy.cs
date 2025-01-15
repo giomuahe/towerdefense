@@ -100,8 +100,9 @@ public class AttackTurretEnemy : EnemyBase
 
     private void DamageTurret()
     {
-        if(turretTarget is null) { return; }
-        
+        Turret turret = turretTarget?.GetComponent<Turret>();
+        if (turret == null) return;
+        TurretManager.Instance.SendDamage(turret.id);
     }
 
     private void DecideMoveLocation(Dictionary<int,TurretBase> turretBases)
