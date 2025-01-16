@@ -9,10 +9,18 @@ namespace Managers
         public MapConfig mapConfig;
         private readonly Dictionary<int, TurretBase> _turretBases = new Dictionary<int, TurretBase>();
 
+        public static MapManager Instance { get; private set; }
 
-        private void OnEnable()
+        private void Awake()
         {
-           
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
         public void RegisterTurretBase(int baseId, TurretBase turretBase)
         {

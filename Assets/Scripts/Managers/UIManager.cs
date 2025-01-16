@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour
     {
         LobbyController.gameObject.SetActive(false);
         ChoosemapController.gameObject.SetActive(false);
+        InBattleScreenController.gameObject.SetActive(false);
+        PopupController.gameObject.SetActive(false);
     }
 
     public ESCREEN GetCurrentScreen()

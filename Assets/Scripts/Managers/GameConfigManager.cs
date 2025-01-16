@@ -1,9 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameConfigManager
 {
+    public const int SECOND_BUILD_EXPIRED = 60; //số giây quy định được dùng để build turret
+
     private Dictionary<int, EnemyConfig> enemiesConfigDictionary;
 
     public void LoadEnemiesConfig()

@@ -8,10 +8,24 @@ namespace Managers
     {
         public MapConfig mapConfig;
 
-        private List<WaveConfig> _waves;
-        private int _currentWaveIndex;
-        
-        void Start()
+        public List<WaveConfig> _waves;
+        public int _currentWaveIndex;
+
+        public static WaveManager Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public void Init()
         {
             InitializeWaves();
         }
@@ -57,8 +71,6 @@ namespace Managers
             Debug.LogWarning($"No more waves to advance to next wave");
             return false;
         }
-
-
 
         public bool AreAllWavesCompleted()
         {

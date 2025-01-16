@@ -1,6 +1,9 @@
+﻿using Assets.Scripts.Enums;
+using Assets.Scripts.Managers;
 using Managers;
 using MapConfigs;
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,23 +11,24 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //UI
+    //All Screen
     public UIManager UIManager;
-
-    public MapManager MapManager;
-
-    public WaveManager WaveManager;
 
     public PoolManager PoolManager;
 
     public GameConfigManager GameConfigManager;
 
-    public int WaveNumericalOrder = 0;
-    
     public TurretManager TurretManager;
 
-    [SerializeField]
     public EnemyManager EnemyManager;
+
+    //Battle
+
+    public MapManager MapManager;
+
+    public WaveManager WaveManager;
+
+    public BattleLogicManager BattleManager;
 
     public static GameManager Instance {  get; private set; }
 
@@ -51,22 +55,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
         if (UIManager)
             UIManager.Init();
         else
             Debug.LogError("NotFound UIManager");
-
-        //if (PoolManager != null)
-        //{
-        //    PoolManager.CreateAllPool();
-        //}
-        //else
-        //{
-        //    PoolManager = new PoolManager();
-        //    PoolManager.CreateAllPool();
-        //}
-        //CreateWave();
     }
 
     #region UI
@@ -81,29 +73,96 @@ public class GameManager : MonoBehaviour
     /// UI -------------
     #endregion UI
 
-    #region Enemy
+    #region Battle
+
+    private void BeginNewBattle(string Mapname)
+    {
+        //Load thông tin từ map mới
+        MapManager = MapManager.Instance;
+        if(MapManager == null)
+            print("Not found MapManager");
+        WaveManager = WaveManager.Instance;
+        if (WaveManager == null)
+            print("Not found WaveManager");
+        else
+            WaveManager.Init();
+
+        long goldInit = 1000;
+        int heartInit = 5;
+        BattleManager = new BattleLogicManager(Mapname, goldInit, heartInit);
+        UIManager.ShowScreen(ESCREEN.IN_BATTLE);
+        Debug.Log("BEGIN_BATTLE");
+    }
+
     public void CreateWave()
     {
-        WaveConfig waveConfig = MapManager.GetWaveConfig(WaveNumericalOrder);
-        Vector3 spawnPos = MapManager.GetSpawnGatePosition().position;
-        print("Createwave " + JsonConvert.SerializeObject(waveConfig) + ",spaw " + spawnPos);
-        EnemyManager.SpawnEnemies(waveConfig, spawnPos); 
+        if (BattleManager == null)
+            return;
+        BattleManager.CreateWave();
     }
+
+    public void OnEnemyDie()
+    {
+        BattleManager?.OnEnemyDie();
+    }
+
+    public void OnEnemyEscape()
+    {
+        BattleManager?.OnEnemyEscape();
+    }
+
+    /// <summary>
+    /// Người chơi chủ động thoát trận đánh -> không lưu
+    /// </summary>
+    public void PlayerEndBatte()
+    {
+        //Remove All save data
+
+        //Reset info battle in game
+        MapManager = null;
+        WaveManager = null;
+        BattleManager = null;
+    }
+
+    #endregion
+
+    #region Enemy
 
     public void NotifyOnHitTurret()
     {
 
     }
+
+    public void NotifyOnTakeDamaged()
+    {
+
+    }
+
+    /// <summary>
+    /// Thông báo khi sinh boss
+    /// </summary>
+    public void NotifyOnBossAppear()
+    {
+
+    }
     #endregion
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode){
+    /// <summary>
+    /// Event Load Scene xong
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <param name="mode"></param>
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
         print("LOADED SCENE " + scene.name);
-        if(scene.name.Equals("MainMenu"))
+        if (scene.name.Equals("MainMenu"))
             return;
-        GameObject mapInfo =  GameObject.Find("Map Manager");
-        if(mapInfo)
-            MapManager = mapInfo.GetComponent<MapManager>();
-        else
-            print("Not found Map Manager");
+        string mapname = scene.name;
+        BeginNewBattle(mapname);
+    }
+
+    public void WriteDebug(string msg)
+    {
+        Debug.Log(msg);
     }
 }
