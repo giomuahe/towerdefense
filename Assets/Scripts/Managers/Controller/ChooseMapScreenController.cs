@@ -9,7 +9,6 @@ public class ChooseMapScreenController : MonoBehaviour
     // Start is called before the first frame update
     public void OnClickSelectMap()
     {
-        GameManager.Instance.UIManager.ShowScreen(ESCREEN.IN_BATTLE);
         SceneManager.LoadScene("Map_01");
     }
 }

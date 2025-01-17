@@ -8,8 +8,20 @@ namespace Managers
     {
         public MapConfig mapConfig;
         private readonly Dictionary<int, TurretBase> _turretBases = new Dictionary<int, TurretBase>();
-        
 
+        public static MapManager Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
         public void RegisterTurretBase(int baseId, TurretBase turretBase)
         {
             if (!_turretBases.ContainsKey(baseId))
@@ -32,9 +44,6 @@ namespace Managers
             }
 
             turretBase.Turret = turret;
-            Debug.Log(turret != null
-                ? $"Turret placed/update at Turret Base ID {baseId}"
-                : $"Turret remove from Turret Base ID {baseId}");
         }
 
         public bool HasTurret(int baseId)
@@ -49,13 +58,12 @@ namespace Managers
             {
                 return turretBase;
             }
-            Debug.LogError($"Turret base with ID {baseId} could not be found!");
             return null;
         }
 
         public Dictionary<int, TurretBase> GetTurretBases()
         {
-            return new Dictionary<int, TurretBase>(_turretBases);
+            return _turretBases;
         }
 
         public MapConfig.SpawnPosition GetMainGatePosition()

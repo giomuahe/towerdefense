@@ -8,10 +8,24 @@ namespace Managers
     {
         public MapConfig mapConfig;
 
-        private List<WaveConfig> _waves;
-        private int _currentWaveIndex;
-        
-        void Start()
+        public List<WaveConfig> _waves;
+        public int _currentWaveIndex;
+
+        public static WaveManager Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public void Init()
         {
             InitializeWaves();
         }
@@ -33,7 +47,7 @@ namespace Managers
 
         public List<WaveConfig> GetWaves()
         {
-            return new List<WaveConfig>(_waves);
+            return _waves;
         }
 
         public WaveConfig GetCurrentWave()

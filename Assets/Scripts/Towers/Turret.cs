@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting.FullSerializer;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
@@ -28,7 +30,12 @@ public class Turret : MonoBehaviour
 
     public float currentHp;
     
-    public void SetTurretConfig(TurretConfig config)
+    public void SetTurretConfig(TurretConfig config){
+
+    }
+    float nextAttackTime = 0;
+
+    void Start()
     {
         this.turretConfig = config;
     }
@@ -38,8 +45,6 @@ public class Turret : MonoBehaviour
 
         turretRig = GetComponentInChildren<Rig>();
         Initialize();
-
-
     }
 
     public void LoadConfig()
@@ -58,7 +63,38 @@ public class Turret : MonoBehaviour
     {
         UpdateTarget();
         FindEnemy();
-
+        if (CanUpdateEnemy())
+        {
+            target = null;
+        }
+        if (CanFindEnemy())
+        {
+            FindEnemy();
+        }
+        if (CanAim())
+        {
+            if (TurretType == TurretType.Base)
+            {
+                return;
+            }
+            aimTransform.position = target.position;
+            turretRig.weight = 1;
+            //InvokeRepeating("Attack", 1, 1);
+            if(Time.realtimeSinceStartup > nextAttackTime)
+                Attack();
+        }
+        else
+        {
+            if (TurretType == TurretType.Base)
+            {
+                return;
+            }
+            aimTransform.position = firePos.position;
+            turretRig.weight = 0;
+        }
+    }
+    void UpGrade(TurretType type)
+    {
         Aim();
     }
 
@@ -220,7 +256,6 @@ public class Turret : MonoBehaviour
             {
                 Debug.Log("shoot");
                 Fire();
-
             }
         }
 
@@ -231,9 +266,7 @@ public class Turret : MonoBehaviour
         if (target != null && attackCooldown <= 0f)
         {
             Attack();
-           
             attackCooldown = 1f / AtkSpeed;
-
         }
         else
         {
@@ -241,6 +274,7 @@ public class Turret : MonoBehaviour
             
         }
     }
+    
     public virtual void Initialize()
     {
         target = null;
@@ -257,7 +291,12 @@ public class Turret : MonoBehaviour
         GameObject bulletObj = Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
         TurretBullet turretBullet = bulletObj.GetComponent<TurretBullet>();
         turretBullet.SetTarget(target);
+    public void Attack(){
+        nextAttackTime = Time.realtimeSinceStartup + 1;
+        //
+        objectPooling.SetPosition(firePos);
+        //Debug.Log("ATTACK 1");
+        objectPooling.Pool.Get();
+        //Debug.Log("ATTACK 2");
     }
-
-
 }
