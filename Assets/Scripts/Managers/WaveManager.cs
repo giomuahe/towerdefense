@@ -47,7 +47,7 @@ namespace Managers
 
         public List<WaveConfig> GetWaves()
         {
-            return new List<WaveConfig>(_waves);
+            return _waves;
         }
 
         public WaveConfig GetCurrentWave()
