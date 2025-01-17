@@ -54,8 +54,13 @@ public class TurretBullet : MonoBehaviour
     void HitTarget(GameObject enemy)
     {
         Debug.Log("Đã trúng");
-        EnemyDemo enemyDemo= enemy.GetComponent<EnemyDemo>();
-        enemyDemo.TakeDamage(30f);
+        EnemyBase enemyTakedame= enemy.GetComponent<EnemyBase>();
+        int bulletDamge = 1;
+        bool isEnemyDie;
+        GameManager.Instance.EnemyManager.SendDamage(enemyTakedame.EnemyID(), bulletDamge, out isEnemyDie);
+        if(isEnemyDie){
+            //change target
+        }
         // Destroy(gameObject);
     }
 }

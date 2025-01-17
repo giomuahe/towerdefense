@@ -41,12 +41,14 @@ public class EnemyBase : MonoBehaviour
         return enemyInGameID;
     }
 
-    public void OnHit(float damage)
+    public void OnHit(float damage, out bool isDie)
     {
+        isDie = false;
         currentHealth -= damage;
         if(currentHealth <= 0)
         {
             OnDead();
+            isDie = true;
         }
     }
 
@@ -55,5 +57,9 @@ public class EnemyBase : MonoBehaviour
         // gui Enemy Type va destroy object
 
         Destroy(gameObject);
+    }
+
+    public int EnemyID(){
+        return enemyInGameID;
     }
 }

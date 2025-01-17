@@ -35,10 +35,7 @@ public class Turret : MonoBehaviour
     }
     float nextAttackTime = 0;
 
-    void Start()
-    {
-        this.turretConfig = config;
-    }
+   
 
     protected void Start()
     {
@@ -63,40 +60,10 @@ public class Turret : MonoBehaviour
     {
         UpdateTarget();
         FindEnemy();
-        if (CanUpdateEnemy())
-        {
-            target = null;
-        }
-        if (CanFindEnemy())
-        {
-            FindEnemy();
-        }
-        if (CanAim())
-        {
-            if (TurretType == TurretType.Base)
-            {
-                return;
-            }
-            aimTransform.position = target.position;
-            turretRig.weight = 1;
-            //InvokeRepeating("Attack", 1, 1);
-            if(Time.realtimeSinceStartup > nextAttackTime)
-                Attack();
-        }
-        else
-        {
-            if (TurretType == TurretType.Base)
-            {
-                return;
-            }
-            aimTransform.position = firePos.position;
-            turretRig.weight = 0;
-        }
-    }
-    void UpGrade(TurretType type)
-    {
         Aim();
+        
     }
+   
 
     public void SetID(int currentId)
     {
@@ -274,7 +241,7 @@ public class Turret : MonoBehaviour
             
         }
     }
-    
+
     public virtual void Initialize()
     {
         target = null;
@@ -291,12 +258,6 @@ public class Turret : MonoBehaviour
         GameObject bulletObj = Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
         TurretBullet turretBullet = bulletObj.GetComponent<TurretBullet>();
         turretBullet.SetTarget(target);
-    public void Attack(){
-        nextAttackTime = Time.realtimeSinceStartup + 1;
-        //
-        objectPooling.SetPosition(firePos);
-        //Debug.Log("ATTACK 1");
-        objectPooling.Pool.Get();
-        //Debug.Log("ATTACK 2");
     }
+ 
 }
