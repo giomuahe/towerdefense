@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.DATA;
 using MapConfigs;
 using Newtonsoft.Json;
 using Unity.Mathematics;
@@ -76,5 +77,17 @@ public class TurretManager : MonoBehaviour
         
         TurretOnMapDic[id].GetComponent<Turret>().TakeDamage(damage);
     }
-   
+
+    /// <summary>
+    /// Xây turret từ thông tin đã có
+    /// </summary>
+    /// <param name="data"></param>
+    public void InitMapFromData(SaveData data)
+    {
+        Dictionary<int, TurretData> turretInfo = data.TurretInfo;
+        //Xây turret trên map
+
+        //Update thông tin ở MapManager.UpdateTurret()
+    }
+
 }

@@ -230,5 +230,20 @@ namespace Assets.Scripts.Managers
         }
 
         #endregion
+
+        public int CurrentHeart()
+        {
+            return curretHeart;
+        }
+
+        public long CurrentGold()
+        {
+            return currentGold;
+        }
+
+        public int CurrentWave()
+        {
+            return currentWave;
+        }
     }
 }

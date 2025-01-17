@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         BattleManager.CreateWave();
     }
 
-    public void OnEnemyDie()
+    public void OnEnemyDie(long goldBonus)
     {
         BattleManager?.OnEnemyDie();
     }

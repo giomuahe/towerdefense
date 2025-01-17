@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using MapConfigs;
+using Assets.Scripts.DATA;
 
 namespace Managers
 {
@@ -22,6 +23,7 @@ namespace Managers
                 Destroy(gameObject);
             }
         }
+
         public void RegisterTurretBase(int baseId, TurretBase turretBase)
         {
             if (!_turretBases.ContainsKey(baseId))
@@ -35,6 +37,11 @@ namespace Managers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="baseId"></param>
+        /// <param name="turret"></param>
         public void UpdateTurret(int baseId, GameObject turret)
         {
             if (!_turretBases.TryGetValue(baseId, out var turretBase))
@@ -109,5 +116,7 @@ namespace Managers
         public void OnEnemyPass(){
 
         }
+
+        
     }
 }
