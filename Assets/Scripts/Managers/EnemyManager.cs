@@ -1,5 +1,7 @@
 using MapConfigs;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Managers
@@ -20,14 +22,18 @@ namespace Managers
             StartCoroutine(spawner.WaveSpawn(waveConfig, spawnPos));
         }
 
-        public void SendDamage(int enemyDataID, int damgage)
+        public void SendDamage(int enemyDataID, int damgage, out bool isDie)
         {
+            isDie = false;
             if (!dictionaryOfEnemiesOnMap.ContainsKey(enemyDataID))
             {
-                Debug.Log("Wrong ID");
+                Debug.Log("Wrong ID TowerSend : " + enemyDataID + ", Current : " + JsonConvert.SerializeObject(dictionaryOfEnemiesOnMap.Keys.ToList()));
+                isDie = true;
                 return;
+            }else{
+                Debug.Log("OK ID TowerSend : " + enemyDataID + ", Current : " + JsonConvert.SerializeObject(dictionaryOfEnemiesOnMap.Keys.ToList()));
             }
-            dictionaryOfEnemiesOnMap[enemyDataID].OnHit(damgage);
+            dictionaryOfEnemiesOnMap[enemyDataID].OnHit(damgage, out isDie);
         }
     }
 }
