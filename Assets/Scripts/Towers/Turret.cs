@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
@@ -10,7 +11,7 @@ public class Turret : MonoBehaviour
     public Transform aimTransform;
     public Transform target;
     public Transform firePos;
-    public LayerMask enemyLayer;
+    
     public Rig turretRig;
     public TurretConfig turretConfig;
     public GameObject TurretMain;
@@ -24,16 +25,24 @@ public class Turret : MonoBehaviour
     public TurretType TurretType;
     public List<TurretType> UpgradeList;
 
+
     public float currentHp;
-    void Start()
+    
+    public void SetTurretConfig(TurretConfig config)
     {
-        target = null;
-        turretRig = GetComponentInChildren<Rig>();
-        LoadConfig();
-        currentHp = TurretHealth;
-        Starts();
+        this.turretConfig = config;
     }
-    void LoadConfig()
+
+    protected void Start()
+    {
+
+        turretRig = GetComponentInChildren<Rig>();
+        Initialize();
+
+
+    }
+
+    public void LoadConfig()
     {
         TurretName = turretConfig.TurretName;
         TurretDescription = turretConfig.TurretDescription;
@@ -47,72 +56,62 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
-        if (CanUpdateEnemy())
-        {
-            target = null;
-        }
-        if (CanFindEnemy())
-        {
-            FindEnemy();
-        }
-        if (CanAim())
-        {
-            if (TurretType == TurretType.Base)
-            {
-                return;
-            }
-            aimTransform.position = target.position;
-            turretRig.weight = 1;
-            InvokeRepeating("Attack", 1, 1);
-        
-        }
-        else
-        {
-            if (TurretType == TurretType.Base)
-            {
-                return;
-            }
-            aimTransform.position = firePos.position;
-            turretRig.weight = 0;
-        }
-    }
-    void UpGrade(TurretType type)
-    {
+        UpdateTarget();
+        FindEnemy();
 
+        Aim();
     }
-   
+
     public void SetID(int currentId)
     {
         this.id = currentId;
     }
-    bool CanUpdateEnemy()
+    public void UpdateTarget()
     {
+        if (LostEnemy())
+        {
+            target.gameObject.layer = LayerMask.NameToLayer("Enemy");
+            target = null;
+        }
+    }
+    bool LostEnemy()
+    { 
+        if (target == null) return false;
         if (target != null)
         {
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
             if (distanceToTarget > AtkRange)
             {
+                
                 return true;
             }
             return false;
         }
         return false;
     }
+   
     void FindEnemy()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, AtkRange, enemyLayer);
-        float shortestDistance = Mathf.Infinity;
-        Transform nearestEnemy = null;
-        foreach (var hit in hits)
+        if (CanFindEnemy())
         {
-            float distanceToTarget = Vector3.Distance(transform.position, hit.transform.position);
-            if (distanceToTarget < shortestDistance)
+            Collider[] hits = Physics.OverlapSphere(transform.position, AtkRange, LayerMask.GetMask("Enemy"));
+            float shortestDistance = Mathf.Infinity;
+            Transform nearestEnemy = null;
+            foreach (var hit in hits)
             {
-                shortestDistance = distanceToTarget;
-                nearestEnemy = hit.transform;
+                float distanceToTarget = Vector3.Distance(transform.position, hit.transform.position);
+                if (distanceToTarget < shortestDistance)
+                {
+                    shortestDistance = distanceToTarget;
+                    nearestEnemy = hit.transform;
+                }
             }
+            target = nearestEnemy;
         }
-        target = nearestEnemy;
+        else
+        {
+            return;
+        }
     }
 
     public bool CanFindEnemy()
@@ -127,6 +126,23 @@ public class Turret : MonoBehaviour
         }
         return false;
     }
+    void Aim()
+    {
+        if (CanAim())
+        {
+            target.gameObject.layer = LayerMask.NameToLayer("EnemyTarget"); // Đổi Layer khi bị Aim
+            aimTransform.position = target.position;
+            turretRig.weight = 1;
+            TryToAttack();
+        }
+        else
+        {
+            aimTransform.position = firePos.position;
+            turretRig.weight = 0;
+        }
+    }
+   
+    
     public bool CanAim()
     {
         if (target == null)
@@ -150,22 +166,29 @@ public class Turret : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        if(CanTakeDamage()){
-        currentHp = currentHp - damage;
-        if (currentHp <= 0)
+        if (CanTakeDamage())
         {
-            Die();
-            return;
-        }}else{
+            currentHp = currentHp - damage;
+            if (currentHp <= 0)
+            {
+                Die();
+                return;
+            }
+        }
+        else
+        {
             return;
         }
 
     }
-    public bool CanTakeDamage(){
-        if(currentHp<=0){
+    public bool CanTakeDamage()
+    {
+        if (currentHp <= 0)
+        {
             return false;
         }
-        if(currentHp>0){
+        if (currentHp > 0)
+        {
             return true;
         }
         return false;
@@ -173,18 +196,67 @@ public class Turret : MonoBehaviour
     public void Die()
     {
         TurretMain.SetActive(false);
-    
+
     }
-    public GameObject bullet;
-    public int bulletID = 102;
-    public ObjectPooling objectPooling;
-    void Starts(){
-        objectPooling= GameManager.Instance.PoolManager.GetPoolThroughID(bulletID);
-        
+    // public int bulletID = 102;
+    // public ObjectPooling objectPooling;
+    // void Starts(){
+    //     objectPooling= GameManager.Instance.PoolManager.GetPoolThroughID(bulletID);
+
+    // }
+    // public void Attack(){
+    //     objectPooling.SetPosition(firePos);
+    //     objectPooling.Pool.Get();
+    // }
+    public LayerMask enemyTargetLayermark;
+    public LayerMask enemyOriginLayermark;
+    public void Attack()
+    {
+
+        RaycastHit hit;
+        if (Physics.Raycast(firePos.position, firePos.forward, out hit, AtkRange, enemyTargetLayermark))
+        {
+            if (hit.transform == target)
+            {
+                Debug.Log("shoot");
+                Fire();
+
+            }
+        }
+
     }
-    public void Attack(){
-        objectPooling.SetPosition(firePos);
-        objectPooling.Pool.Get();
+    private float attackCooldown;
+    private void TryToAttack()
+    {
+        if (target != null && attackCooldown <= 0f)
+        {
+            Attack();
+           
+            attackCooldown = 1f / AtkSpeed;
+
+        }
+        else
+        {
+            attackCooldown -= Time.deltaTime;
+            
+        }
+    }
+    public virtual void Initialize()
+    {
+        target = null;
+        LoadConfig();
+        enemyTargetLayermark = LayerMask.GetMask("EnemyTarget");
+        enemyOriginLayermark = LayerMask.GetMask("EnemyTarget");
+        currentHp = TurretHealth;
+        attackCooldown = 0;
+    }
+
+    public GameObject bulletPrefab;
+    public virtual void Fire()
+    {
+        GameObject bulletObj = Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
+        TurretBullet turretBullet = bulletObj.GetComponent<TurretBullet>();
+        turretBullet.SetTarget(target);
     }
 
 

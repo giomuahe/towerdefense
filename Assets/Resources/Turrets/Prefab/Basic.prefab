@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 2855694094759376437}
   - component: {fileID: 3131688101420663088}
   - component: {fileID: 5532496080317331948}
-  - component: {fileID: 6958818835201547135}
+  - component: {fileID: 80343502021876361}
   m_Layer: 7
   m_Name: Basic
   m_TagString: Untagged
@@ -399,7 +399,7 @@ MonoBehaviour:
   - m_Rig: {fileID: 6560463619400954744}
     m_Active: 1
   m_Effectors: []
---- !u!114 &6958818835201547135
+--- !u!114 &80343502021876361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3609821733305273164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c0392197c87074998334736768243d, type: 3}
+  m_Script: {fileID: 11500000, guid: eb72e3584533f7344b1075240734b902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
     m_Bits: 64
   turretRig: {fileID: 0}
   turretConfig: {fileID: 11400000, guid: 79172427ca794814a99ddc9219cbaf7f, type: 2}
-  TurretMain: {fileID: 6168912879450184088}
+  TurretMain: {fileID: 0}
   TurretName: 
   TurretDescription: 
   TurretHealth: 0
@@ -430,9 +430,7 @@ MonoBehaviour:
   TurretType: 0
   UpgradeList: 
   currentHp: 0
-  bullet: {fileID: 0}
-  bulletID: 102
-  objectPooling: {fileID: 0}
+  bulletPrefab: {fileID: 1878987882032996, guid: 6e6b30f5f3ccad547be13de240ff463c, type: 3}
 --- !u!1 &4345764307537188778
 GameObject:
   m_ObjectHideFlags: 0
