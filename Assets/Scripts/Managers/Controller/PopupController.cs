@@ -24,4 +24,10 @@ public class PopupController : MonoBehaviour
         else
             Debug.LogError("CANT_SHOW_COMMAND_POPUP");
     }
+
+    public void HideAllMessage()
+    {
+        confirmController.OnClosePanel();
+        commandController.OnCloseButtonClick();
+    }
 }

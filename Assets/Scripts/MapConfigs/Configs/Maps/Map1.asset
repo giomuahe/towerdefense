@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290bc4bdf97ce47bcbc695e85d836036, type: 3}
   m_Name: Map1
   m_EditorClassIdentifier: 
-  mapName: Map 1
+  mapName: Map_01
   mainGatePosition:
     position: {x: 90, y: 4, z: 0}
     rotation: {x: 0, y: 90, z: 0}

@@ -1,4 +1,5 @@
-﻿using MapConfigs;
+﻿using Assets.Scripts.Enums;
+using MapConfigs;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ public class PopupUpgradeController : MonoBehaviour
         List<TurretType> lsTurretUpgrade = GameManager.Instance.TurretManager.GetListTypeTurretToUpgradeById(curretTurretId);
         if(lsTurretUpgrade == null || lsTurretUpgrade.Count == 0){
             //TODO
+            GameManager.Instance.UIManager.ShowPopup(EPOPUP.CONFIRM_POPUP, EMESSAGETYPE.MESSAGE,"THÔNG BÁO", "Trụ đã đạt cấp tối đa !");
             return;
         }
         Dictionary<TurretType, TurretConfig> turretCfgs = GameManager.Instance.TurretManager.TurretInfoDictionNary();
@@ -47,6 +49,7 @@ public class PopupUpgradeController : MonoBehaviour
         foreach (var tur in lsTurretUpgrade) {
             TurretConfig turCfg = turretCfgs.GetValueOrDefault(tur);
             if(turCfg == null){
+                GameManager.Instance.UIManager.ShowPopup(EPOPUP.CONFIRM_POPUP, EMESSAGETYPE.MESSAGE, "THÔNG BÁO", "Không tìm được thông tin trụ " + tur);
                 Debug.LogError("TUREET CONFIG OF " + tur);
                 return;
             }
@@ -55,7 +58,7 @@ public class PopupUpgradeController : MonoBehaviour
             if (turretInfo)
             {
                 Debug.Log("UPGRADE TURRET " + turCfg);
-                turretInfo.SetInfo(turCfg.name, turCfg.TurretDescription);
+                turretInfo.SetInfo(turCfg.TurretName, turCfg.TurretDescription, turCfg.Cost);
             }
             Button btnSelect = newItem.GetComponent<Button>();
             if (btnSelect)
@@ -83,8 +86,25 @@ public class PopupUpgradeController : MonoBehaviour
     {
         print("CLICK_UPGRADE_TURRET " + curretTurretIdSelect + ", NextTurret = " + JsonConvert.SerializeObject(turretUpgrade));
         if (turretUpgrade)
-            GameManager.Instance.TurretManager.UpGradeTurret(curretTurretIdSelect, turretUpgrade.TurretType);
+        {
+            //Trừ tiền của người chơi
+            long turretCost = turretUpgrade.Cost;
+            string turretName = turretUpgrade.TurretName;
+            string errorMess = "Unknow_error";
+            bool isCanBuildTurret = GameManager.Instance.IsCanBuildTurret(turretCost, turretName, out errorMess);
+            if (isCanBuildTurret)
+            {
+                GameManager.Instance.TurretManager.UpGradeTurret(curretTurretIdSelect, turretUpgrade.TurretType);
+                turretUpgrade = null;
+                this.gameObject.SetActive(false);
+            }
+            else
+            {
+                GameManager.Instance.UIManager.ShowPopup(EPOPUP.CONFIRM_POPUP, EMESSAGETYPE.ERROR, "THÔNG BÁO", errorMess);
+            }
+            
+        }
         else
-            GameManager.Instance.UIManager.ShowPopup(EPOPUP.CONFIRM_POPUP, "THÔNG BÁO", "Chưa chọn loại Turret để Upgrade !");
+            GameManager.Instance.UIManager.ShowPopup(EPOPUP.CONFIRM_POPUP, EMESSAGETYPE.WARNING, "THÔNG BÁO", "Chưa chọn loại Turret để Upgrade !");
     }
 }

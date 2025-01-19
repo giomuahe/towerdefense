@@ -108,6 +108,10 @@ namespace Assets.Scripts.Managers
         /// </summary>
         public void CreateWave()
         {
+            //Lưu data backup
+            DataManager.Instance.BackUpdata();
+            Debug.Log("DATA_BACKUP");
+
             //Cập nhật State sang Combat
             GAME_STATE = EGAMESTATE.COMBAT;
             //Lấy config wave
@@ -203,8 +207,10 @@ namespace Assets.Scripts.Managers
         /// <summary>
         /// Gọi đến mỗi khi chết 1 enemy
         /// </summary>
-        public void OnEnemyDie()
+        public void OnEnemyDie(long goldBonus)
         {
+            Debug.Log("ENEMY_DIE " + goldBonus);
+            UpdateGold(goldBonus, "Kill Enemy");
             numEnemyInCurWave -= 1;
             if(curretHeart<=0)
                 EndLostGame();
@@ -219,6 +225,7 @@ namespace Assets.Scripts.Managers
         /// </summary>
         public void OnEnemyEscape()
         {
+            Debug.Log("ENEMY_ESCAPE");
             numEnemyInCurWave -= 1;
             UpdateHeart(-1);
             if (curretHeart <= 0)
@@ -227,6 +234,27 @@ namespace Assets.Scripts.Managers
             {
                 EndWave();
             }
+        }
+
+        /// <summary>
+        /// Kiểm tra xem có thể xây trụ không
+        /// </summary>
+        /// <param name="turretCost"> giá của trụ, yc lớn hơn 0</param>
+        /// <param name="errorMessage">lỗi</param>
+        /// <returns></returns>
+        public bool IsCanBuildTurret(long turretCost, string turretName, out string errorMessage)
+        {
+            errorMessage = "unknow_error";
+            bool result = false;
+            if(turretCost > currentGold)
+            {
+                errorMessage = "Số dư không đủ !";
+                return false;
+            }
+            long goldDeduct = -1* Math.Abs(turretCost);
+            result = UpdateGold(goldDeduct, "Build Turret " + turretName);
+            if (!result) { errorMessage = "Trừ tiền thất bại, vui lòng thử lại sau !"; }
+            return result;
         }
 
         #endregion

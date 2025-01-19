@@ -42,7 +42,7 @@ namespace Managers
         /// </summary>
         /// <param name="baseId"></param>
         /// <param name="turret"></param>
-        public void UpdateTurret(int baseId, GameObject turret)
+        public void UpdateTurret(int baseId, GameObject turret, TurretType turretType)
         {
             if (!_turretBases.TryGetValue(baseId, out var turretBase))
             {
@@ -51,6 +51,8 @@ namespace Managers
             }
 
             turretBase.Turret = turret;
+            turretBase.TurretType = turretType;
+            _turretBases[baseId] = turretBase;
         }
 
         public bool HasTurret(int baseId)
