@@ -3,6 +3,7 @@ using MapConfigs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -13,7 +14,7 @@ public class AttackTurretEnemy : EnemyBase
     protected float attackSpeed;
     protected float bulletSpeed;
     protected int baseTurretID;
-    private GameObject turretTarget;
+    private Transform turretTarget;
     protected StateMachine enemyStateMachine;
     private StateMachine.State moveState;
     protected StateMachine.State attackState;
@@ -52,24 +53,13 @@ public class AttackTurretEnemy : EnemyBase
                 return;
             }
             Dictionary<int, TurretBase> turretLocations = GameManager.Instance.MapManager.GetTurretBases();
-            DecideMoveLocation(turretLocations);
+            LockTheNearestTurret(turretLocations);
         };
         moveState.onFrame = delegate
         {
-            if(hasTurretOnRange && isTargetBeingDestroy)
+            if(CalculateDistance(transform.position, turretTarget.position) < attackRange)
             {
-                enemyStateMachine.TransitionTo(moveState);
-            }
-            if (!enemyAgent.pathPending && enemyAgent.remainingDistance < remainDistance)
-            {
-                if(hasTurretOnRange)
-                {
-                    enemyStateMachine.TransitionTo(attackState);
-                }
-                else
-                {
-                    enemyStateMachine.TransitionTo(moveState);
-                }
+                enemyStateMachine.TransitionTo(attackState);
             }
         };
         attackState = enemyStateMachine.CreateState("attack");
@@ -94,7 +84,7 @@ public class AttackTurretEnemy : EnemyBase
             yield return new WaitForSeconds(1 / attackSpeed);
             bulletPool.SetPosition(shootPos);
             bulletPool.Pool.Get();
-            Invoke("DamageTurret", 1);
+            Invoke("DamageTurret", attackRange/bulletSpeed);
         }
     }
 
@@ -105,41 +95,21 @@ public class AttackTurretEnemy : EnemyBase
         GameManager.Instance.TurretManager.SendDamage(turret.id,200f);
     }
 
-    private void DecideMoveLocation(Dictionary<int,TurretBase> turretBases)
+    private void LockTheNearestTurret(Dictionary<int,TurretBase> turretBases)
     {
+        if(turretBases == null || turretBases.Count == 0) return;
+        List<TurretBase> turretBasesList = turretBases.Values.ToList();
         float distance = float.MaxValue;
-        Vector3 tempPos = Vector3.zero;
-        if(turretBases == null ||  turretBases.Count == 0)
+        foreach(var turretBase in turretBasesList)
         {
-            Move(moveLocations[++locationIndex]);
-            hasTurretOnRange = false;
-            return;
-        }
-        foreach(var turretBase in turretBases)
-        {
-            Vector3 turretPos = turretBase.Value.Position;
-            float distance1 = CalculateDistance(transform.position, turretPos);
-            if(distance1 < distance)
-            {
-                distance = distance1;
-                baseTurretID = turretBase.Key;
-                tempPos = turretPos;
-                turretTarget = turretBase.Value.Turret;
+            float distanceTemp = CalculateDistance(transform.position, turretBase.Turret.transform.position);
+            if(distanceTemp < distance) 
+            { 
+                distance = distanceTemp;
+                turretTarget = turretBase.Turret.transform;
             }
         }
-        float distance2 = CalculateDistance(transform.position, moveLocations[locationIndex + 1]);
-        if(distance2 < distance)
-        {
-            Move(moveLocations[++locationIndex]);
-            hasTurretOnRange = false;
-            isTargetBeingDestroy = false;
-        }
-        else
-        {
-            Move(tempPos);
-            hasTurretOnRange = true;
-            enemyAgent.stoppingDistance = attackRange;
-        }
+        isTargetBeingDestroy = false;
     }
 
     private float CalculateDistance(Vector3 point1, Vector3 point2)
