@@ -9,8 +9,6 @@ namespace Managers
     {
         public MapConfig mapConfig;
         private readonly Dictionary<int, TurretBase> _turretBases = new Dictionary<int, TurretBase>();
-        //Dictionary contains 2 group of waypoint lists: Key = 0 : groupA, Key = 1 : groupB
-        private readonly Dictionary<int, List<Vector3>> _waypointsDict = new Dictionary<int, List<Vector3>>();
 
         public static MapManager Instance { get; private set; }
 
@@ -24,7 +22,6 @@ namespace Managers
             {
                 Destroy(gameObject);
             }
-            CreateWaypointsDictionary();
         }
 
         public void RegisterTurretBase(int baseId, TurretBase turretBase)
@@ -37,23 +34,6 @@ namespace Managers
             else
             {
                 Debug.LogWarning($"Already registered TurretBase {baseId}");
-            }
-        }
-
-        private void CreateWaypointsDictionary()
-        {
-            _waypointsDict.Clear();
-            if (mapConfig != null)
-            {
-                if(mapConfig.waypointsGroupA != null)
-                    _waypointsDict[0] = new List<Vector3>(mapConfig.waypointsGroupA);
-                else 
-                    _waypointsDict[0] = new List<Vector3>();
-                
-                if (mapConfig.waypointsGroupB != null)
-                    _waypointsDict[1] = new List<Vector3>(mapConfig.waypointsGroupB);
-                else 
-                    _waypointsDict[1] = new List<Vector3>();
             }
         }
 
@@ -119,25 +99,19 @@ namespace Managers
         
         public List<Vector3> GetWaypoints()
         {
-            return mapConfig.waypointsGroupA;
+            return mapConfig.waypoints;
         }
 
-        public List<Vector3> GetWaypointsB()
+        public int GetMainGateHealth()
         {
-            return mapConfig.waypointsGroupB;
+            return mapConfig.mainGateHealth;
         }
 
-        public Vector3 GetRandomWaypoints()
+        public int GetStartingGold()
         {
-            int groupKey = Random.Range(0, 2);
-            if (_waypointsDict.ContainsKey(groupKey) && _waypointsDict[groupKey].Count > 0)
-            {
-                int index = Random.Range(0, _waypointsDict[groupKey].Count);
-                return _waypointsDict[groupKey][index];
-            }
-            return Vector3.zero;
+            return mapConfig.startingGold;
         }
-
+        
         /// <summary>
         /// Enemy bi tieu diet
         /// </summary>
