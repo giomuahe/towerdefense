@@ -106,8 +106,6 @@ namespace Player
         {
             if (_currentTurretBase == null) return;
 
-            int IdBase;
-
             int id = _cunrentTurretBaseId;
             if (_currentTurretBase.Turret == null)
             {
@@ -119,8 +117,6 @@ namespace Player
             {
                 Debug.Log($"Player interaction: Request UPGRADE turret at turret base with ID {id}!");
                 //Notify UI to display upgrade turret panel
-                
-                int CurrentTurretType;
                 //GameManager.Instance.UIManager.InBattleScreenController.UpgradeTurret(IdBase, CurrentTurretType);
             }
         }

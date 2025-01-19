@@ -28,8 +28,12 @@ namespace MapConfigs
         public List<WaveConfig> waves;
         
         [Header("Waypoints Settings")]
-        public List <Vector3> waypointsGroupA;
-        public List <Vector3> waypointsGroupB;
+        public List <Vector3> waypoints;
         
+        [Header("Main Gate Health")]
+        public int mainGateHealth;
+        
+        [Header("Starting Gold")]
+        public int startingGold;
      }
 }
