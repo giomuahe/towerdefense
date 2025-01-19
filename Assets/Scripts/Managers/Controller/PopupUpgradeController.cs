@@ -46,10 +46,15 @@ public class PopupUpgradeController : MonoBehaviour
         //Init các phần tử mới
         foreach (var tur in lsTurretUpgrade) {
             TurretConfig turCfg = turretCfgs.GetValueOrDefault(tur);
+            if(turCfg == null){
+                Debug.LogError("TUREET CONFIG OF " + tur);
+                return;
+            }
             GameObject newItem = Instantiate(turretPrefab, contentParent);
             TurretInfoSelect turretInfo = newItem.GetComponent<TurretInfoSelect>();
             if (turretInfo)
             {
+                Debug.Log("UPGRADE TURRET " + turCfg);
                 turretInfo.SetInfo(turCfg.name, turCfg.TurretDescription);
             }
             Button btnSelect = newItem.GetComponent<Button>();

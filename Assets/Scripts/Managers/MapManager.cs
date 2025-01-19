@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using MapConfigs;
+using Assets.Scripts.DATA;
 
 namespace Managers
 {
@@ -8,7 +9,23 @@ namespace Managers
     {
         public MapConfig mapConfig;
         private readonly Dictionary<int, TurretBase> _turretBases = new Dictionary<int, TurretBase>();
-        
+        //Dictionary contains 2 group of waypoint lists: Key = 0 : groupA, Key = 1 : groupB
+        private readonly Dictionary<int, List<Vector3>> _waypointsDict = new Dictionary<int, List<Vector3>>();
+
+        public static MapManager Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            CreateWaypointsDictionary();
+        }
 
         public void RegisterTurretBase(int baseId, TurretBase turretBase)
         {
@@ -23,6 +40,28 @@ namespace Managers
             }
         }
 
+        private void CreateWaypointsDictionary()
+        {
+            _waypointsDict.Clear();
+            if (mapConfig != null)
+            {
+                if(mapConfig.waypointsGroupA != null)
+                    _waypointsDict[0] = new List<Vector3>(mapConfig.waypointsGroupA);
+                else 
+                    _waypointsDict[0] = new List<Vector3>();
+                
+                if (mapConfig.waypointsGroupB != null)
+                    _waypointsDict[1] = new List<Vector3>(mapConfig.waypointsGroupB);
+                else 
+                    _waypointsDict[1] = new List<Vector3>();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="baseId"></param>
+        /// <param name="turret"></param>
         public void UpdateTurret(int baseId, GameObject turret)
         {
             if (!_turretBases.TryGetValue(baseId, out var turretBase))
@@ -32,9 +71,6 @@ namespace Managers
             }
 
             turretBase.Turret = turret;
-            Debug.Log(turret != null
-                ? $"Turret placed/update at Turret Base ID {baseId}"
-                : $"Turret remove from Turret Base ID {baseId}");
         }
 
         public bool HasTurret(int baseId)
@@ -49,13 +85,12 @@ namespace Managers
             {
                 return turretBase;
             }
-            Debug.LogError($"Turret base with ID {baseId} could not be found!");
             return null;
         }
 
         public Dictionary<int, TurretBase> GetTurretBases()
         {
-            return new Dictionary<int, TurretBase>(_turretBases);
+            return _turretBases;
         }
 
         public MapConfig.SpawnPosition GetMainGatePosition()
@@ -82,10 +117,25 @@ namespace Managers
             return mapConfig.waves.Count;
         }
         
-
         public List<Vector3> GetWaypoints()
         {
-            return mapConfig.waypoints;
+            return mapConfig.waypointsGroupA;
+        }
+
+        public List<Vector3> GetWaypointsB()
+        {
+            return mapConfig.waypointsGroupB;
+        }
+
+        public Vector3 GetRandomWaypoints()
+        {
+            int groupKey = Random.Range(0, 2);
+            if (_waypointsDict.ContainsKey(groupKey) && _waypointsDict[groupKey].Count > 0)
+            {
+                int index = Random.Range(0, _waypointsDict[groupKey].Count);
+                return _waypointsDict[groupKey][index];
+            }
+            return Vector3.zero;
         }
 
         /// <summary>
@@ -101,5 +151,7 @@ namespace Managers
         public void OnEnemyPass(){
 
         }
+
+        
     }
 }

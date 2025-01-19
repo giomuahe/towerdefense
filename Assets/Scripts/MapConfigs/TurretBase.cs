@@ -16,6 +16,11 @@ namespace MapConfigs
         public TurretType GetTurretType()
         {
             TurretType result = TurretType.Base;
+            Turret turretInfo = Turret.GetComponent<Turret>();
+            if (turretInfo != null)
+            {
+                result = turretInfo.TurretType;
+            }
             return result;
         }
     }
