@@ -15,4 +15,4 @@ MonoBehaviour:
   enemies:
   - type: 0
     amount: 5
-    spawnDelay: 0.92
+    spawnDelay: 2
