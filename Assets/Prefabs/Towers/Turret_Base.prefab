@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2413862676378476320}
   - component: {fileID: 2085597618219751694}
   - component: {fileID: -3451154186191488964}
-  - component: {fileID: 630359703179861396}
+  - component: {fileID: -7525986128040172851}
   m_Layer: 3
   m_Name: Turret_Base
   m_TagString: Turret Base
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3368b0148b604879a56048c34874f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!208 &630359703179861396
+--- !u!208 &-7525986128040172851
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +151,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 1.5050001, y: 0.18, z: 1.5050001}
+  m_Extents: {x: 1.50452, y: 0.594135, z: 1.50452}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1

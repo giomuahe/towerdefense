@@ -30,5 +30,10 @@ MonoBehaviour:
   waves:
   - {fileID: 11400000, guid: 101d50ffd5fc245c6854b634709d5179, type: 2}
   waypoints:
-  - {x: 2, y: 0, z: 0}
-  - {x: 85, y: 0, z: 0}
+  - {x: 20, y: 0, z: 5}
+  - {x: 55, y: 0, z: 5}
+  - {x: 20, y: 0, z: -5}
+  - {x: 55, y: 0, z: -5}
+  - {x: 90, y: 0, z: 0}
+  mainGateHealth: 5
+  startingGold: 1000

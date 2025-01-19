@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MapConfigs
 {
@@ -29,5 +30,10 @@ namespace MapConfigs
         [Header("Waypoints Settings")]
         public List <Vector3> waypoints;
         
+        [Header("Main Gate Health")]
+        public int mainGateHealth;
+        
+        [Header("Starting Gold")]
+        public int startingGold;
      }
 }

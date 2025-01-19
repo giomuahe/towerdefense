@@ -97,12 +97,21 @@ namespace Managers
             return mapConfig.waves.Count;
         }
         
-
         public List<Vector3> GetWaypoints()
         {
             return mapConfig.waypoints;
         }
 
+        public int GetMainGateHealth()
+        {
+            return mapConfig.mainGateHealth;
+        }
+
+        public int GetStartingGold()
+        {
+            return mapConfig.startingGold;
+        }
+        
         /// <summary>
         /// Enemy bi tieu diet
         /// </summary>
