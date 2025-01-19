@@ -1,10 +1,12 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.DATA;
 using MapConfigs;
 using Newtonsoft.Json;
 using Unity.Mathematics;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class TurretManager : MonoBehaviour
@@ -42,6 +44,7 @@ public class TurretManager : MonoBehaviour
         newTurretClass.SetID(id);
 
         TurretOnMapDic[id] = newTurret;
+        GameManager.Instance.MapManager.UpdateTurret(id, newTurret);
     }
     void Update()
     {
@@ -72,7 +75,23 @@ public class TurretManager : MonoBehaviour
         return tDic;
     }
     public void SendDamage(int id, float damage){
+        
         TurretOnMapDic[id].GetComponent<Turret>().TakeDamage(damage);
     }
-   
+
+    /// <summary>
+    /// Xây turret từ thông tin đã có
+    /// </summary>
+    /// <param name="data"></param>
+    public void InitMapFromData(SaveData data)
+    {
+        Dictionary<int, TurretData> turretInfo = data.TurretInfo;
+        //Xây turret trên map
+        foreach(KeyValuePair<int, TurretData> idAndTurretData in turretInfo){
+            BuildTurret(idAndTurretData.Key, idAndTurretData.Value.TurretType);
+        }
+
+        //Update thông tin ở MapManager.UpdateTurret()
+    }
+
 }

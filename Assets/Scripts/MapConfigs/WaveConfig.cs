@@ -4,6 +4,7 @@ using UnityEngine;
 namespace MapConfigs
 {
     [CreateAssetMenu(fileName = "New Wave", menuName = "TowerDefense/WaveConfig")]
+    [System.Serializable]
     public class WaveConfig : ScriptableObject
     {
         public List<EnemySpawnConfig> enemies;

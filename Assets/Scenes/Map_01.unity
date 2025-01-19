@@ -6457,17 +6457,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13cbeccbae32f4099bda7aeca987398a, type: 3}
---- !u!114 &357935781 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 426458103158091354, guid: 5a7b5d5c09d32ed47834ddc963d323ba, type: 3}
-  m_PrefabInstance: {fileID: 8995249541952148130}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43dc2520b88e43b4d9e6cc63501bba7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &364934862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7667,6 +7656,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapConfig: {fileID: 11400000, guid: b14fe1ec394964754b9077d3dad428da, type: 2}
+  _waves: []
+  _currentWaveIndex: 0
 --- !u!4 &427458477
 Transform:
   m_ObjectHideFlags: 0
@@ -8686,11 +8677,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIManager: {fileID: 0}
-  MapManager: {fileID: 389975326}
-  WaveManager: {fileID: 0}
   PoolManager: {fileID: 1727535389}
   TurretManager: {fileID: 0}
-  enemyManager: {fileID: 357935781}
+  EnemyManager: {fileID: 0}
+  MapManager: {fileID: 389975326}
+  WaveManager: {fileID: 0}
 --- !u!4 &532060229
 Transform:
   m_ObjectHideFlags: 0
@@ -14684,7 +14675,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
-  m_LocalPosition: {x: 45, y: 28.909256, z: -2.5881915}
+  m_LocalPosition: {x: 43.39, y: 9.12, z: -1.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14697,7 +14688,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -23371,8 +23362,8 @@ Transform:
   m_GameObject: {fileID: 1463309915}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalPosition: {x: 58, y: 0, z: -5.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5388289771007566894}
@@ -23422,6 +23413,7 @@ MonoBehaviour:
   currentMovement: {x: 0, y: 0, z: 0}
   rotationSpeed: 6.5
   movementSpeed: 18
+  variableJoystick: {fileID: 0}
 --- !u!114 &1463309920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23463,7 +23455,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464586073}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 

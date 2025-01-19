@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IHittable
 {
-    public void OnHit(float damage);
+    public void OnHit(float damage, out bool isDie);
 }
 
 public interface IAttackable

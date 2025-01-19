@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MapConfigs
 {
@@ -27,7 +28,8 @@ namespace MapConfigs
         public List<WaveConfig> waves;
         
         [Header("Waypoints Settings")]
-        public List <Vector3> waypoints;
+        public List <Vector3> waypointsGroupA;
+        public List <Vector3> waypointsGroupB;
         
      }
 }
