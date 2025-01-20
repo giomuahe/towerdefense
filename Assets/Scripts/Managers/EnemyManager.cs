@@ -17,6 +17,11 @@ namespace Managers
             dictionaryOfEnemiesOnMap.Add(id, enemy);
         }
 
+        public void RemoveEnemyFromDic(int id)
+        {
+            dictionaryOfEnemiesOnMap.Remove(id);
+        }
+
         public void SpawnEnemies(WaveConfig waveConfig, Vector3 spawnPos)
         {
             StartCoroutine(spawner.WaveSpawn(waveConfig, spawnPos));

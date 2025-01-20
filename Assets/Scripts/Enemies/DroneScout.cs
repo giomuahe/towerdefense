@@ -18,7 +18,8 @@ public class DroneScout : EnemyBase, IHittable
         {
             if (moveLocations.Count == locationIndex + 1)
             {
-                // Gây damage lên nhà chính và destroy object
+                OnDead();
+                GameManager.Instance.OnEnemyEscape();
                 return;
             }
             Move(moveLocations[++locationIndex]);

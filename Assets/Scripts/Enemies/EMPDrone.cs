@@ -8,7 +8,7 @@ public class EMPDrone : AttackTurretEnemy
     private float skillCooldown;
     private void DisableTurret()
     {
-        if (hasTurretOnRange)
+        if (enemyStateMachine.currentState == attackState)
         {
             if(Time.time < skillTimer + skillCooldown)
             {
