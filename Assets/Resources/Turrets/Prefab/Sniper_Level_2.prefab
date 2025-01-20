@@ -377,8 +377,8 @@ GameObject:
   - component: {fileID: 8365447369244309853}
   - component: {fileID: 3388551695127545246}
   - component: {fileID: 1106821761496935072}
-  - component: {fileID: 4089562078568183160}
   - component: {fileID: 7890426949545754107}
+  - component: {fileID: 4269195176132652339}
   m_Layer: 0
   m_Name: Sniper_Level_2
   m_TagString: Untagged
@@ -446,41 +446,6 @@ MonoBehaviour:
   - {fileID: 3275238950786690430}
   - {fileID: 4005330841328668673}
   - {fileID: 2424436225673328111}
---- !u!114 &4089562078568183160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4841492586978490129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c0392197c87074998334736768243d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  aimTransform: {fileID: 938040289323376372}
-  target: {fileID: 0}
-  firePos: {fileID: 7427247973032706850}
-  turretRig: {fileID: 0}
-  turretConfig: {fileID: 11400000, guid: 924a3a4f9f3bbcc4caf488d3b202f84f, type: 2}
-  TurretMain: {fileID: 0}
-  TurretName: 
-  TurretDescription: 
-  TurretHealth: 0
-  AtkDamage: 0
-  AtkSpeed: 0
-  AtkRange: 0
-  TurretType: 5
-  UpgradeList: 
-  currentHp: 0
-  enemyTargetLayermark:
-    serializedVersion: 2
-    m_Bits: 0
-  enemyOriginLayermark:
-    serializedVersion: 2
-    m_Bits: 0
-  bulletPrefab: {fileID: 0}
 --- !u!114 &7890426949545754107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +462,29 @@ MonoBehaviour:
   - m_Rig: {fileID: 1007060312156772587}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &4269195176132652339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4841492586978490129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a97ef3df8422c4f92dbd225ba28aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  aimTransform: {fileID: 938040289323376372}
+  target: {fileID: 0}
+  firePos: {fileID: 7427247973032706850}
+  turretConfig: {fileID: 11400000, guid: 924a3a4f9f3bbcc4caf488d3b202f84f, type: 2}
+  currentHp: 0
+  enemyTargetLayermark:
+    serializedVersion: 2
+    m_Bits: 0
+  attackCooldown: 0
+  bulletPrefab: {fileID: 0}
 --- !u!1 &4945120226989727221
 GameObject:
   m_ObjectHideFlags: 0

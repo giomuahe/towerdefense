@@ -15,10 +15,12 @@ MonoBehaviour:
   TurretName: Flamer
   TurretDescription: ssss
   TurretHealth: 6000
-  AtkDamage: 30
+  AtkDamage: 0
   AtkSpeed: 1
   AtkRange: 8
+  BulletSpeed: 0
   TurretType: 7
   Cost: 40
   prefabName: FireTurret
+  bulletPrefabPath: 
   UpgradeList: 

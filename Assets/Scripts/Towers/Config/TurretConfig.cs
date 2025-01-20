@@ -17,6 +17,7 @@ public class TurretConfig : ScriptableObject
     public TurretType TurretType;
     public int Cost;
     public string prefabName;
+    public string bulletPrefabPath;
     public List<TurretType> UpgradeList;
 
 

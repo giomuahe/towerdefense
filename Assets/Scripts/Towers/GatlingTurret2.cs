@@ -1,14 +1,15 @@
-
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class BassicTurret : Turret
+public class GatlingTurret2 : Turret
 {
 
     private const string LINK_TURRET_BULLET_PREFAB = "Turrets/TurretBullet/";
     public override void Initialize()
     {
         base.Initialize();
+
         bulletPrefab = Resources.Load<GameObject>(LINK_TURRET_BULLET_PREFAB + turretConfig.bulletPrefabPath);
 
     }
@@ -19,7 +20,7 @@ public class BassicTurret : Turret
         TurretBullet turretBullet = bulletObj.GetComponent<TurretBullet>();
         turretBullet.SetTarget(target);
         turretBullet.SetSpeed(BulletSpeed);
-         turretBullet.SetDamage(AtkDamage);
+        turretBullet.SetDamage(AtkDamage);
         GameObject muzzleEffect = Instantiate(turretBullet.GetFlash(), firePos.position, firePos.rotation);
         Destroy(muzzleEffect, 1);
     }

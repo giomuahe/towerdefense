@@ -183,8 +183,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.0090404, y: 1.18827, z: 2.2959373}
-  m_Center: {x: -0.00000023841858, y: 0.5941346, z: -0.35655153}
+  m_Size: {x: 3.0090404, y: 1.18827, z: 3.0090404}
+  m_Center: {x: -0.00000023841858, y: 0.5941346, z: 0}
 --- !u!1 &1336351858412758671
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,22 +415,13 @@ MonoBehaviour:
   aimTransform: {fileID: 6820517251746881942}
   target: {fileID: 0}
   firePos: {fileID: 2977833296553092547}
-  turretRig: {fileID: 0}
   turretConfig: {fileID: 11400000, guid: 79172427ca794814a99ddc9219cbaf7f, type: 2}
-  TurretMain: {fileID: 0}
-  TurretName: 
-  TurretDescription: 
-  TurretHealth: 0
-  AtkDamage: 0
-  AtkSpeed: 0
-  AtkRange: 0
-  TurretType: 1
-  UpgradeList: 
   currentHp: 0
   enemyTargetLayermark:
     serializedVersion: 2
     m_Bits: 0
-  bulletPrefab: {fileID: 1878987882032996, guid: 6e6b30f5f3ccad547be13de240ff463c, type: 3}
+  attackCooldown: 0
+  bulletPrefab: {fileID: 0}
 --- !u!1 &4345764307537188778
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,8 +908,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7953677, y: 2.892294, z: 1.9977889}
-  m_Center: {x: 0.20553696, y: 1.0006058, z: -0.0039994717}
+  m_Size: {x: 1.7953677, y: 2.892294, z: 3.58}
+  m_Center: {x: 0.20553696, y: 1.0006058, z: 0.5}
 --- !u!1 &9164996620423433534
 GameObject:
   m_ObjectHideFlags: 0

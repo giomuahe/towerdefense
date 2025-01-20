@@ -5,13 +5,12 @@ using UnityEngine;
 public class TurretBullet : MonoBehaviour
 {
     private Transform target;
-    public float speed = 10f;
+    
     public float rotateSpeed = 200000f;
-    [SerializeField] protected float hitOffset = 0f;
     public LayerMask enemyLayer;
     public int enemyLayerIndex;
     [SerializeField] protected GameObject hit;
-    [SerializeField] public GameObject flash;
+    [SerializeField] protected GameObject flash;
     [SerializeField] protected ParticleSystem hitPS;
     [SerializeField] protected Light lightSourse;
     [SerializeField] protected ParticleSystem projectilePS;
@@ -22,17 +21,23 @@ public class TurretBullet : MonoBehaviour
     [SerializeField] protected bool UseFirePointRotation;
     [SerializeField] protected Collider col;
 
+    // bullet property;
+    [SerializeField] private float speed;
+    [SerializeField] private int damage;
+
     void Awake()
     {
         enemyLayer = LayerMask.GetMask("EnemyTarget");
         enemyLayerIndex = LayerMask.NameToLayer("EnemyTarget");
+        col= GetComponent<Collider>();
+        lightSourse = GetComponent<Light>();
 
     }
     protected void Start()
     {
         if (!startChecker)
         {
-            /*lightSourse = GetComponent<Light>();
+            /*
             rb = GetComponent<Rigidbody>();
             col = GetComponent<Collider>();
             if (hit != null)
@@ -74,6 +79,17 @@ public class TurretBullet : MonoBehaviour
         this.target = curTarget;
 
     }
+    public void SetSpeed(float bulletSpeed){
+        this.speed=bulletSpeed;
+        
+    }
+    public void SetDamage(float turretDamage){
+        this.damage = Mathf.RoundToInt(turretDamage);
+    }
+    public GameObject GetFlash(){
+        return this.flash;
+    }
+    
 
     void Update()
     {
@@ -89,7 +105,7 @@ public class TurretBullet : MonoBehaviour
         Vector3 direction = (target.position - transform.position).normalized;
 
         if (lightSourse != null){
-            lightSourse.enabled = false;
+           
             projectilePS.Stop();
         projectilePS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);}
         col.enabled = false;
@@ -100,16 +116,19 @@ public class TurretBullet : MonoBehaviour
         {
 
             transform.position = Vector3.MoveTowards(transform.position, raycastHit.point, speed * Time.deltaTime);
-
+            if(target!=null){
             if (raycastHit.collider.gameObject.transform == target)
             {
-                
                 ParticleSystem hitEffect = hitPS;
                 ParticleSystem effect = Instantiate(hitEffect, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
                 // hitEffect.Play();
                 Destroy(effect.gameObject, 0.5f);
                 HitTarget(raycastHit.collider.gameObject);
             }
+            }else{
+                Destroy(gameObject);
+            }
+            
         }
         Quaternion toRotation = Quaternion.LookRotation(target.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, rotateSpeed * Time.deltaTime);
@@ -121,16 +140,19 @@ public class TurretBullet : MonoBehaviour
     {
         Debug.Log("Đã trúng");
         EnemyBase enemyTakedame= enemy.GetComponent<EnemyBase>();
-        int bulletDamge = 1;
+       
         bool isEnemyDie;
-        GameManager.Instance.EnemyManager.SendDamage(enemyTakedame.EnemyID(), bulletDamge, out isEnemyDie);
-        if(isEnemyDie){
+        GameManager.Instance.EnemyManager.SendDamage(enemyTakedame.EnemyID(), damage, out isEnemyDie);
+        if(isEnemyDie || target==null){
             Destroy(this.gameObject);
         }
+        // EnemyDemo enemyDemo= enemy.GetComponent<EnemyDemo>();
+        // enemyDemo.TakeDamage(damage);
         Destroy(this.gameObject);
     }
     void HitEffect()
     {
 
     }
+    
 }
