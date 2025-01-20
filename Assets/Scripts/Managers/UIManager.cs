@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public ChooseMapScreenController ChoosemapController;
     public InBattleScreenController InBattleScreenController;
     public PopupController PopupController;
+    public LoadingScreenController LoadingScreenController;
 
     private ESCREEN currentScreen = ESCREEN.NONE;
 
@@ -31,6 +32,7 @@ public class UIManager : MonoBehaviour
         ChoosemapController.gameObject.SetActive(false);
         InBattleScreenController.gameObject.SetActive(false);
         PopupController.HideAllMessage();
+        LoadingScreenController.gameObject.SetActive(false);
     }
 
     public ESCREEN GetCurrentScreen()
@@ -83,5 +85,14 @@ public class UIManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    /// <summary>
+    /// Hiển thị loading screen và load scene
+    /// </summary>
+    /// <param name="sceneName"></param>
+    /// <param name="afterScreen"></param>
+    public void LoadScene(string sceneName, ESCREEN afterScreen) {
+        LoadingScreenController.LoadScene(sceneName, afterScreen);
     }
 }

@@ -15,9 +15,9 @@ MonoBehaviour:
   TurretName: Heavy Sniper
   TurretDescription: ssss
   TurretHealth: 3000
-  AtkDamage: 0
-  AtkSpeed: 1
-  AtkRange: 80
+  AtkDamage: 100
+  AtkSpeed: 2
+  AtkRange: 40
   BulletSpeed: 20
   TurretType: 5
   Cost: 40

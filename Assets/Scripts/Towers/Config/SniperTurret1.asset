@@ -15,9 +15,9 @@ MonoBehaviour:
   TurretName: Sniper Level 1
   TurretDescription: ssss
   TurretHealth: 5000
-  AtkDamage: 0
-  AtkSpeed: 1
-  AtkRange: 20
+  AtkDamage: 40
+  AtkSpeed: 2
+  AtkRange: 25
   BulletSpeed: 20
   TurretType: 4
   Cost: 20
