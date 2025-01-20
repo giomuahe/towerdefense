@@ -99,7 +99,6 @@ public class AttackTurretEnemy : EnemyBase
         };
         deadState = enemyStateMachine.CreateState("dead");
     }
-
     private void RotateEnemy()
     {
         transform.LookAt(new Vector3(turretTarget.position.x, shootPos.transform.position.y, turretTarget.position.z));
