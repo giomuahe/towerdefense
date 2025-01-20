@@ -7,12 +7,15 @@ using UnityEngine.UI;
 public class InBattleScreenController : MonoBehaviour
 {
     public PopupUpgradeController PopupUpgrade;
+    public PopupPauseController PopupPause;
+    public ButtonPauseController ButtonPause;
     
     public TextMeshProUGUI WaveTxt;
     public Text TimeText;
     public Text HeartText;
     public Text GoldText;
     public GameObject ButtonUpgrade;
+    public Button ButtonNextWave;
     public int TurretBaseId = 1;
 
     private void OnEnable()
@@ -21,6 +24,8 @@ public class InBattleScreenController : MonoBehaviour
         GameManager.Instance.BattleManager.OnTimeChanged += UpdateTime;
         GameManager.Instance.BattleManager.OnGoldChanged += UpdateGold;
         GameManager.Instance.BattleManager.OnHeartChanged += UpdateHeart;
+
+        ButtonNextWave.onClick.AddListener(OnClickNextWave);
     }
 
     private void Start()
@@ -35,6 +40,8 @@ public class InBattleScreenController : MonoBehaviour
         GameManager.Instance.BattleManager.OnTimeChanged -= UpdateTime;
         GameManager.Instance.BattleManager.OnGoldChanged -= UpdateGold;
         GameManager.Instance.BattleManager.OnHeartChanged -= UpdateHeart;
+
+        ButtonNextWave.onClick.RemoveAllListeners();
     }
 
     private void UpdateWaveInfo(int currentWave, int maxWave)
@@ -51,6 +58,14 @@ public class InBattleScreenController : MonoBehaviour
         int minutes = remainingTime / 60;
         int seconds = remainingTime % 60;
         TimeText.text = $"{minutes:00}:{seconds:00}";
+        if(remainingTime <= 0)
+        {
+            ButtonNextWave.gameObject.SetActive(false);
+        }
+        else
+        {
+            ButtonNextWave.gameObject.SetActive(true);
+        }
     }
 
     private void UpdateGold(long currentGold){
@@ -88,16 +103,13 @@ public class InBattleScreenController : MonoBehaviour
             PopupUpgrade.ShowPopupUpgrade(TurretBaseId);
     }
 
-    public void OnClickNextWave(){
+    private void OnClickNextWave(){
         GameManager.Instance.CreateWave();
+        ButtonNextWave.gameObject.SetActive(false);
     }
 
-    public void OnClickPause()
+    public void OnClickPause(bool isPause)
     {
-        bool isPause = GameManager.Instance.BattleManager.ChangePause();
-        if (isPause)
-        {
-
-        }
+        PopupPause.gameObject.SetActive(isPause);
     }
 }

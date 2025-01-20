@@ -44,7 +44,7 @@ public class TurretManager : MonoBehaviour
         newTurretClass.SetID(id);
 
         TurretOnMapDic[id] = newTurret;
-        GameManager.Instance.MapManager.UpdateTurret(id, newTurret);
+        GameManager.Instance.MapManager.UpdateTurret(id, newTurret, turretType);
     }
     void Update()
     {
@@ -85,10 +85,12 @@ public class TurretManager : MonoBehaviour
     /// <param name="data"></param>
     public void InitMapFromData(SaveData data)
     {
+        Debug.Log("BUILD_MAP " + JsonConvert.SerializeObject(data));
         Dictionary<int, TurretData> turretInfo = data.TurretInfo;
         //Xây turret trên map
         foreach(KeyValuePair<int, TurretData> idAndTurretData in turretInfo){
-            BuildTurret(idAndTurretData.Key, idAndTurretData.Value.TurretType);
+            if(idAndTurretData.Value.TurretType != TurretType.Base)
+                BuildTurret(idAndTurretData.Key, idAndTurretData.Value.TurretType);
         }
 
         //Update thông tin ở MapManager.UpdateTurret()

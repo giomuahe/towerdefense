@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Enums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class UIManager : MonoBehaviour
         LobbyController.gameObject.SetActive(false);
         ChoosemapController.gameObject.SetActive(false);
         InBattleScreenController.gameObject.SetActive(false);
-        PopupController.gameObject.SetActive(false);
+        PopupController.HideAllMessage();
     }
 
     public ESCREEN GetCurrentScreen()
@@ -70,12 +71,14 @@ public class UIManager : MonoBehaviour
     /// <param name="message">Thông tin</param>
     /// <param name="callbackOk">Callback OK</param>
     /// <param name="callbackCancel">callback Cancel</param>
-    public void ShowPopup(EPOPUP popup, string header, string message, Action callbackOk = null, Action callbackCancel = null)
+    public void ShowPopup(EPOPUP popup, EMESSAGETYPE msgType, string header, string message, Action callbackOk = null, Action callbackCancel = null)
     {
         switch (popup) {
             case EPOPUP.CONFIRM_POPUP:
+                PopupController.ShowConfirmPopup(msgType, message, callbackOk);
                 break;
             case EPOPUP.COMMAND_POPUP:
+                PopupController.ShowCommandPopup(message, header, callbackOk, callbackCancel);
                 break;
             default:
                 break;

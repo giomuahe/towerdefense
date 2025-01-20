@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Managers
 {
-    public class DataManager
+    public class DataManager : MonoBehaviour
     {
         private const string KEY_SAVE = "DATA_MAP_SAVE";
 
@@ -25,9 +25,10 @@ namespace Assets.Scripts.Managers
         public bool BackUpdata()
         {
             SaveData dataSave = new SaveData();
-            dataSave.Mapname = GameManager.Instance.MapManager.name;
+            dataSave.Mapname = GameManager.Instance.MapManager.mapConfig.mapName;
             dataSave.CurrentHeart = GameManager.Instance.BattleManager.CurrentHeart();
             dataSave.CurrentWave = GameManager.Instance.BattleManager.CurrentWave();
+            dataSave.CurrentGold = GameManager.Instance.BattleManager.CurrentGold();
             var dictTurret = GameManager.Instance.MapManager.GetTurretBases();
             Dictionary<int, TurretData> lsTurretSave = new Dictionary<int, TurretData>();
             var keyList = dictTurret.Keys;
@@ -38,6 +39,8 @@ namespace Assets.Scripts.Managers
                 if(tur != null && tur.gameObject!= null)
                 {
                     turetType = tur.GetTurretType();
+                    //Turret turretInfo = tur.gameObject.GetComponent<Turret>();
+                    //turetType = turretInfo.TurretType;
                 }
                 TurretData data = new TurretData()
                 {
@@ -50,7 +53,9 @@ namespace Assets.Scripts.Managers
             }
             dataSave.TurretInfo = lsTurretSave;
             string dataSaveTxt = JsonConvert.SerializeObject(dataSave);
+            Debug.Log("SAVE_INFO : " + dataSaveTxt);
             PlayerPrefs.SetString(KEY_SAVE, dataSaveTxt);
+            PlayerPrefs.Save();
             return true;
         }
 
@@ -63,6 +68,12 @@ namespace Assets.Scripts.Managers
                     return data;
             }
             return null;
+        }
+
+        public void RemoveAllDataSave()
+        {
+            PlayerPrefs.DeleteKey(KEY_SAVE);
+            PlayerPrefs.Save();
         }
     }
 }

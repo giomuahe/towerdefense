@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Enums;
+﻿using Assets.Scripts.DATA;
+using Assets.Scripts.Enums;
 using Assets.Scripts.Managers;
 using Managers;
 using MapConfigs;
@@ -30,6 +31,10 @@ public class GameManager : MonoBehaviour
 
     public BattleLogicManager BattleManager;
 
+    private bool isContinueOldMap = false;
+
+    private SaveData dataBackUp;
+
     public static GameManager Instance {  get; private set; }
 
     private void Awake()
@@ -59,6 +64,17 @@ public class GameManager : MonoBehaviour
             UIManager.Init();
         else
             Debug.LogError("NotFound UIManager");
+
+        //Kiểm tra xem có file lưu không
+        dataBackUp = DataManager.Instance.GetDataSave();
+        if(dataBackUp != null)
+        {
+            string msg = string.Format("Bạn đang ở tiến trình ({0}, wave {1}), bạn có muốn tiếp tục ?", dataBackUp.Mapname, dataBackUp.CurrentWave);
+            GameManager.Instance.UIManager.ShowPopup(EPOPUP.COMMAND_POPUP, EMESSAGETYPE.MESSAGE, "CHÚ Ý", msg, () => {
+                isContinueOldMap = true;
+                SceneManager.LoadScene(dataBackUp.Mapname);
+            });
+        }
     }
 
     #region UI
@@ -86,12 +102,25 @@ public class GameManager : MonoBehaviour
             print("Not found WaveManager");
         else
             WaveManager.Init();
+        if (!isContinueOldMap)
+        {
+            long goldInit = MapManager.GetStartingGold();
+            int heartInit = MapManager.GetMainGateHealth();
+            BattleManager = new BattleLogicManager(Mapname, goldInit, heartInit);
+            UIManager.ShowScreen(ESCREEN.IN_BATTLE);
+            Debug.Log("BEGIN_NEW_BATTLE");
+        }
+        else
+        {
+            long goldInit = dataBackUp.CurrentGold;
+            int heartInit = dataBackUp.CurrentHeart;
+            BattleManager = new BattleLogicManager(Mapname, goldInit, heartInit);
+            TurretManager.InitMapFromData(dataBackUp);
+            UIManager.ShowScreen(ESCREEN.IN_BATTLE);
 
-        long goldInit = 1000;
-        int heartInit = 5;
-        BattleManager = new BattleLogicManager(Mapname, goldInit, heartInit);
-        UIManager.ShowScreen(ESCREEN.IN_BATTLE);
-        Debug.Log("BEGIN_BATTLE");
+            Debug.Log("CONTINUE_OLD_BATTLE");
+        }
+        
     }
 
     public void CreateWave()
@@ -103,7 +132,7 @@ public class GameManager : MonoBehaviour
 
     public void OnEnemyDie(long goldBonus)
     {
-        BattleManager?.OnEnemyDie();
+        BattleManager?.OnEnemyDie(goldBonus);
     }
 
     public void OnEnemyEscape()
@@ -112,16 +141,39 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Người chơi chủ động thoát trận đánh -> không lưu
+    /// Người chơi chủ động thoát trận đánh -> không lưu -> quay về menu
     /// </summary>
-    public void PlayerEndBatte()
+    public void PlayerReturnMenu()
     {
         //Remove All save data
-
+        DataManager.Instance.RemoveAllDataSave();
         //Reset info battle in game
         MapManager = null;
         WaveManager = null;
         BattleManager = null;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OnPlayerRestartBattle()
+    {
+        dataBackUp = DataManager.Instance.GetDataSave();
+        if (dataBackUp != null) {
+            long goldInit = dataBackUp.CurrentGold;
+            int heartInit = dataBackUp.CurrentHeart;
+            BattleManager = new BattleLogicManager(dataBackUp.Mapname, goldInit, heartInit);
+            TurretManager.InitMapFromData(dataBackUp);
+            UIManager.ShowScreen(ESCREEN.IN_BATTLE);
+        }
+    }
+
+    public bool IsCanBuildTurret(long turretCost, string turretName, out string errorMessage)
+    {
+        if (BattleManager == null)
+        {
+            errorMessage = "Không trong trận !";
+            return false;
+        }
+        return BattleManager.IsCanBuildTurret(turretCost, turretName, out errorMessage);
     }
 
     #endregion
