@@ -13,6 +13,7 @@ public class AttackTurretEnemy : EnemyBase
     protected float enemyTurretDamage;
     protected float attackRange;
     protected float attackSpeed;
+    [SerializeField]
     protected float bulletSpeed;
     protected int baseTurretID;
     private Transform turretTarget;
@@ -57,8 +58,9 @@ public class AttackTurretEnemy : EnemyBase
             if(moveLocations.Count == locationIndex + 1)
             {
                 enemyStateMachine.TransitionTo(deadState);
-                OnDead();
                 GameManager.Instance.OnEnemyEscape();
+                GameManager.Instance.EnemyManager.RemoveEnemyFromDic(enemyInGameID);
+                OnDead();
                 return;
             }
             Move(moveLocations[locationIndex]);
@@ -157,7 +159,8 @@ public class AttackTurretEnemy : EnemyBase
     {
         if (!GameManager.Instance.MapManager.HasTurret(baseTurretID))
         {
-            //isTargetBeingDestroy = true;
+            Debug.Log("a");
+            isTargetBeingDestroy = true;
         }
     }
 
