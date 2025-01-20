@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -63,11 +64,6 @@ public class AttackTurretEnemy : EnemyBase
         {
             if(turretTarget != null)
             {
-                if (CalculateDistance(transform.position, turretTarget.position) < attackRange + 6)
-                {
-                    enemyAgent.speed = 2;
-                    Debug.Log("a");
-                }
                 if (CalculateDistance(transform.position, turretTarget.position) < attackRange)
                 {
                     enemyAgent.isStopped = true;
@@ -83,9 +79,8 @@ public class AttackTurretEnemy : EnemyBase
         attackState = enemyStateMachine.CreateState("attack");
         attackState.onEnter = delegate
         {
-            CheckTarget();
-            timer = Time.time + 1;
-            transform.LookAt(turretTarget.position);
+            timer = Time.time + 2;
+            Invoke("RotateEnemy", 1);
         };
             attackState.onFrame = delegate
         {
@@ -104,11 +99,14 @@ public class AttackTurretEnemy : EnemyBase
         };
         deadState = enemyStateMachine.CreateState("dead");
     }
+    private void RotateEnemy()
+    {
+        transform.LookAt(new Vector3(turretTarget.position.x, shootPos.transform.position.y, turretTarget.position.z));
+    }
 
     private void Attack()
     {
         bulletPool.SetPosition(shootPos);
-        Debug.Log(shootPos.position);
         bulletPool.Pool.Get();
         Invoke("DamageTurret", attackRange / bulletSpeed);
     }

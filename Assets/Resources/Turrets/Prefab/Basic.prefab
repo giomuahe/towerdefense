@@ -183,8 +183,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.0090404, y: 1.18827, z: 3.0090404}
-  m_Center: {x: -0.00000023841858, y: 0.5941346, z: 0}
+  m_Size: {x: 3.0090404, y: 1.18827, z: 2.2959373}
+  m_Center: {x: -0.00000023841858, y: 0.5941346, z: -0.35655153}
 --- !u!1 &1336351858412758671
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,9 +428,6 @@ MonoBehaviour:
   UpgradeList: 
   currentHp: 0
   enemyTargetLayermark:
-    serializedVersion: 2
-    m_Bits: 0
-  enemyOriginLayermark:
     serializedVersion: 2
     m_Bits: 0
   bulletPrefab: {fileID: 1878987882032996, guid: 6e6b30f5f3ccad547be13de240ff463c, type: 3}
@@ -920,8 +917,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7953677, y: 2.892294, z: 3.58}
-  m_Center: {x: 0.20553696, y: 1.0006058, z: 0.5}
+  m_Size: {x: 1.7953677, y: 2.892294, z: 1.9977889}
+  m_Center: {x: 0.20553696, y: 1.0006058, z: -0.0039994717}
 --- !u!1 &9164996620423433534
 GameObject:
   m_ObjectHideFlags: 0
