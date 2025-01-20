@@ -22,4 +22,5 @@ MonoBehaviour:
   TurretType: 1
   Cost: 10
   prefabName: BasicTurret
+  bulletPrefabPath: BasicBullet
   UpgradeList: 040000000200000006000000

@@ -10,6 +10,7 @@ public class LoadPrefab
 
     private const string LINK_UI_PREFAB = "UItest/Prefab/";
     private const string LINK_TURRET_PREFAB = "Turrets/Prefab/";
+    
 
     public Dictionary<TurretType, string> TurretPrefabDic;
 
@@ -29,14 +30,6 @@ public class LoadPrefab
         turret = Resources.Load<GameObject>(LINK_TURRET_PREFAB + TurretPrefabDic[turretType]);
         return turret;
     }
-
-    public GameObject LoadSelecTurretButton()
-    {
-        GameObject button = null;
-        button = Resources.Load<GameObject>(LINK_UI_PREFAB + "SelectTurretButton");
-
-        return button;
-
-    }
+   
 
 }

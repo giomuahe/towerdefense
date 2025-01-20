@@ -18,8 +18,9 @@ MonoBehaviour:
   AtkDamage: 50
   AtkSpeed: 5
   AtkRange: 15
-  BulletSpeed: 30
+  BulletSpeed: 20
   TurretType: 2
   Cost: 20
   prefabName: GatlingTurret1
+  bulletPrefabPath: GatlingBullet1
   UpgradeList: 03000000

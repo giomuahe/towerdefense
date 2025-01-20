@@ -17,9 +17,10 @@ MonoBehaviour:
   TurretHealth: 3000
   AtkDamage: 300
   AtkSpeed: 1
-  AtkRange: 20
-  BulletSpeed: 30
+  AtkRange: 80
+  BulletSpeed: 20
   TurretType: 5
   Cost: 40
   prefabName: SnipperTurret2
+  bulletPrefabPath: SniperBullet2
   UpgradeList: 

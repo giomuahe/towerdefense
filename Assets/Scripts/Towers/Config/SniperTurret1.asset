@@ -22,4 +22,5 @@ MonoBehaviour:
   TurretType: 4
   Cost: 20
   prefabName: SnipperTurret1
+  bulletPrefabPath: SniperBullet1
   UpgradeList: 05000000

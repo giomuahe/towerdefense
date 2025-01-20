@@ -415,25 +415,13 @@ MonoBehaviour:
   aimTransform: {fileID: 6820517251746881942}
   target: {fileID: 0}
   firePos: {fileID: 2977833296553092547}
-  turretRig: {fileID: 0}
   turretConfig: {fileID: 11400000, guid: 79172427ca794814a99ddc9219cbaf7f, type: 2}
-  TurretMain: {fileID: 0}
-  TurretName: 
-  TurretDescription: 
-  TurretHealth: 0
-  AtkDamage: 0
-  AtkSpeed: 0
-  AtkRange: 0
-  TurretType: 1
-  UpgradeList: 
   currentHp: 0
   enemyTargetLayermark:
     serializedVersion: 2
     m_Bits: 0
-  enemyOriginLayermark:
-    serializedVersion: 2
-    m_Bits: 0
-  bulletPrefab: {fileID: 1878987882032996, guid: 6e6b30f5f3ccad547be13de240ff463c, type: 3}
+  attackCooldown: 0
+  bulletPrefab: {fileID: 0}
 --- !u!1 &4345764307537188778
 GameObject:
   m_ObjectHideFlags: 0

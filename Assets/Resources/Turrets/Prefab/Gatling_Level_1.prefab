@@ -886,7 +886,7 @@ GameObject:
   - component: {fileID: 1607773016286929400}
   - component: {fileID: 2972359883729530101}
   - component: {fileID: 1107800368554434786}
-  - component: {fileID: 1143414252619516542}
+  - component: {fileID: 2926848830739093168}
   m_Layer: 0
   m_Name: Gatling_Level_1
   m_TagString: Untagged
@@ -970,7 +970,7 @@ MonoBehaviour:
   - m_Rig: {fileID: 2184603213174181654}
     m_Active: 1
   m_Effectors: []
---- !u!114 &1143414252619516542
+--- !u!114 &2926848830739093168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -979,29 +979,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8901971783860783522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c0392197c87074998334736768243d, type: 3}
+  m_Script: {fileID: 11500000, guid: e0aa5b2c72751cf43b60a56e0f4808f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
   aimTransform: {fileID: 4871882455758297126}
   target: {fileID: 0}
   firePos: {fileID: 4179566924824081031}
-  turretRig: {fileID: 0}
   turretConfig: {fileID: 11400000, guid: c436a30a54915ac4c922a69c492652fa, type: 2}
-  TurretMain: {fileID: 0}
-  TurretName: 
-  TurretDescription: 
-  TurretHealth: 0
-  AtkDamage: 0
-  AtkSpeed: 0
-  AtkRange: 0
-  TurretType: 2
-  UpgradeList: 
   currentHp: 0
   enemyTargetLayermark:
     serializedVersion: 2
     m_Bits: 0
-  enemyOriginLayermark:
-    serializedVersion: 2
-    m_Bits: 0
+  attackCooldown: 0
   bulletPrefab: {fileID: 0}

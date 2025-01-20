@@ -59,7 +59,7 @@ public class TurretManager : MonoBehaviour
         {
             GameObject turret = TurretOnMapDic[id];
             Turret currentturret = turret.GetComponent<Turret>();
-            return currentturret.UpgradeList;
+            return currentturret.GetListTypeTurretUpgrade();
         }
         else
         {
