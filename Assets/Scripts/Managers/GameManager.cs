@@ -151,6 +151,7 @@ public class GameManager : MonoBehaviour
         MapManager = null;
         WaveManager = null;
         BattleManager = null;
+        GameManager.Instance.UIManager.ShowScreen(ESCREEN.LOBBY);
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -208,7 +209,10 @@ public class GameManager : MonoBehaviour
     {
         print("LOADED SCENE " + scene.name);
         if (scene.name.Equals("MainMenu"))
+        {
+            //GameManager.Instance.UIManager.ShowScreen(ESCREEN.LOBBY);
             return;
+        }
         string mapname = scene.name;
         BeginNewBattle(mapname);
     }
