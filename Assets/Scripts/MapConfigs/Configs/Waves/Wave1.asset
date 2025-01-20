@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Wave1
   m_EditorClassIdentifier: 
   enemies:
-  - type: 0
+  - type: 1
     amount: 5
     spawnDelay: 2

@@ -10,8 +10,6 @@ public class ObjectPooling: MonoBehaviour
     public void CreateNewObjectPool(GameObject prefab)
     {
         Pool = new ObjectPool<GameObject>(CreatePool, OnGetFromPool, OnReleaseFromPool, OnDestroyObject, true, 1000, 10000);
-        print("ALL POOL " + Pool.CountAll);
-        print("ALL POOL ACTIVE " + Pool.CountActive);
         this.prefab = prefab;
     }
 
@@ -28,7 +26,7 @@ public class ObjectPooling: MonoBehaviour
     private void OnGetFromPool(GameObject instance)
     {
         instance.transform.position = parentTranform.position;
-        instance.transform.right = parentTranform.right;
+        instance.transform.rotation = parentTranform.rotation;
         // Set active for object
         instance.gameObject.SetActive(true);
     }
