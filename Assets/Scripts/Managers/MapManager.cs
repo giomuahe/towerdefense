@@ -131,6 +131,7 @@ namespace Managers
         public List<Vector3> GetRandomWaypoints()
         {
             int groupKey = Random.Range(0, 2);
+            Debug.Log("RANDOM " + groupKey);
             return _waypointsDict[groupKey];
         }
 
