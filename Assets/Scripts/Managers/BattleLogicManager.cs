@@ -15,7 +15,7 @@ namespace Assets.Scripts.Managers
     /// <summary>
     /// Quản lý luồng logic khi vào scene "MAP"
     /// </summary>
-    public class BattleLogicManager: MonoBehaviour
+    public class BattleLogicManager
     {
         //Core variable
         private string mapname = "";
