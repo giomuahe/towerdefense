@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2085597618219751694}
   - component: {fileID: -3451154186191488964}
   - component: {fileID: -7525986128040172851}
+  - component: {fileID: 2296678659790634002}
   m_Layer: 3
   m_Name: Turret_Base
   m_TagString: Turret Base
@@ -157,3 +158,35 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.18, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &2296678659790634002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4467630842506281840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c0392197c87074998334736768243d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  aimTransform: {fileID: 0}
+  target: {fileID: 0}
+  firePos: {fileID: 0}
+  turretRig: {fileID: 0}
+  turretConfig: {fileID: 11400000, guid: 4d1b1cb9cca82c04a9aa408777e668d9, type: 2}
+  TurretMain: {fileID: 0}
+  TurretName: 
+  TurretDescription: 
+  TurretHealth: 0
+  AtkDamage: 0
+  AtkSpeed: 0
+  AtkRange: 0
+  TurretType: 0
+  UpgradeList: 
+  currentHp: 0
+  enemyTargetLayermark:
+    serializedVersion: 2
+    m_Bits: 0
+  bulletPrefab: {fileID: 0}

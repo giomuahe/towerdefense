@@ -9,6 +9,8 @@ namespace Managers
     {
         public MapConfig mapConfig;
         private readonly Dictionary<int, TurretBase> _turretBases = new Dictionary<int, TurretBase>();
+        //Dictionary contains 2 group of waypoint lists: Key = 0 : groupA, Key = 1 : groupB
+        private readonly Dictionary<int, List<Vector3>> _waypointsDict = new Dictionary<int, List<Vector3>>();
 
         public static MapManager Instance { get; private set; }
 
@@ -22,6 +24,7 @@ namespace Managers
             {
                 Destroy(gameObject);
             }
+            CreateWaypointsDictionary();
         }
 
         public void RegisterTurretBase(int baseId, TurretBase turretBase)
@@ -37,6 +40,31 @@ namespace Managers
             }
         }
 
+        private void CreateWaypointsDictionary()
+        {
+            _waypointsDict.Clear();
+            if (mapConfig == null)
+            {
+                return;
+            }
+
+            foreach (WaypointsGroup group in mapConfig.waypointsGroups)
+            {
+                if (group != null)
+                {
+                    if (group.waypoints != null && group.waypoints.Count > 0)
+                    {
+                        _waypointsDict[group.groupId] = new List<Vector3>(group.waypoints);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Waypoints group {group.groupId} ('{group.groupName}') is empty.");
+                    }
+                }
+            }
+            Debug.Log($"Waypoint Dictionary created with {_waypointsDict.Count} groups.");
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -49,9 +77,8 @@ namespace Managers
                 Debug.LogError("Turret base is missing or invalid!");
                 return;
             }
-
-            turretBase.Turret = turret;
             turretBase.TurretType = turretType;
+            turretBase.Turret = turret;
             _turretBases[baseId] = turretBase;
         }
 
@@ -101,19 +128,42 @@ namespace Managers
         
         public List<Vector3> GetWaypoints()
         {
-            return mapConfig.waypoints;
+            return mapConfig.waypointsGroupA;
         }
 
-        public int GetMainGateHealth()
+        public List<Vector3> GetWaypointsB()
         {
-            return mapConfig.mainGateHealth;
+            return mapConfig.waypointsGroupB;
         }
 
-        public int GetStartingGold()
+        public List<Vector3> GetRandomWaypoints()
         {
-            return mapConfig.startingGold;
+            int groupKey = Random.Range(0, 2);
+            Debug.Log("RANDOM " + groupKey);
+            return _waypointsDict[groupKey];
         }
-        
+
+        public List<Vector3> GetRandomWaypointsGroup()
+        {
+            if (_waypointsDict.Count == 0)
+            {
+                Debug.LogError("No waypoints group available!");
+                return null;
+            }
+            
+            List<int> groupKeys = new List<int>(_waypointsDict.Keys);
+            
+            int randomIndex = Random.Range(0, groupKeys.Count);
+            int selectedGroupKey = groupKeys[randomIndex];
+
+            if (_waypointsDict.TryGetValue(selectedGroupKey, out List<Vector3> waypointList))
+            {
+                return waypointList;
+            }
+            
+            return new List<Vector3>();
+        }
+
         /// <summary>
         /// Enemy bi tieu diet
         /// </summary>
@@ -128,6 +178,17 @@ namespace Managers
 
         }
 
-        
+
+        public int GetStartingGold()
+        {
+            //TODO
+            return mapConfig.startingGold;
+        }
+
+        public int GetMainGateHealth()
+        {
+            //TODO
+            return mapConfig.nexusHealth;
+        }
     }
 }

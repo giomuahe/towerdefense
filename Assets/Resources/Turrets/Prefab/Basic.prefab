@@ -210,7 +210,7 @@ Transform:
   m_GameObject: {fileID: 1336351858412758671}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 0, z: 2.11}
+  m_LocalPosition: {x: -0.13, y: 0.16, z: 1.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -415,9 +415,6 @@ MonoBehaviour:
   aimTransform: {fileID: 6820517251746881942}
   target: {fileID: 0}
   firePos: {fileID: 2977833296553092547}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
   turretRig: {fileID: 0}
   turretConfig: {fileID: 11400000, guid: 79172427ca794814a99ddc9219cbaf7f, type: 2}
   TurretMain: {fileID: 0}
@@ -427,9 +424,15 @@ MonoBehaviour:
   AtkDamage: 0
   AtkSpeed: 0
   AtkRange: 0
-  TurretType: 0
+  TurretType: 1
   UpgradeList: 
   currentHp: 0
+  enemyTargetLayermark:
+    serializedVersion: 2
+    m_Bits: 0
+  enemyOriginLayermark:
+    serializedVersion: 2
+    m_Bits: 0
   bulletPrefab: {fileID: 1878987882032996, guid: 6e6b30f5f3ccad547be13de240ff463c, type: 3}
 --- !u!1 &4345764307537188778
 GameObject:

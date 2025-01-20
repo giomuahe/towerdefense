@@ -47,17 +47,10 @@ MonoBehaviour:
   turretConfigs:
   - {fileID: 11400000, guid: 4d1b1cb9cca82c04a9aa408777e668d9, type: 2}
   - {fileID: 11400000, guid: 79172427ca794814a99ddc9219cbaf7f, type: 2}
-  - {fileID: 11400000, guid: dbd6116225f748f4d9c6d77cdfd40ead, type: 2}
   - {fileID: 11400000, guid: c436a30a54915ac4c922a69c492652fa, type: 2}
-  - {fileID: 11400000, guid: 74f7335836e5b6f4ebb490d63e1eb080, type: 2}
-  - {fileID: 11400000, guid: da4611bfe1433694ab28521687b0ed6f, type: 2}
-  - {fileID: 11400000, guid: fa17182ec6ee1824eb6acbd81859b30a, type: 2}
+  - {fileID: 11400000, guid: 7feaa3f6fdf4eec4490bb743ae762d76, type: 2}
   - {fileID: 11400000, guid: 1b57e92bd8c992b4cab23816042f2050, type: 2}
-  - {fileID: 11400000, guid: 86487d2b3142876488c71b0f304ef35e, type: 2}
-  TurretTransformsList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 924a3a4f9f3bbcc4caf488d3b202f84f, type: 2}
+  - {fileID: 11400000, guid: fa17182ec6ee1824eb6acbd81859b30a, type: 2}
+  - {fileID: 11400000, guid: 0452c268f5c0e6d4dbfdfd4dfc3daa4a, type: 2}
+  - {fileID: 11400000, guid: f9f05e61cd689a942be8bccd01528155, type: 2}

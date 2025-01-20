@@ -17,7 +17,8 @@ MonoBehaviour:
   TurretHealth: 4000
   AtkDamage: 50
   AtkSpeed: 0.3
-  AtkRange: 8
+  AtkRange: 15
+  BulletSpeed: 30
   TurretType: 3
   Cost: 40
   prefabName: GatlingTurret2
