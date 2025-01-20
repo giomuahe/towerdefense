@@ -29,7 +29,12 @@ public class AttackTurretEnemy : EnemyBase
     [SerializeField]
     private Transform shootPos;
 
-    private float timer;
+    [SerializeField]
+    private float rotationSpeed;
+
+    private float attackTimer;
+
+    private float rotationTimer;
 
     public override void SetUp(EnemyConfig enemyConfig, List<Vector3> moveLocations, int enemyInGameID)
     {
@@ -79,21 +84,25 @@ public class AttackTurretEnemy : EnemyBase
         attackState = enemyStateMachine.CreateState("attack");
         attackState.onEnter = delegate
         {
-            timer = Time.time + 2;
-            Invoke("RotateEnemy", 1);
+            attackTimer = Time.time + 2;
+            rotationTimer = Time.time + 2;
         };
-            attackState.onFrame = delegate
+        attackState.onFrame = delegate
         {
+            if(rotationTimer > Time.time)
+            {
+                RotateEnemy();
+            }
             if (isTargetBeingDestroy)
             {
                 enemyStateMachine.TransitionTo(moveState);
             }
             else
             {
-                if (timer + 1/attackSpeed < Time.time)
+                if (attackTimer + 1/attackSpeed < Time.time)
                 {
                     Attack();
-                    timer = Time.time;
+                    attackTimer = Time.time;
                 }
             }
         };
@@ -101,7 +110,10 @@ public class AttackTurretEnemy : EnemyBase
     }
     private void RotateEnemy()
     {
-        transform.LookAt(new Vector3(turretTarget.position.x, shootPos.transform.position.y, turretTarget.position.z));
+
+        Vector3 direction = turretTarget.position - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime*rotationSpeed);
     }
 
     private void Attack()
