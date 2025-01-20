@@ -15,9 +15,9 @@ MonoBehaviour:
   TurretName: Heavy Gatling
   TurretDescription: ssss
   TurretHealth: 4000
-  AtkDamage: 0
+  AtkDamage: 20
   AtkSpeed: 5
-  AtkRange: 30
+  AtkRange: 20
   BulletSpeed: 30
   TurretType: 3
   Cost: 40

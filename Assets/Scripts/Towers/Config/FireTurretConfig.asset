@@ -15,7 +15,7 @@ MonoBehaviour:
   TurretName: Flamer
   TurretDescription: ssss
   TurretHealth: 6000
-  AtkDamage: 0
+  AtkDamage: 20
   AtkSpeed: 1
   AtkRange: 8
   BulletSpeed: 0

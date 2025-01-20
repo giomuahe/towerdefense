@@ -143,9 +143,7 @@ public class TurretBullet : MonoBehaviour
        
         bool isEnemyDie;
         GameManager.Instance.EnemyManager.SendDamage(enemyTakedame.EnemyID(), damage, out isEnemyDie);
-        if(isEnemyDie || target==null){
-            Destroy(this.gameObject);
-        }
+       
         // EnemyDemo enemyDemo= enemy.GetComponent<EnemyDemo>();
         // enemyDemo.TakeDamage(damage);
         Destroy(this.gameObject);
