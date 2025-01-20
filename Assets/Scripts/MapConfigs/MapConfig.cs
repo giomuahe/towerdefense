@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -28,9 +29,18 @@ namespace MapConfigs
         [Header("Wave Settings")]
         public List<WaveConfig> waves;
         
+        [Header("Waypoints List")]
+        public List<WaypointsGroup> waypointsGroups;
+        
         [Header("Waypoints Settings")]
         public List <Vector3> waypointsGroupA;
         public List <Vector3> waypointsGroupB;
+        
+        [Header("Starting Gold")]
+        public int startingGold;
+        
+        [Header("Nexus's Health")]
+        public int nexusHealth;
 
         //[Header("Waypoints Settings 1")]
         //public Dictionary<int2, List<Vector3>> wayPoints0;

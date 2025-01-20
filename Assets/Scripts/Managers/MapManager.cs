@@ -43,18 +43,26 @@ namespace Managers
         private void CreateWaypointsDictionary()
         {
             _waypointsDict.Clear();
-            if (mapConfig != null)
+            if (mapConfig == null)
             {
-                if(mapConfig.waypointsGroupA != null)
-                    _waypointsDict[0] = new List<Vector3>(mapConfig.waypointsGroupA);
-                else 
-                    _waypointsDict[0] = new List<Vector3>();
-                
-                if (mapConfig.waypointsGroupB != null)
-                    _waypointsDict[1] = new List<Vector3>(mapConfig.waypointsGroupB);
-                else 
-                    _waypointsDict[1] = new List<Vector3>();
+                return;
             }
+
+            foreach (WaypointsGroup group in mapConfig.waypointsGroups)
+            {
+                if (group != null)
+                {
+                    if (group.waypoints != null && group.waypoints.Count > 0)
+                    {
+                        _waypointsDict[group.groupId] = new List<Vector3>(group.waypoints);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Waypoints group {group.groupId} ('{group.groupName}') is empty.");
+                    }
+                }
+            }
+            Debug.Log($"Waypoint Dictionary created with {_waypointsDict.Count} groups.");
         }
 
         /// <summary>
@@ -135,6 +143,27 @@ namespace Managers
             return _waypointsDict[groupKey];
         }
 
+        public List<Vector3> GetRandomWaypointsGroup()
+        {
+            if (_waypointsDict.Count == 0)
+            {
+                Debug.LogError("No waypoints group available!");
+                return null;
+            }
+            
+            List<int> groupKeys = new List<int>(_waypointsDict.Keys);
+            
+            int randomIndex = Random.Range(0, groupKeys.Count);
+            int selectedGroupKey = groupKeys[randomIndex];
+
+            if (_waypointsDict.TryGetValue(selectedGroupKey, out List<Vector3> waypointList))
+            {
+                return waypointList;
+            }
+            
+            return new List<Vector3>();
+        }
+
         /// <summary>
         /// Enemy bi tieu diet
         /// </summary>
@@ -153,13 +182,13 @@ namespace Managers
         public int GetStartingGold()
         {
             //TODO
-            return 0;
+            return mapConfig.startingGold;
         }
 
         public int GetMainGateHealth()
         {
             //TODO
-            return 0;
+            return mapConfig.nexusHealth;
         }
     }
 }
