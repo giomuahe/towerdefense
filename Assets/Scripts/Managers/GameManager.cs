@@ -72,7 +72,9 @@ public class GameManager : MonoBehaviour
             string msg = string.Format("Bạn đang ở tiến trình ({0}, wave {1}), bạn có muốn tiếp tục ?", dataBackUp.Mapname, dataBackUp.CurrentWave);
             GameManager.Instance.UIManager.ShowPopup(EPOPUP.COMMAND_POPUP, EMESSAGETYPE.MESSAGE, "CHÚ Ý", msg, () => {
                 isContinueOldMap = true;
-                SceneManager.LoadScene(dataBackUp.Mapname);
+
+                //SceneManager.LoadScene(dataBackUp.Mapname);
+                GameManager.Instance.UIManager.LoadScene(dataBackUp.Mapname, ESCREEN.IN_BATTLE);
             });
         }
     }
@@ -151,8 +153,9 @@ public class GameManager : MonoBehaviour
         MapManager = null;
         WaveManager = null;
         BattleManager = null;
-        GameManager.Instance.UIManager.ShowScreen(ESCREEN.LOBBY);
-        SceneManager.LoadScene("MainMenu");
+        //GameManager.Instance.UIManager.ShowScreen(ESCREEN.LOBBY);
+        //SceneManager.LoadScene("MainMenu");
+        GameManager.Instance.UIManager.LoadScene("MainMenu", ESCREEN.LOBBY);
     }
 
     public void OnPlayerRestartBattle()

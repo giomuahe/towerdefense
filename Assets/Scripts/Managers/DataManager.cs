@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Managers
 {
-    public class DataManager : MonoBehaviour
+    public class DataManager 
     {
         private const string KEY_SAVE = "DATA_MAP_SAVE";
 
