@@ -32,9 +32,9 @@ namespace MapConfigs
         [Header("Waypoints List")]
         public List<WaypointsGroup> waypointsGroups;
         
-        [Header("Waypoints Settings")]
-        public List <Vector3> waypointsGroupA;
-        public List <Vector3> waypointsGroupB;
+        //[Header("Waypoints Settings")]
+        //public List <Vector3> waypointsGroupA;
+        //public List <Vector3> waypointsGroupB;
         
         [Header("Starting Gold")]
         public int startingGold;

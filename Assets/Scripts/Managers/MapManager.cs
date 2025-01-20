@@ -126,22 +126,22 @@ namespace Managers
             return mapConfig.waves.Count;
         }
         
-        public List<Vector3> GetWaypoints()
-        {
-            return mapConfig.waypointsGroupA;
-        }
+        //public List<Vector3> GetWaypoints()
+        //{
+        //    return mapConfig.waypointsGroupA;
+        //}
 
-        public List<Vector3> GetWaypointsB()
-        {
-            return mapConfig.waypointsGroupB;
-        }
+        //public List<Vector3> GetWaypointsB()
+        //{
+        //    return mapConfig.waypointsGroupB;
+        //}
 
-        public List<Vector3> GetRandomWaypoints()
-        {
-            int groupKey = Random.Range(0, 2);
-            Debug.Log("RANDOM " + groupKey);
-            return _waypointsDict[groupKey];
-        }
+        //public List<Vector3> GetRandomWaypoints()
+        //{
+        //    int groupKey = Random.Range(0, 2);
+        //    Debug.Log("RANDOM " + groupKey);
+        //    return _waypointsDict[groupKey];
+        //}
 
         public List<Vector3> GetRandomWaypointsGroup()
         {
