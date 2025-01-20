@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class HS_ParticleCollisionInstance : MonoBehaviour
 {
     public GameObject[] EffectsOnCollision;
-    public float DestroyTimeDelay = 5;
+    public float DestroyTimeDelay = 8;
     public bool UseWorldSpacePosition;
     public float Offset = 0;
     public Vector3 rotationOffset = new Vector3(0,0,0);

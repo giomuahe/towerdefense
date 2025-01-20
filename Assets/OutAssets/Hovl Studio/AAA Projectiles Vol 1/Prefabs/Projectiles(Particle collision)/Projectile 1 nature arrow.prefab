@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4794695279049978}
   - component: {fileID: 198544944858923864}
   - component: {fileID: 199874304870013176}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Waves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4848,7 +4848,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9047e616b5b02b745a5ae38f15567adc, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4912,7 +4911,7 @@ GameObject:
   - component: {fileID: 4039616711004404}
   - component: {fileID: 198362454088448860}
   - component: {fileID: 199589577870613834}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9758,7 +9757,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9aaa13d175bcf1c4b8acc4d930ee06ee, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9824,7 +9822,7 @@ GameObject:
   - component: {fileID: 114180493908109616}
   - component: {fileID: 199555391388218598}
   - component: {fileID: -7369829299446318568}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Projectile 1 nature arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9841,8 +9839,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4794695279049978}
   - {fileID: 4816910967890968}
@@ -9988,7 +9986,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -14657,7 +14655,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168065043843762}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a959a1b0b8414d4fb8a68bdc12d69ed, type: 3}
   m_Name: 
@@ -14693,7 +14691,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 6e3575b5e481bdb459b64fc1c0f445be, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14769,7 +14766,7 @@ GameObject:
   - component: {fileID: 4463937287572274}
   - component: {fileID: 198921755268963764}
   - component: {fileID: 199740277830324614}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SubSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19548,7 +19545,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9aaa13d175bcf1c4b8acc4d930ee06ee, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19612,7 +19608,7 @@ GameObject:
   - component: {fileID: 4816910967890968}
   - component: {fileID: 198205082277334854}
   - component: {fileID: 199045256733629516}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24391,7 +24387,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9aaa13d175bcf1c4b8acc4d930ee06ee, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24455,7 +24450,7 @@ GameObject:
   - component: {fileID: 4074339303465744}
   - component: {fileID: 198897898842092760}
   - component: {fileID: 199704690769407420}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29292,7 +29287,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 6df1fc7e055a3a449a00125fb6ff7325, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29356,7 +29350,7 @@ GameObject:
   - component: {fileID: 4412076118273836}
   - component: {fileID: 198656782477980160}
   - component: {fileID: 199195936075333242}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34193,7 +34187,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 85455188b71fea741bd0b80cbe893384, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

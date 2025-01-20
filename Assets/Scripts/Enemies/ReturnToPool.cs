@@ -7,8 +7,18 @@ using UnityEngine.Rendering.VirtualTexturing;
 public class ReturnToPool : MonoBehaviour
 {
     public ObjectPool<GameObject> Pool;
-    void OnParticleSystemStopped()
+    //void OnParticleSystemStopped()
+    //{
+    //    ReleaseBullet();   
+    //}
+
+    private void ReleaseBullet()
     {
-        Pool.Release(gameObject);   
+        Pool.Release(gameObject);
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        Pool.Release(gameObject);
     }
 }
