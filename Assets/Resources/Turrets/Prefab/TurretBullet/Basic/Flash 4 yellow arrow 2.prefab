@@ -4912,7 +4912,7 @@ GameObject:
   - component: {fileID: 198666176609352862}
   - component: {fileID: 199501107697264326}
   m_Layer: 0
-  m_Name: Flash 4 yellow arrow
+  m_Name: Flash 4 yellow arrow 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

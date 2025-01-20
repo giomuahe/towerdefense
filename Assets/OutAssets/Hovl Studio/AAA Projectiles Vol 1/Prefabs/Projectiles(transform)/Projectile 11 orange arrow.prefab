@@ -5198,6 +5198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flash 11 orange arrow
       objectReference: {fileID: 0}
+    - target: {fileID: 1198096198593678, guid: d2bf40a98ef3560439f0badec6115db3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4593384002465906, guid: d2bf40a98ef3560439f0badec6115db3, type: 3}
       propertyPath: m_RootOrder
       value: 1
