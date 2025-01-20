@@ -52,6 +52,7 @@ public class EnemyBase : MonoBehaviour
         {
             OnDead();
             GameManager.Instance.OnEnemyDie(goldDropAmount);
+            GameManager.Instance.EnemyManager.RemoveEnemyFromDic(enemyInGameID);
             isDie = true;
         }
     }
