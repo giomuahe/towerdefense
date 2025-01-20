@@ -36,10 +36,9 @@ public class LoadingScreenController : MonoBehaviour
                 progressBar.value = 1f;
                 asyncOperation.allowSceneActivation = true;
                 //Bật Screen lên sau khi tải xong scene
-                GameManager.Instance.UIManager.ShowScreen(afterScreen);
+                //GameManager.Instance.UIManager.ShowScreen(afterScreen);
             }
             yield return null;
-            
         }
     }
 }
