@@ -13,6 +13,7 @@ public class AttackTurretEnemy : EnemyBase
     protected float enemyTurretDamage;
     protected float attackRange;
     protected float attackSpeed;
+    [SerializeField]
     protected float bulletSpeed;
     protected int baseTurretID;
     private Transform turretTarget;
@@ -157,7 +158,8 @@ public class AttackTurretEnemy : EnemyBase
     {
         if (!GameManager.Instance.MapManager.HasTurret(baseTurretID))
         {
-            //isTargetBeingDestroy = true;
+            Debug.Log("a");
+            isTargetBeingDestroy = true;
         }
     }
 
