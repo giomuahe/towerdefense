@@ -128,7 +128,6 @@ public class TurretBullet : MonoBehaviour
             }else{
                 Destroy(gameObject);
             }
-            
         }
         Quaternion toRotation = Quaternion.LookRotation(target.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, rotateSpeed * Time.deltaTime);
