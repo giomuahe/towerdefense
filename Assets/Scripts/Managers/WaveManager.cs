@@ -42,7 +42,6 @@ namespace Managers
             _waves = new List<WaveConfig>(mapConfig.waves);
             _currentWaveIndex = -1;
             
-            Debug.Log($"Initialized {_waves.Count} wave");
         }
 
         public List<WaveConfig> GetWaves()
