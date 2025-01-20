@@ -15,10 +15,12 @@ MonoBehaviour:
   TurretName: Shot Gun
   TurretDescription: ssss
   TurretHealth: 4000
-  AtkDamage: 30
+  AtkDamage: 0
   AtkSpeed: 1
   AtkRange: 8
+  BulletSpeed: 0
   TurretType: 6
   Cost: 20
   prefabName: ShotgunTurret
+  bulletPrefabPath: 
   UpgradeList: 0800000007000000

@@ -15,7 +15,7 @@ MonoBehaviour:
   TurretName: Heavy Gatling
   TurretDescription: ssss
   TurretHealth: 4000
-  AtkDamage: 50
+  AtkDamage: 0
   AtkSpeed: 5
   AtkRange: 30
   BulletSpeed: 30

@@ -18,7 +18,9 @@ MonoBehaviour:
   AtkDamage: 0
   AtkSpeed: 0
   AtkRange: 0
+  BulletSpeed: 0
   TurretType: 0
   Cost: 0
   prefabName: Base
+  bulletPrefabPath: 
   UpgradeList: 01000000
