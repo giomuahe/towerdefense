@@ -291,7 +291,7 @@ Transform:
   m_GameObject: {fileID: 2404332853746717992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.86}
+  m_LocalPosition: {x: -0.11, y: 0.19, z: 2.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -791,22 +791,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c0392197c87074998334736768243d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   aimTransform: {fileID: 1882653195394493817}
   target: {fileID: 0}
   firePos: {fileID: 5135200733739561828}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
   turretRig: {fileID: 0}
   turretConfig: {fileID: 11400000, guid: c436a30a54915ac4c922a69c492652fa, type: 2}
+  TurretMain: {fileID: 0}
   TurretName: 
   TurretDescription: 
   TurretHealth: 0
   AtkDamage: 0
   AtkSpeed: 0
   AtkRange: 0
-  TurretType: 0
+  TurretType: 3
   UpgradeList: 
+  currentHp: 0
+  enemyTargetLayermark:
+    serializedVersion: 2
+    m_Bits: 0
+  enemyOriginLayermark:
+    serializedVersion: 2
+    m_Bits: 0
+  bulletPrefab: {fileID: 0}
 --- !u!1 &7333224023956496714
 GameObject:
   m_ObjectHideFlags: 0

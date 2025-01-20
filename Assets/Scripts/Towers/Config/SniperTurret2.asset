@@ -16,8 +16,9 @@ MonoBehaviour:
   TurretDescription: ssss
   TurretHealth: 3000
   AtkDamage: 300
-  AtkSpeed: 0.5
-  AtkRange: 17
+  AtkSpeed: 1
+  AtkRange: 20
+  BulletSpeed: 30
   TurretType: 5
   Cost: 40
   prefabName: SnipperTurret2

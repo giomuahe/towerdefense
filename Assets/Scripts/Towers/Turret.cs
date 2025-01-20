@@ -30,13 +30,6 @@ public class Turret : MonoBehaviour
 
     public float currentHp;
     
-    public void SetTurretConfig(TurretConfig config){
-
-    }
-    float nextAttackTime = 0;
-
-   
-
     protected void Start()
     {
 
@@ -73,7 +66,7 @@ public class Turret : MonoBehaviour
     {
         if (LostEnemy())
         {
-            target.gameObject.layer = LayerMask.NameToLayer("Enemy");
+           
             target = null;
         }
     }
@@ -97,7 +90,7 @@ public class Turret : MonoBehaviour
     {
         if (CanFindEnemy())
         {
-            Collider[] hits = Physics.OverlapSphere(transform.position, AtkRange, LayerMask.GetMask("Enemy"));
+            Collider[] hits = Physics.OverlapSphere(transform.position, AtkRange, enemyTargetLayermark);
             float shortestDistance = Mathf.Infinity;
             Transform nearestEnemy = null;
             foreach (var hit in hits)
@@ -133,7 +126,7 @@ public class Turret : MonoBehaviour
     {
         if (CanAim())
         {
-            target.gameObject.layer = LayerMask.NameToLayer("EnemyTarget"); // Đổi Layer khi bị Aim
+           
             aimTransform.position = target.position;
             turretRig.weight = 1;
             TryToAttack();
@@ -212,7 +205,7 @@ public class Turret : MonoBehaviour
     //     objectPooling.Pool.Get();
     // }
     public LayerMask enemyTargetLayermark;
-    public LayerMask enemyOriginLayermark;
+    
     public void Attack()
     {
 
@@ -246,8 +239,8 @@ public class Turret : MonoBehaviour
     {
         target = null;
         LoadConfig();
-        enemyTargetLayermark = LayerMask.GetMask("EnemyTarget");
-        enemyOriginLayermark = LayerMask.GetMask("EnemyTarget");
+        enemyTargetLayermark = LayerMask.GetMask("Enemy");
+        
         currentHp = TurretHealth;
         attackCooldown = 0;
     }
@@ -258,6 +251,8 @@ public class Turret : MonoBehaviour
         GameObject bulletObj = Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
         TurretBullet turretBullet = bulletObj.GetComponent<TurretBullet>();
         turretBullet.SetTarget(target);
+        GameObject muzzleEffect= Instantiate(turretBullet.flash, firePos.position, firePos.rotation);
+        Destroy(muzzleEffect,1);
     }
  
 }

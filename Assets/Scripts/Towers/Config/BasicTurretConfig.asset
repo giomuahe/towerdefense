@@ -16,8 +16,9 @@ MonoBehaviour:
   TurretDescription: ssss
   TurretHealth: 3000
   AtkDamage: 40
-  AtkSpeed: 1
-  AtkRange: 8
+  AtkSpeed: 2
+  AtkRange: 15
+  BulletSpeed: 10
   TurretType: 1
   Cost: 10
   prefabName: BasicTurret
