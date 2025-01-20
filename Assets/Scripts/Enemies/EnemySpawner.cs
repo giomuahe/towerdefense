@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject spawnObj = Instantiate(enemyConfig.EnemyPrefab, spawnPos, Quaternion.identity);
         spawnObj.transform.SetParent(transform);
-        List<Vector3> moveLocations = GameManager.Instance.MapManager.GetWaypoints();
+        List<Vector3> moveLocations = GameManager.Instance.MapManager.GetRandomWaypointsGroup();
         spawnObj.GetComponent<EnemyBase>().SetUp(enemyConfig, moveLocations, enemyInGameID);
         enemyManager.AddEnemiesToDic(enemyInGameID, spawnObj.GetComponent<EnemyBase>());
         enemyInGameID++;

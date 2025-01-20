@@ -99,7 +99,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108728}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 82e0bf5e4d696a545bd78c7fcf9c5258, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   remainDistance: 0.5
   shootPos: {fileID: 7310134566789368608}
+  rotationSpeed: 2
 --- !u!195 &-7325731195864028011
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -167,7 +168,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 0.7453851
   m_BaseOffset: 0.37269256
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 0
 --- !u!1 &108964
 GameObject:
