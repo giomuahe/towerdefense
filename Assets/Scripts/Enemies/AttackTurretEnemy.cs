@@ -108,7 +108,6 @@ public class AttackTurretEnemy : EnemyBase
         };
         deadState = enemyStateMachine.CreateState("dead");
     }
-
     private void RotateEnemy()
     {
 
