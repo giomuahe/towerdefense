@@ -209,7 +209,7 @@ public class Turret : MonoBehaviour
     }
     public void Die()
     {
-
+        GameManager.Instance.TurretManager.RemoveTurret(this.id);
 
     }
     // public int bulletID = 102;
