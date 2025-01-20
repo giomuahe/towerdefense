@@ -53,7 +53,9 @@ public class Turret : MonoBehaviour
     {
         UpdateTarget();
         FindEnemy();
-        Aim();
+        if(firePos!= null){
+           Aim(); 
+        }
         
     }
    
