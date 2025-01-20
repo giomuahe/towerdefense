@@ -62,15 +62,16 @@ namespace Managers
         /// </summary>
         /// <param name="baseId"></param>
         /// <param name="turret"></param>
-        public void UpdateTurret(int baseId, GameObject turret)
+        public void UpdateTurret(int baseId, GameObject turret, TurretType turretType)
         {
             if (!_turretBases.TryGetValue(baseId, out var turretBase))
             {
                 Debug.LogError("Turret base is missing or invalid!");
                 return;
             }
-
+            turretBase.TurretType = turretType;
             turretBase.Turret = turret;
+            _turretBases[baseId] = turretBase;
         }
 
         public bool HasTurret(int baseId)
@@ -127,15 +128,11 @@ namespace Managers
             return mapConfig.waypointsGroupB;
         }
 
-        public Vector3 GetRandomWaypoints()
+        public List<Vector3> GetRandomWaypoints()
         {
             int groupKey = Random.Range(0, 2);
-            if (_waypointsDict.ContainsKey(groupKey) && _waypointsDict[groupKey].Count > 0)
-            {
-                int index = Random.Range(0, _waypointsDict[groupKey].Count);
-                return _waypointsDict[groupKey][index];
-            }
-            return Vector3.zero;
+            Debug.Log("RANDOM " + groupKey);
+            return _waypointsDict[groupKey];
         }
 
         /// <summary>
@@ -152,6 +149,17 @@ namespace Managers
 
         }
 
-        
+
+        public int GetStartingGold()
+        {
+            //TODO
+            return 0;
+        }
+
+        public int GetMainGateHealth()
+        {
+            //TODO
+            return 0;
+        }
     }
 }

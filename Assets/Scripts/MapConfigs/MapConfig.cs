@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -30,6 +31,8 @@ namespace MapConfigs
         [Header("Waypoints Settings")]
         public List <Vector3> waypointsGroupA;
         public List <Vector3> waypointsGroupB;
-        
-     }
+
+        //[Header("Waypoints Settings 1")]
+        //public Dictionary<int2, List<Vector3>> wayPoints0;
+    }
 }

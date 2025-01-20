@@ -11,7 +11,7 @@ namespace MapConfigs
         public MapConfig mapConfig;
         public MapManager mapManager;
 
-        private void Start()
+        private void OnEnable()
         {
             CreateMainGates();
             CreateSpawnGates();
