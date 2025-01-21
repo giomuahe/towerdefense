@@ -1,10 +1,11 @@
 using MapConfigs;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : MonoBehaviour, IHealthBar
 {
     protected float currentHealth;
     protected float enemyHealth;
@@ -20,7 +21,10 @@ public class EnemyBase : MonoBehaviour
     protected NavMeshAgent enemyAgent;
 
     protected int enemyInGameID;
-    
+    private bool isFirstTimeBeingAttack = false;
+
+    public event Action<float> OnHealthChange;
+
     protected virtual void Move(Vector3 destination)
     {
         enemyAgent.destination = destination;
@@ -46,6 +50,11 @@ public class EnemyBase : MonoBehaviour
 
     public void OnHit(float damage, out bool isDie)
     {
+        if (!isFirstTimeBeingAttack)
+        {
+            GameManager.Instance.UIManager.SpawnHealthBarUI(transform);
+            isFirstTimeBeingAttack = true;
+        }
         isDie = false;
         currentHealth -= damage;
         if(currentHealth <= 0)
@@ -55,6 +64,7 @@ public class EnemyBase : MonoBehaviour
             GameManager.Instance.EnemyManager.RemoveEnemyFromDic(enemyInGameID);
             isDie = true;
         }
+        OnHealthChange.Invoke(currentHealth/enemyHealth);
     }
 
     protected void OnDead()
