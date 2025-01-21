@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 108748884003691000}
   - component: {fileID: 114995049663184070}
   - component: {fileID: 4146503459264938286}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Projectile 2 electro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4983,7 +4983,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012013889074000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a959a1b0b8414d4fb8a68bdc12d69ed, type: 3}
   m_Name: 
@@ -5020,7 +5020,7 @@ GameObject:
   - component: {fileID: 4934370165718372}
   - component: {fileID: 198924715994770168}
   - component: {fileID: 199872423071219468}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Electricy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9862,7 +9862,7 @@ GameObject:
   - component: {fileID: 4931208691224916}
   - component: {fileID: 198455659842990038}
   - component: {fileID: 199873848260682962}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14762,7 +14762,7 @@ GameObject:
   - component: {fileID: 4325024073924268}
   - component: {fileID: 198497955254158760}
   - component: {fileID: 199828793836132508}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19604,7 +19604,7 @@ GameObject:
   - component: {fileID: 4218489906800202}
   - component: {fileID: 198253351984797162}
   - component: {fileID: 199603632862729700}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ElectroCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24504,7 +24504,7 @@ GameObject:
   - component: {fileID: 4528125470931582}
   - component: {fileID: 198938570337131512}
   - component: {fileID: 199672617330202170}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SparksUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
