@@ -68,6 +68,7 @@ public class AttackTurretEnemy : EnemyBase
                     enemyStateMachine.TransitionTo(attackState);
                 }
             }
+            Debug.Log(enemyAgent.remainingDistance);
             if (!enemyAgent.pathPending && enemyAgent.remainingDistance < remainDistance)
             {
                 if (moveLocations.Count == locationIndex + 1)
@@ -146,8 +147,6 @@ public class AttackTurretEnemy : EnemyBase
                 baseTurretID = turretBase.TurretBaseId;
             }
         }
-
-
         isTargetBeingDestroy = false;
     }
 
@@ -158,10 +157,10 @@ public class AttackTurretEnemy : EnemyBase
 
     private void CheckTarget()
     {
-        bool isTurretTargetDestroy = GameManager.Instance.MapManager.HasTurret(baseTurretID);
-        Debug.Log("CHECK_TURRET_TO_ATTACK " + baseTurretID + ", res = " + isTurretTargetDestroy);
         if (!GameManager.Instance.MapManager.HasTurret(baseTurretID))
         {
+            turretTarget = null;
+            enemyAgent.isStopped = false;
             isTargetBeingDestroy = true;
         }
     }
