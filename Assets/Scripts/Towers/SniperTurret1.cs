@@ -21,7 +21,7 @@ bulletPrefab= Resources.Load<GameObject>(LINK_TURRET_BULLET_PREFAB + turretConfi
         turretBullet.SetTarget(target);
          turretBullet.SetSpeed(BulletSpeed);
          turretBullet.SetDamage(AtkDamage);
-        GameObject muzzleEffect = Instantiate(turretBullet.GetFlash(), firePos.position, firePos.rotation);
-        Destroy(muzzleEffect, 1);
+        // // GameObject muzzleEffect = Instantiate(turretBullet.GetFlash(), firePos.position, firePos.rotation);
+        // Destroy(muzzleEffect, 1);
     }
 }

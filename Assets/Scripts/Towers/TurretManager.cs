@@ -23,7 +23,9 @@ public class TurretManager : MonoBehaviour
 
     }
 
-
+public void ClearTurrets(){
+    TurretOnMapDic.Clear();
+}
     void Start()
     {
 
