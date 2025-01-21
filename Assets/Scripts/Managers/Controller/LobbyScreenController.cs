@@ -43,19 +43,16 @@ public class LobbyScreenController : MonoBehaviour
 
     private void OnClickNewgame()
     {
-        print("click new game");
         GameManager.Instance.UIManager.ShowScreen(ESCREEN.CHOOSEMAP);
     }
 
     private void OnClickSetting()
     {
-        print("click setting");
         SettingPopup.Open();
     }
 
     private void OnClickAboutUs()
     {
-        print("click about us");
         AboutUsPopup.Open();
     }
 

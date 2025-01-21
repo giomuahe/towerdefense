@@ -10,26 +10,31 @@ using UnityEngine.Animations.Rigging;
 public class Turret : MonoBehaviour
 {
     public int id;
-    public Transform aimTransform;
-    public Transform target;
-    public Transform firePos;
-    
-    public Rig turretRig;
-    public TurretConfig turretConfig;
-    public GameObject TurretMain;
+    [SerializeField]
+    protected Transform aimTransform;
+    [SerializeField]
+    protected Transform target;
+    [SerializeField]
+    protected Transform firePos;
+
+    protected Rig turretRig;
+    [SerializeField]
+    protected TurretConfig turretConfig;
     // turret Property
-    public string TurretName;
-    public string TurretDescription;
-    public float TurretHealth;
-    public float AtkDamage;
-    public float AtkSpeed;
-    public float AtkRange;
-    public TurretType TurretType;
-    public List<TurretType> UpgradeList;
+    protected string TurretName;
+    protected string TurretDescription;
+    protected float TurretHealth;
+    protected float AtkDamage;
+    protected float AtkSpeed;
+    protected float AtkRange;
+    protected float BulletSpeed;
+    protected string BulletPath;
+    protected TurretType TurretType;
+    protected List<TurretType> UpgradeList;
 
 
     public float currentHp;
-    
+
     protected void Start()
     {
 
@@ -47,18 +52,24 @@ public class Turret : MonoBehaviour
         AtkRange = turretConfig.AtkRange;
         TurretType = turretConfig.TurretType;
         UpgradeList = turretConfig.UpgradeList;
+        BulletSpeed = turretConfig.BulletSpeed;
+        BulletPath = turretConfig.bulletPrefabPath;
     }
 
     void Update()
     {
         UpdateTarget();
         FindEnemy();
-        if(firePos!= null){
-           Aim(); 
+        if (firePos != null)
+        {
+            Aim();
         }
-        
+        if(attackCooldown<0){
+            attackCooldown=0;
+        }
+
     }
-   
+
 
     public void SetID(int currentId)
     {
@@ -68,26 +79,26 @@ public class Turret : MonoBehaviour
     {
         if (LostEnemy())
         {
-           
+            
             target = null;
+           
         }
     }
     bool LostEnemy()
-    { 
+    {
         if (target == null) return false;
         if (target != null)
         {
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
             if (distanceToTarget > AtkRange)
             {
-                
                 return true;
             }
             return false;
         }
         return false;
     }
-   
+
     void FindEnemy()
     {
         if (CanFindEnemy())
@@ -128,10 +139,15 @@ public class Turret : MonoBehaviour
     {
         if (CanAim())
         {
-           
+
             aimTransform.position = target.position;
             turretRig.weight = 1;
-            TryToAttack();
+            Vector3 directionToTarget = (target.position - firePos.position).normalized;
+
+            // Tính góc giữa hướng nòng súng và hướng đến mục tiêu
+            float angle = Vector3.Angle(firePos.forward, directionToTarget);
+            if (angle < 5f)
+                TryToAttack();
         }
         else
         {
@@ -139,8 +155,8 @@ public class Turret : MonoBehaviour
             turretRig.weight = 0;
         }
     }
-   
-    
+
+
     public bool CanAim()
     {
         if (target == null)
@@ -193,7 +209,7 @@ public class Turret : MonoBehaviour
     }
     public void Die()
     {
-        TurretMain.SetActive(false);
+        GameManager.Instance.TurretManager.RemoveTurret(this.id);
 
     }
     // public int bulletID = 102;
@@ -207,25 +223,16 @@ public class Turret : MonoBehaviour
     //     objectPooling.Pool.Get();
     // }
     public LayerMask enemyTargetLayermark;
-    
+
     public void Attack()
     {
-
-        RaycastHit hit;
-        if (Physics.Raycast(firePos.position, firePos.forward, out hit, AtkRange, enemyTargetLayermark))
-        {
-            if (hit.transform == target)
-            {
-                Debug.Log("shoot");
-                Fire();
-            }
-        }
-
+        Debug.Log("shoot");
+        Fire();
     }
-    private float attackCooldown;
+    public float attackCooldown;
     private void TryToAttack()
     {
-        if (target != null && attackCooldown <= 0f)
+        if (target != null && attackCooldown == 0f)
         {
             Attack();
             attackCooldown = 1f / AtkSpeed;
@@ -233,7 +240,7 @@ public class Turret : MonoBehaviour
         else
         {
             attackCooldown -= Time.deltaTime;
-            
+
         }
     }
 
@@ -242,19 +249,19 @@ public class Turret : MonoBehaviour
         target = null;
         LoadConfig();
         enemyTargetLayermark = LayerMask.GetMask("Enemy");
-        
         currentHp = TurretHealth;
         attackCooldown = 0;
+
     }
 
     public GameObject bulletPrefab;
     public virtual void Fire()
     {
-        GameObject bulletObj = Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
-        TurretBullet turretBullet = bulletObj.GetComponent<TurretBullet>();
-        turretBullet.SetTarget(target);
-        GameObject muzzleEffect= Instantiate(turretBullet.flash, firePos.position, firePos.rotation);
-        Destroy(muzzleEffect,1);
+
     }
- 
+    public List<TurretType> GetListTypeTurretUpgrade()
+    {
+        return UpgradeList;
+    }
+
 }

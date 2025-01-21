@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class TurretManager : MonoBehaviour
 {
-    
+
     public Dictionary<int, GameObject> TurretOnMapDic;
     public LoadPrefab loadPrefab;
     public List<TurretConfig> turretConfigs;
@@ -23,11 +23,11 @@ public class TurretManager : MonoBehaviour
         TurretOnMapDic = new Dictionary<int, GameObject>();
 
     }
-  
-  
+
+
     void Start()
     {
-        
+
     }
     void BuildTurret(int id, TurretType turretType)
     {
@@ -40,7 +40,7 @@ public class TurretManager : MonoBehaviour
         TurretBase turret = GameManager.Instance.MapManager.GetTurretBase(id);
         //print("TURRET BUILD " + JsonConvert.SerializeObject(turret));
         GameObject newTurret = Instantiate(gameObject, turret.Position, Quaternion.identity);
-        Turret newTurretClass=newTurret.GetComponent<Turret>();
+        Turret newTurretClass = newTurret.GetComponent<Turret>();
         newTurretClass.SetID(id);
 
         TurretOnMapDic[id] = newTurret;
@@ -54,29 +54,37 @@ public class TurretManager : MonoBehaviour
     {
         BuildTurret(id, newTurret);
     }
-    public List<TurretType> GetListTypeTurretToUpgradeById(int id){
+    public List<TurretType> GetListTypeTurretToUpgradeById(int id)
+    {
         if (TurretOnMapDic.ContainsKey(id))
         {
             GameObject turret = TurretOnMapDic[id];
             Turret currentturret = turret.GetComponent<Turret>();
-            return currentturret.UpgradeList;
+            return currentturret.GetListTypeTurretUpgrade();
         }
         else
         {
-            return new List<TurretType>(){ TurretType.Basic};
+            return new List<TurretType>() { TurretType.Basic };
         }
-        
+
     }
-    public Dictionary<TurretType, TurretConfig> TurretInfoDictionNary(){
-        Dictionary<TurretType, TurretConfig> tDic= new Dictionary<TurretType, TurretConfig>();
-        foreach(TurretConfig trconfig in turretConfigs){
-            tDic[trconfig.TurretType]= trconfig;
+    public Dictionary<TurretType, TurretConfig> TurretInfoDictionNary()
+    {
+        Dictionary<TurretType, TurretConfig> tDic = new Dictionary<TurretType, TurretConfig>();
+        foreach (TurretConfig trconfig in turretConfigs)
+        {
+            tDic[trconfig.TurretType] = trconfig;
         }
         return tDic;
     }
-    public void SendDamage(int id, float damage){
-        
+    public void SendDamage(int id, float damage)
+    {
         TurretOnMapDic[id].GetComponent<Turret>().TakeDamage(damage);
+    }
+    public void RemoveTurret(int id)
+    {
+        Destroy(TurretOnMapDic[id]);
+        GameManager.Instance.MapManager.UpdateTurret(id, null, TurretType.Base);
     }
 
     /// <summary>
@@ -88,8 +96,9 @@ public class TurretManager : MonoBehaviour
         Debug.Log("BUILD_MAP " + JsonConvert.SerializeObject(data));
         Dictionary<int, TurretData> turretInfo = data.TurretInfo;
         //Xây turret trên map
-        foreach(KeyValuePair<int, TurretData> idAndTurretData in turretInfo){
-            if(idAndTurretData.Value.TurretType != TurretType.Base)
+        foreach (KeyValuePair<int, TurretData> idAndTurretData in turretInfo)
+        {
+            if (idAndTurretData.Value.TurretType != TurretType.Base)
                 BuildTurret(idAndTurretData.Key, idAndTurretData.Value.TurretType);
         }
 

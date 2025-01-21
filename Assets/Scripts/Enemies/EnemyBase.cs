@@ -11,6 +11,7 @@ public class EnemyBase : MonoBehaviour
     protected float enemySpeed;
     protected float enemyNexusDamage;
     protected EnemyType enemyType;
+    private int goldDropAmount;
 
     protected List<Vector3> moveLocations;
     protected int locationIndex = 0;
@@ -32,8 +33,10 @@ public class EnemyBase : MonoBehaviour
         enemySpeed = enemyConfig.EnemySpeed;
         enemyNexusDamage = enemyConfig.EnemyNexusDamage;
         enemyType = enemyConfig.EnemyType;
+        goldDropAmount = enemyConfig.GoldDropAmount;
         this.moveLocations = moveLocations;
         enemyAgent = GetComponent<NavMeshAgent>();
+        currentHealth = enemyHealth;
     }
 
     public int GetEnemyInGameID()
@@ -48,6 +51,8 @@ public class EnemyBase : MonoBehaviour
         if(currentHealth <= 0)
         {
             OnDead();
+            GameManager.Instance.OnEnemyDie(goldDropAmount);
+            GameManager.Instance.EnemyManager.RemoveEnemyFromDic(enemyInGameID);
             isDie = true;
         }
     }

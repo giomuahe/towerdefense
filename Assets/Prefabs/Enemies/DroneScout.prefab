@@ -265,7 +265,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165244}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 33ac51ed0dc0dab4197b0c24c0d1f281, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -308,14 +308,14 @@ NavMeshAgent:
   m_GameObject: {fileID: 165244}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.7
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 0.5238513
   m_BaseOffset: 0.26192564
@@ -442,7 +442,7 @@ Transform:
   m_GameObject: {fileID: 2642970390564391457}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.226, z: 1.35}
+  m_LocalPosition: {x: -0, y: 0.23, z: 0.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

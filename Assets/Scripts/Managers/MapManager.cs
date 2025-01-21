@@ -32,11 +32,6 @@ namespace Managers
             if (!_turretBases.ContainsKey(baseId))
             {
                 _turretBases.Add(baseId, turretBase);
-                Debug.Log($"Registered TurretBase {baseId} at position {turretBase.Position}");
-            }
-            else
-            {
-                Debug.LogWarning($"Already registered TurretBase {baseId}");
             }
         }
 
@@ -56,13 +51,8 @@ namespace Managers
                     {
                         _waypointsDict[group.groupId] = new List<Vector3>(group.waypoints);
                     }
-                    else
-                    {
-                        Debug.LogWarning($"Waypoints group {group.groupId} ('{group.groupName}') is empty.");
-                    }
                 }
             }
-            Debug.Log($"Waypoint Dictionary created with {_waypointsDict.Count} groups.");
         }
 
         /// <summary>
@@ -126,22 +116,22 @@ namespace Managers
             return mapConfig.waves.Count;
         }
         
-        public List<Vector3> GetWaypoints()
-        {
-            return mapConfig.waypointsGroupA;
-        }
+        //public List<Vector3> GetWaypoints()
+        //{
+        //    return mapConfig.waypointsGroupA;
+        //}
 
-        public List<Vector3> GetWaypointsB()
-        {
-            return mapConfig.waypointsGroupB;
-        }
+        //public List<Vector3> GetWaypointsB()
+        //{
+        //    return mapConfig.waypointsGroupB;
+        //}
 
-        public List<Vector3> GetRandomWaypoints()
-        {
-            int groupKey = Random.Range(0, 2);
-            Debug.Log("RANDOM " + groupKey);
-            return _waypointsDict[groupKey];
-        }
+        //public List<Vector3> GetRandomWaypoints()
+        //{
+        //    int groupKey = Random.Range(0, 2);
+        //    Debug.Log("RANDOM " + groupKey);
+        //    return _waypointsDict[groupKey];
+        //}
 
         public List<Vector3> GetRandomWaypointsGroup()
         {

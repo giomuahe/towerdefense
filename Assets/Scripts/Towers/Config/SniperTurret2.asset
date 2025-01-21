@@ -15,11 +15,12 @@ MonoBehaviour:
   TurretName: Heavy Sniper
   TurretDescription: ssss
   TurretHealth: 3000
-  AtkDamage: 300
-  AtkSpeed: 1
-  AtkRange: 20
-  BulletSpeed: 30
+  AtkDamage: 100
+  AtkSpeed: 2
+  AtkRange: 40
+  BulletSpeed: 20
   TurretType: 5
   Cost: 40
   prefabName: SnipperTurret2
+  bulletPrefabPath: SniperBullet2
   UpgradeList: 

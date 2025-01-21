@@ -72,7 +72,9 @@ public class GameManager : MonoBehaviour
             string msg = string.Format("Bạn đang ở tiến trình ({0}, wave {1}), bạn có muốn tiếp tục ?", dataBackUp.Mapname, dataBackUp.CurrentWave);
             GameManager.Instance.UIManager.ShowPopup(EPOPUP.COMMAND_POPUP, EMESSAGETYPE.MESSAGE, "CHÚ Ý", msg, () => {
                 isContinueOldMap = true;
-                SceneManager.LoadScene(dataBackUp.Mapname);
+
+                //SceneManager.LoadScene(dataBackUp.Mapname);
+                GameManager.Instance.UIManager.LoadScene(dataBackUp.Mapname, ESCREEN.IN_BATTLE);
             });
         }
     }
@@ -108,7 +110,7 @@ public class GameManager : MonoBehaviour
             int heartInit = MapManager.GetMainGateHealth();
             BattleManager = new BattleLogicManager(Mapname, goldInit, heartInit);
             UIManager.ShowScreen(ESCREEN.IN_BATTLE);
-            Debug.Log("BEGIN_NEW_BATTLE");
+            //Debug.Log("BEGIN_NEW_BATTLE");
         }
         else
         {
@@ -118,7 +120,7 @@ public class GameManager : MonoBehaviour
             TurretManager.InitMapFromData(dataBackUp);
             UIManager.ShowScreen(ESCREEN.IN_BATTLE);
 
-            Debug.Log("CONTINUE_OLD_BATTLE");
+            //Debug.Log("CONTINUE_OLD_BATTLE");
         }
         
     }
@@ -151,8 +153,9 @@ public class GameManager : MonoBehaviour
         MapManager = null;
         WaveManager = null;
         BattleManager = null;
-        GameManager.Instance.UIManager.ShowScreen(ESCREEN.LOBBY);
-        SceneManager.LoadScene("MainMenu");
+        //GameManager.Instance.UIManager.ShowScreen(ESCREEN.LOBBY);
+        //SceneManager.LoadScene("MainMenu");
+        GameManager.Instance.UIManager.LoadScene("MainMenu", ESCREEN.LOBBY);
     }
 
     public void OnPlayerRestartBattle()
@@ -207,10 +210,10 @@ public class GameManager : MonoBehaviour
     /// <param name="mode"></param>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        print("LOADED SCENE " + scene.name);
+        //print("LOADED SCENE " + scene.name);
         if (scene.name.Equals("MainMenu"))
         {
-            //GameManager.Instance.UIManager.ShowScreen(ESCREEN.LOBBY);
+            GameManager.Instance.UIManager.ShowScreen(ESCREEN.LOBBY);
             return;
         }
         string mapname = scene.name;
