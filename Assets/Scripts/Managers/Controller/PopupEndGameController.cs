@@ -13,8 +13,12 @@ public class PopupEndGameController : MonoBehaviour
         this.gameObject.SetActive(true);
     }
 
-    public void Hide() { 
+    public void Hide() {
         this.gameObject.SetActive(false); 
+    }
+
+    private void OnEnable()
+    {
     }
 
     public void OnclickMenuButton()

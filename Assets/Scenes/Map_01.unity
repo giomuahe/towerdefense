@@ -8682,6 +8682,9 @@ MonoBehaviour:
   EnemyManager: {fileID: 0}
   MapManager: {fileID: 389975326}
   WaveManager: {fileID: 0}
+  BattleManager:
+    GAME_STATE: 0
+  isContinueOldMap: 0
 --- !u!4 &532060229
 Transform:
   m_ObjectHideFlags: 0
@@ -14649,7 +14652,7 @@ Camera:
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 60.000004
-  orthographic: 0
+  orthographic: 1
   orthographic size: 10
   m_Depth: -1
   m_CullingMask:

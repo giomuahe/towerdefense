@@ -11,6 +11,7 @@ namespace Assets.Scripts.Enums
         NONE = 0,
         BUILDING = 1,
         COMBAT = 2,
-        END_GAME = 3
+        PAUSE = 3,
+        END_GAME = 4
     }
 }

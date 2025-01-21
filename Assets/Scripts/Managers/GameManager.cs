@@ -26,9 +26,9 @@ public class GameManager : MonoBehaviour
 
     public BattleLogicManager BattleManager;
 
-    private bool isContinueOldMap = false;
+    public bool isContinueOldMap = false;
 
-    private SaveData dataBackUp;
+    public SaveData dataBackUp;
 
     public static GameManager Instance {  get; private set; }
 
@@ -114,7 +114,6 @@ public class GameManager : MonoBehaviour
             BattleManager = new BattleLogicManager(Mapname, goldInit, heartInit);
             TurretManager.InitMapFromData(dataBackUp);
             UIManager.ShowScreen(ESCREEN.IN_BATTLE);
-
             //Debug.Log("CONTINUE_OLD_BATTLE");
         }
         
@@ -148,6 +147,11 @@ public class GameManager : MonoBehaviour
         MapManager = null;
         WaveManager = null;
         BattleManager = null;
+        //Reset data ở enemymanager
+        EnemyManager.RestartEnemyManager();
+        //Reset data ở turretmanager
+        TurretManager.ClearTurrets();
+
         //GameManager.Instance.UIManager.ShowScreen(ESCREEN.LOBBY);
         //SceneManager.LoadScene("MainMenu");
         GameManager.Instance.UIManager.LoadScene("MainMenu", ESCREEN.LOBBY);

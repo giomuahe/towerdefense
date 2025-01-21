@@ -2,6 +2,7 @@ using MapConfigs;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Managers
@@ -46,7 +47,8 @@ namespace Managers
             if (dictionaryOfEnemiesOnMap.Count == 0) return;
             foreach(EnemyBase enemy in dictionaryOfEnemiesOnMap.Values)
             {
-                Destroy(enemy.gameObject);
+                if(enemy != null && enemy.gameObject != null)
+                    Destroy(enemy.gameObject);
             }
             dictionaryOfEnemiesOnMap.Clear();
         }

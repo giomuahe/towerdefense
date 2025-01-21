@@ -80,7 +80,7 @@ namespace Managers
         }
 
         public int GetTotalEnemyCount()
-        {
+        {   
             int totalCount = 0;
             foreach (WaveConfig wave in _waves)
             {
@@ -90,6 +90,20 @@ namespace Managers
                 }
             }
             return totalCount;
+        }
+
+        public int GetTotalEnemyInCurretWave()
+        {
+            int totalEnemy = 0;
+            var waveConfig = _waves[_currentWaveIndex];
+            if (waveConfig != null)
+            {
+                foreach (var enemySpaw in waveConfig.enemies)
+                {
+                    totalEnemy += enemySpaw.amount;
+                }
+            }
+            return totalEnemy;
         }
     }
 }

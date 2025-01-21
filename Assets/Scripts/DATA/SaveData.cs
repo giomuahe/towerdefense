@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.DATA
 {
+    [Serializable]
     public class SaveData
     {
         public string Mapname { get; set; }
