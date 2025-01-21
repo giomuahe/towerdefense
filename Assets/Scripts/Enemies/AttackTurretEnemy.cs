@@ -68,7 +68,6 @@ public class AttackTurretEnemy : EnemyBase
                     enemyStateMachine.TransitionTo(attackState);
                 }
             }
-            Debug.Log(enemyAgent.remainingDistance);
             if (!enemyAgent.pathPending && enemyAgent.remainingDistance < remainDistance)
             {
                 if (moveLocations.Count == locationIndex + 1)
