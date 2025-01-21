@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4418311021728136}
   - component: {fileID: 198415471719698134}
   - component: {fileID: 199500045511874794}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SparksLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4799,7 +4799,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9aaa13d175bcf1c4b8acc4d930ee06ee, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4863,7 +4862,7 @@ GameObject:
   - component: {fileID: 4310881695489362}
   - component: {fileID: 198324859603563316}
   - component: {fileID: 199819852873671250}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9700,7 +9699,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 85455188b71fea741bd0b80cbe893384, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9766,7 +9764,8 @@ GameObject:
   - component: {fileID: 114324166204473758}
   - component: {fileID: 199683473807085166}
   - component: {fileID: 108547967348268218}
-  m_Layer: 0
+  - component: {fileID: 4247633667496568700}
+  m_Layer: 9
   m_Name: Projectile 5 red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14629,7 +14628,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481587283673810}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a959a1b0b8414d4fb8a68bdc12d69ed, type: 3}
   m_Name: 
@@ -14780,6 +14779,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &4247633667496568700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481587283673810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8fc43ee0e53234a8de8cb017808d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1508716373653696
 GameObject:
   m_ObjectHideFlags: 0
@@ -14791,7 +14802,7 @@ GameObject:
   - component: {fileID: 4612426551603798}
   - component: {fileID: 198959666223819020}
   - component: {fileID: 199910608741135838}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SemicirclesDark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19570,7 +19581,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 097681739006eda4daeda8c905e63cff, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19634,7 +19644,7 @@ GameObject:
   - component: {fileID: 4960360377288154}
   - component: {fileID: 198225466955005810}
   - component: {fileID: 199357586749441884}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24471,7 +24481,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: dec45a67c4f21f642b99f0aa0f9ad488, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24535,7 +24544,7 @@ GameObject:
   - component: {fileID: 4781279054695454}
   - component: {fileID: 198172850428243340}
   - component: {fileID: 199319185965160056}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EndSparksDark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29381,7 +29390,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0711ea139cbfdb04aa3f8bbbb67bca98, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29445,7 +29453,7 @@ GameObject:
   - component: {fileID: 4337381236613006}
   - component: {fileID: 198550019022794002}
   - component: {fileID: 199082237920681430}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SemicirclesLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34224,7 +34232,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e10acc4b68a4e7b4eaa75206eacf0d19, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34288,7 +34295,7 @@ GameObject:
   - component: {fileID: 4204678820934940}
   - component: {fileID: 198026845042648310}
   - component: {fileID: 199956316012036242}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SparksDark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39076,7 +39083,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0711ea139cbfdb04aa3f8bbbb67bca98, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39140,7 +39146,7 @@ GameObject:
   - component: {fileID: 4906236406615550}
   - component: {fileID: 198810997644483270}
   - component: {fileID: 199684813548729954}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EndSparksLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43986,7 +43992,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9aaa13d175bcf1c4b8acc4d930ee06ee, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
