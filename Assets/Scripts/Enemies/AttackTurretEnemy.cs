@@ -13,7 +13,7 @@ public class AttackTurretEnemy : EnemyBase
     protected float enemyTurretDamage;
     protected float attackRange;
     protected float attackSpeed;
-    protected float bulletSpeed;
+    protected float bulletSpeed = 10;
     protected int baseTurretID;
     private Transform turretTarget;
 
@@ -89,7 +89,8 @@ public class AttackTurretEnemy : EnemyBase
         };
         attackState.onFrame = delegate
         {
-            if(rotationTimer > Time.time)
+            CheckTarget();
+            if (rotationTimer > Time.time)
             {
                 RotateEnemy();
             }
@@ -110,7 +111,6 @@ public class AttackTurretEnemy : EnemyBase
     }
     private void RotateEnemy()
     {
-
         Vector3 direction = turretTarget.position - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime*rotationSpeed);
@@ -143,6 +143,7 @@ public class AttackTurretEnemy : EnemyBase
             { 
                 distance = distanceTemp;
                 turretTarget = turretBase.Turret.transform;
+                baseTurretID = turretBase.TurretBaseId;
             }
         }
         isTargetBeingDestroy = false;
@@ -157,12 +158,15 @@ public class AttackTurretEnemy : EnemyBase
     {
         if (!GameManager.Instance.MapManager.HasTurret(baseTurretID))
         {
-            //isTargetBeingDestroy = true;
+            turretTarget = null;
+            enemyAgent.isStopped = false;
+            isTargetBeingDestroy = true;
         }
     }
 
     private void Update()
     {
+        
         enemyStateMachine.Update();
     }
 

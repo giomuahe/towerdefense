@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4032396095020486}
   - component: {fileID: 198141485587256510}
   - component: {fileID: 199229295184012456}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4857,7 +4857,7 @@ GameObject:
   - component: {fileID: 199541557569965598}
   - component: {fileID: 108468018855002760}
   - component: {fileID: 4599494376434305038}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Projectile 3 black fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9713,7 +9713,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294834399362254}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a959a1b0b8414d4fb8a68bdc12d69ed, type: 3}
   m_Name: 
@@ -9887,7 +9887,7 @@ GameObject:
   - component: {fileID: 4957998980943872}
   - component: {fileID: 198875658650923952}
   - component: {fileID: 199095833779144348}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14788,7 +14788,7 @@ GameObject:
   - component: {fileID: 4311131532272230}
   - component: {fileID: 198708507380740326}
   - component: {fileID: 199578553938225204}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19689,7 +19689,7 @@ GameObject:
   - component: {fileID: 4188172798495772}
   - component: {fileID: 198856659907629688}
   - component: {fileID: 199500892221993244}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Circles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24550,7 +24550,7 @@ GameObject:
   - component: {fileID: 4095543277220006}
   - component: {fileID: 198291022777882832}
   - component: {fileID: 199764958404322080}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29460,7 +29460,7 @@ GameObject:
   - component: {fileID: 4715873012433674}
   - component: {fileID: 198147676333123090}
   - component: {fileID: 199657416626372474}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

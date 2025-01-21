@@ -40,5 +40,15 @@ namespace Managers
             }
             dictionaryOfEnemiesOnMap[enemyDataID].OnHit(damgage, out isDie);
         }
+
+        public void RestartEnemyManager()
+        {
+            if (dictionaryOfEnemiesOnMap.Count == 0) return;
+            foreach(EnemyBase enemy in dictionaryOfEnemiesOnMap.Values)
+            {
+                Destroy(enemy.gameObject);
+            }
+            dictionaryOfEnemiesOnMap.Clear();
+        }
     }
 }

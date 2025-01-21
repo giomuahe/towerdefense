@@ -2,11 +2,6 @@
 using Assets.Scripts.Enums;
 using Assets.Scripts.Managers;
 using Managers;
-using MapConfigs;
-using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -225,3 +220,5 @@ public class GameManager : MonoBehaviour
         Debug.Log(msg);
     }
 }
+
+

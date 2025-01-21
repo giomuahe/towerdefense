@@ -16,6 +16,6 @@ MonoBehaviour:
   - BulletID: 101
     BulletPrefab: {fileID: 1012013889074000, guid: 6dc968b09945e3845bdbf41de444f21c, type: 3}
   - BulletID: 100
-    BulletPrefab: {fileID: 1168065043843762, guid: 70cd80e6e8517904da249485ffde005f, type: 3}
+    BulletPrefab: {fileID: 1294834399362254, guid: 4d46a88382f3c124c93b73ffeb016270, type: 3}
   - BulletID: 102
     BulletPrefab: {fileID: 1878987882032996, guid: 90b685dd555e0c848806f1fb6209e1e9, type: 3}

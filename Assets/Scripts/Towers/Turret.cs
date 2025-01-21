@@ -66,9 +66,7 @@ public class Turret : MonoBehaviour
         if(attackCooldown<0){
             attackCooldown=0;
         }
-
     }
-
 
     public void SetID(int currentId)
     {
@@ -78,9 +76,7 @@ public class Turret : MonoBehaviour
     {
         if (LostEnemy())
         {
-            
             target = null;
-           
         }
     }
     bool LostEnemy()
@@ -179,6 +175,7 @@ public class Turret : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        //Debug.Log("");
         if (CanTakeDamage())
         {
             currentHp = currentHp - damage;
