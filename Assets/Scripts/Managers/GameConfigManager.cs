@@ -14,6 +14,10 @@ public class GameConfigManager
         EnemyConfig[] enemiesConfig = Resources.LoadAll<EnemyConfig>("Enemy");
         foreach(var enemyConfig in enemiesConfig)
         {
+            if (enemiesConfigDictionary.ContainsKey((int)enemyConfig.EnemyType))
+            {
+                continue;
+            }
             enemiesConfigDictionary.Add((int)enemyConfig.EnemyType, enemyConfig);
             Resources.UnloadAsset(enemyConfig);
         }

@@ -20,6 +20,7 @@ public class DroneScout : EnemyBase, IHittable
             {
                 OnDead();
                 GameManager.Instance.OnEnemyEscape();
+                GameManager.Instance.EnemyManager.RemoveEnemyFromDic(enemyInGameID);
                 return;
             }
             Move(moveLocations[++locationIndex]);

@@ -54,13 +54,6 @@ public class AttackTurretEnemy : EnemyBase
         moveState = enemyStateMachine.CreateState("move");
         moveState.onEnter = delegate
         {
-            if(moveLocations.Count == locationIndex + 1)
-            {
-                enemyStateMachine.TransitionTo(deadState);
-                OnDead();
-                GameManager.Instance.OnEnemyEscape();
-                return;
-            }
             Move(moveLocations[locationIndex]);
             Dictionary<int, TurretBase> turretLocations = GameManager.Instance.MapManager.GetTurretBases();
             LockTheNearestTurret(turretLocations);
@@ -77,6 +70,13 @@ public class AttackTurretEnemy : EnemyBase
             }
             if (!enemyAgent.pathPending && enemyAgent.remainingDistance < remainDistance)
             {
+                if (moveLocations.Count == locationIndex + 1)
+                {
+                    enemyStateMachine.TransitionTo(deadState);
+                    OnDead();
+                    GameManager.Instance.OnEnemyEscape();
+                    return;
+                }
                 locationIndex++;
                 enemyStateMachine.TransitionTo(moveState);
             }

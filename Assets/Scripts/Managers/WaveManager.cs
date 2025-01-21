@@ -42,7 +42,6 @@ namespace Managers
             _waves = new List<WaveConfig>(mapConfig.waves);
             _currentWaveIndex = -1;
             
-            Debug.Log($"Initialized {_waves.Count} wave");
         }
 
         public List<WaveConfig> GetWaves()
@@ -61,13 +60,14 @@ namespace Managers
             return null;
         }
 
-        public bool AdvanceToNextWave()
+        public bool AdvanceToNextWave(out int currentWave)
         {
             if (_currentWaveIndex + 1 < _waves.Count)
             {
                 _currentWaveIndex++;
                 Debug.LogWarning($"Advanced to wave {_currentWaveIndex + 1}");
             }
+            currentWave = _currentWaveIndex;
             Debug.LogWarning($"No more waves to advance to next wave");
             return false;
         }

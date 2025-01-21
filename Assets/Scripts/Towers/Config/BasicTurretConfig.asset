@@ -15,7 +15,7 @@ MonoBehaviour:
   TurretName: BasicTurret
   TurretDescription: ssss
   TurretHealth: 3000
-  AtkDamage: 2
+  AtkDamage: 20
   AtkSpeed: 2
   AtkRange: 15
   BulletSpeed: 20

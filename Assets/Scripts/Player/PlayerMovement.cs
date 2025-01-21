@@ -55,7 +55,6 @@ namespace Player
             _isMovementPressed = x != 0 || y != 0;
         }
 
-
         private void Update()
         {
             HandleMovement();
@@ -64,11 +63,6 @@ namespace Player
             { 
                 HandleRotation();
             }
-        }
-        
-        private void HandleAnimation()
-        {
-            AnimationManager.Instance.SetBool(animator, "isMoving", _isMovementPressed);
         }
 
         private void HandleMovement()
@@ -91,7 +85,11 @@ namespace Player
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
             }
         }
-        
+        private void HandleAnimation()
+        {
+            AnimationManager.Instance.SetBool(animator, "isMoving", _isMovementPressed);
+        }
+
         private void OnEnable()
         {
             _playerControl.PlayerMovement.Enable();

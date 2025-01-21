@@ -29,20 +29,22 @@ MonoBehaviour:
   - {x: 85, y: 0, z: -19}
   waves:
   - {fileID: 11400000, guid: 101d50ffd5fc245c6854b634709d5179, type: 2}
+  - {fileID: 11400000, guid: 043f8c66260402043a78824bf9351d65, type: 2}
+  - {fileID: 11400000, guid: 29cf2fdb5137b68479943f3321e564c9, type: 2}
   waypointsGroups:
   - groupId: 1
     groupName: A
     waypoints:
-    - {x: 32, y: 3, z: 0}
-    - {x: 36, y: 3, z: 6}
+    - {x: 24, y: 3, z: 6}
+    - {x: 40, y: 3, z: 6}
     - {x: 60, y: 3, z: 6}
     - {x: 90, y: 3, z: 0}
   - groupId: 2
     groupName: B
     waypoints:
-    - {x: 32, y: 3, z: 0}
-    - {x: 36, y: 3, z: -6}
+    - {x: 24, y: 3, z: -6}
+    - {x: 40, y: 3, z: -6}
     - {x: 60, y: 3, z: -6}
     - {x: 90, y: 3, z: 0}
-  startingGold: 1000
-  nexusHealth: 5
+  startingGold: 500
+  nexusHealth: 3

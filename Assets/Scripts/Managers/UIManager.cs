@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public InBattleScreenController InBattleScreenController;
     public PopupController PopupController;
     public LoadingScreenController LoadingScreenController;
+    public HealthBarUISpawner HealthBarUISpawner;
 
     private ESCREEN currentScreen = ESCREEN.NONE;
 
@@ -94,5 +95,15 @@ public class UIManager : MonoBehaviour
     /// <param name="afterScreen"></param>
     public void LoadScene(string sceneName, ESCREEN afterScreen) {
         LoadingScreenController.LoadScene(sceneName, afterScreen);
+    }
+
+    /// <summary>
+    /// Spawn healthBar
+    /// </summary>
+    /// <param name="sceneName"></param>
+    /// <param name="afterScreen"></param>
+    public void SpawnHealthBarUI(Transform target)
+    {
+        HealthBarUISpawner.HealthBarSpawner(target);
     }
 }
