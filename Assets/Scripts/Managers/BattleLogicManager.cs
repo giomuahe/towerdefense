@@ -71,7 +71,7 @@ namespace Assets.Scripts.Managers
         /// <param name="goldChange">Có thể âm hoặc dương</param>
         public bool UpdateGold(long goldChange, string description = "")
         {
-            Debug.Log(string.Format("GOLD_CHANGE Gold = {0}, des = {1}", goldChange, description));
+            //Debug.Log(string.Format("GOLD_CHANGE Gold = {0}, des = {1}", goldChange, description));
             long oldGold = currentGold;
             try
             {
