@@ -137,21 +137,17 @@ public class TurretBullet : MonoBehaviour
                 //     HitTarget(enemy);
 
                 // }
-                EnemyBase enemy = raycastHit.collider.GetComponent<EnemyBase>();
-
+                EnemyBase enemy = raycastHit.collider.gameObject.GetComponent<EnemyBase>();
                 if (enemy.GetEnemyInGameID() == target.GetComponent<EnemyBase>().GetEnemyInGameID())
                 {
                     ParticleSystem hitEffect = hitPS;
                     ParticleSystem effect = Instantiate(hitEffect, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
                     // hitEffect.Play();
-
                     Debug.Log("enemyId:" + enemy.GetEnemyInGameID());
                     Destroy(effect.gameObject, 0.5f);
-
                     HitTarget(enemy);
 
                 }
-
             }
             else
             {
@@ -167,10 +163,9 @@ public class TurretBullet : MonoBehaviour
     void HitTarget(EnemyBase enemy)
     {
         Debug.Log("Đã trúng");
-        EnemyBase enemyTakedame= enemy.GetComponent<EnemyBase>();
-
+      
         bool isEnemyDie;
-        GameManager.Instance.EnemyManager.SendDamage(enemyTakedame.EnemyID(), damage, out isEnemyDie);
+        GameManager.Instance.EnemyManager.SendDamage(enemy.EnemyID(), damage, out isEnemyDie);
 
 
         // enemy.TakeDamage(damage);
