@@ -19,5 +19,6 @@ MonoBehaviour:
   EnemyTurretDamage: 0
   AttackRange: 0
   GoldDropAmount: 0
+  BulletID: 0
   EnemyType: 4
-  EnemyPrefab: {fileID: 0}
+  EnemyPrefab: {fileID: 108062, guid: fe9effd36d82932419a7254b415acfac, type: 3}
