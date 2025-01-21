@@ -573,7 +573,6 @@ GameObject:
   - component: {fileID: 8645604631886897696}
   - component: {fileID: 6593967384922214151}
   - component: {fileID: 6613085007579794108}
-  - component: {fileID: 1357917579267279731}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -657,39 +656,6 @@ MonoBehaviour:
   - m_Rig: {fileID: 5498689913962951633}
     m_Active: 1
   m_Effectors: []
---- !u!114 &1357917579267279731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7881096324073079808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c0392197c87074998334736768243d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  aimTransform: {fileID: 3371305509752850347}
-  target: {fileID: 0}
-  firePos: {fileID: 6544814357922476370}
-  turretRig: {fileID: 0}
-  turretConfig: {fileID: 11400000, guid: f9f05e61cd689a942be8bccd01528155, type: 2}
-  TurretMain: {fileID: 0}
-  TurretName: 
-  TurretDescription: 
-  TurretHealth: 0
-  AtkDamage: 0
-  AtkSpeed: 0
-  AtkRange: 0
-  TurretType: 7
-  UpgradeList: 
-  currentHp: 0
-  enemyTargetLayermark:
-    serializedVersion: 2
-    m_Bits: 0
-  attackCooldown: 0
-  bulletPrefab: {fileID: 0}
 --- !u!1 &7996534098136943894
 GameObject:
   m_ObjectHideFlags: 0
