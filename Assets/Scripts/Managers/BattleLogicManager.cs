@@ -34,7 +34,6 @@ namespace Assets.Scripts.Managers
         public event Action<int, int> OnWaveChanged;
         public event Action<long> OnGoldChanged;
         public event Action<int> OnHeartChanged;
-        public event Action<long> UpdateGameTime;
         public event Action<bool> EndGame;
         public event Action<int> OnTimeChanged;
 
