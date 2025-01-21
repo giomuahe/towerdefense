@@ -71,7 +71,7 @@ namespace Assets.Scripts.Managers
         /// <param name="goldChange">Có thể âm hoặc dương</param>
         public bool UpdateGold(long goldChange, string description = "")
         {
-            Debug.Log(string.Format("GOLD_CHANGE Gold = {0}, des = {1}", goldChange, description));
+            //Debug.Log(string.Format("GOLD_CHANGE Gold = {0}, des = {1}", goldChange, description));
             long oldGold = currentGold;
             try
             {
@@ -137,7 +137,14 @@ namespace Assets.Scripts.Managers
         /// </summary>
         private void BeginNewWave()
         {
-            if(currentWave == 0)
+            bool isOpenNewWave = GameManager.Instance.WaveManager.AdvanceToNextWave(out currentWave);
+            if ( !isOpenNewWave ) {
+                string error = string.Format("CANT_CREATE_NEW_WAVE, Map : {0}, curWave : {1}", mapname, currentWave);
+                GameManager.Instance.UIManager.ShowPopup(EPOPUP.CONFIRM_POPUP, EMESSAGETYPE.ERROR, "Lỗi", error);
+                return;
+            }
+
+            if (currentWave == 0)
             {
                 //Lấy max wave trong map
                 maxWaveInMap = GameManager.Instance.WaveManager.GetWaves().Count;
@@ -178,14 +185,7 @@ namespace Assets.Scripts.Managers
                 return;
             }
             //Mở wave mới
-            if (GameManager.Instance.WaveManager.AdvanceToNextWave())
-            {
-                BeginNewWave();
-            }
-            else
-            {
-                Debug.LogError(string.Format("CANT_CREATE_NEW_WAVE, Map : {0}, curWave : {1}", mapname, currentWave));
-            }
+            BeginNewWave();
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace Assets.Scripts.Managers
             Debug.Log("ENEMY_DIE " + goldBonus);
             UpdateGold(goldBonus, "Kill Enemy");
             numEnemyInCurWave -= 1;
-            if(curretHeart<=0)
+            if(curretHeart <= 0)
                 EndLostGame();
             if(numEnemyInCurWave <= 0)
             {
