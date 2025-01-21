@@ -36,7 +36,7 @@ namespace MapConfigs
                 TurretBase turretBase = turretSpot.GetComponent<TurretBase>();
                 if (turretBase != null)
                 {
-                    turretBase.Initialize(position);
+                    turretBase.Initialize(i, position);
                     mapManager.RegisterTurretBase(i, turretBase);
                 }
             }

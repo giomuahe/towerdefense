@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurretBullet : MonoBehaviour
 {
-    private Transform target;
+    public Transform target;
     
     public float rotateSpeed = 200000f;
     public LayerMask enemyLayer;
