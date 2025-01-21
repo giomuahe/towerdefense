@@ -75,7 +75,6 @@ public class BurningFire : MonoBehaviour
     {
         EnemyDemo enemy = GetComponentInParent<EnemyDemo>();
         enemy.TakeDamage(damage);
-
         particle.Play();
         attackCooldown = 1 / atkSpeed;
     }

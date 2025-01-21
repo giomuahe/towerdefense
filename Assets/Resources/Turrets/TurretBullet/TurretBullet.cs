@@ -123,15 +123,29 @@ public class TurretBullet : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, raycastHit.point, speed * Time.deltaTime);
             if (target != null)
             {
-                EnemyDemo enemy = raycastHit.collider.GetComponent<EnemyDemo>();
+                // EnemyDemo enemy = raycastHit.collider.GetComponent<EnemyDemo>();
 
-                if (enemy.id == target.GetComponent<EnemyDemo>().id)
+                // if (enemy.id == target.GetComponent<EnemyDemo>().id)
+                // {
+                //     ParticleSystem hitEffect = hitPS;
+                //     ParticleSystem effect = Instantiate(hitEffect, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
+                //     // hitEffect.Play();
+
+                //     Debug.Log("enemyId:" + enemy.id);
+                //     Destroy(effect.gameObject, 0.5f);
+
+                //     HitTarget(enemy);
+
+                // }
+                EnemyBase enemy = raycastHit.collider.GetComponent<EnemyBase>();
+
+                if (enemy.GetEnemyInGameID() == target.GetComponent<EnemyBase>().GetEnemyInGameID())
                 {
                     ParticleSystem hitEffect = hitPS;
                     ParticleSystem effect = Instantiate(hitEffect, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
                     // hitEffect.Play();
 
-                    Debug.Log("enemyId:" + enemy.id);
+                    Debug.Log("enemyId:" + enemy.GetEnemyInGameID());
                     Destroy(effect.gameObject, 0.5f);
 
                     HitTarget(enemy);
@@ -150,17 +164,17 @@ public class TurretBullet : MonoBehaviour
         // Di chuyển về phía Enemy
         transform.position += transform.forward * speed * Time.deltaTime;
     }
-    void HitTarget(EnemyDemo enemy)
+    void HitTarget(EnemyBase enemy)
     {
         Debug.Log("Đã trúng");
-        // EnemyBase enemyTakedame= enemy.GetComponent<EnemyBase>();
+        EnemyBase enemyTakedame= enemy.GetComponent<EnemyBase>();
 
-        // bool isEnemyDie;
-        // GameManager.Instance.EnemyManager.SendDamage(enemyTakedame.EnemyID(), damage, out isEnemyDie);
+        bool isEnemyDie;
+        GameManager.Instance.EnemyManager.SendDamage(enemyTakedame.EnemyID(), damage, out isEnemyDie);
 
 
-        enemy.TakeDamage(damage);
-        Debug.Log("enemyId:" + enemy.id);
+        // enemy.TakeDamage(damage);
+        // Debug.Log("enemyId:" + enemy.id);
 
         Destroy(this.gameObject);
     }
