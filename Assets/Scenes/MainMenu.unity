@@ -4196,6 +4196,7 @@ GameObject:
   - component: {fileID: 483245813}
   - component: {fileID: 483245815}
   - component: {fileID: 483245814}
+  - component: {fileID: 483245816}
   m_Layer: 0
   m_Name: PopupEndgameLost
   m_TagString: Untagged
@@ -4262,6 +4263,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483245812}
   m_CullTransparentMesh: 1
+--- !u!114 &483245816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483245812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ebd386a6fbc2d4aa8d324dc12a6fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsWinGame: 0
 --- !u!1 &498536098
 GameObject:
   m_ObjectHideFlags: 0
@@ -4501,6 +4515,7 @@ GameObject:
   - component: {fileID: 534106023}
   - component: {fileID: 534106025}
   - component: {fileID: 534106024}
+  - component: {fileID: 534106026}
   m_Layer: 0
   m_Name: PopupEndgameWin
   m_TagString: Untagged
@@ -4567,6 +4582,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534106022}
   m_CullTransparentMesh: 1
+--- !u!114 &534106026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534106022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ebd386a6fbc2d4aa8d324dc12a6fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsWinGame: 1
 --- !u!1 &536266838
 GameObject:
   m_ObjectHideFlags: 0
@@ -8396,7 +8424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1105728337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8480,6 +8508,8 @@ MonoBehaviour:
   PopupUpgrade: {fileID: 227089053}
   PopupPause: {fileID: 804215878}
   ButtonPause: {fileID: 1753463263}
+  PopupEndWinGame: {fileID: 534106026}
+  PopupEndLostGame: {fileID: 483245816}
   WaveTxt: {fileID: 292454068}
   TimeText: {fileID: 1381040711}
   HeartText: {fileID: 110548908}
@@ -10755,7 +10785,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1483265471}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 534106026}
+        m_TargetAssemblyTypeName: PopupEndGameController, Assembly-CSharp
+        m_MethodName: OnclickMenuButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1483265471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12694,7 +12736,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1678234590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 483245816}
+        m_TargetAssemblyTypeName: PopupEndGameController, Assembly-CSharp
+        m_MethodName: OnclickMenuButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1678234590
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,9 @@ public class InBattleScreenController : MonoBehaviour
     public PopupUpgradeController PopupUpgrade;
     public PopupPauseController PopupPause;
     public ButtonPauseController ButtonPause;
-    
+    public PopupEndGameController PopupEndWinGame;
+    public PopupEndGameController PopupEndLostGame;
+
     public TextMeshProUGUI WaveTxt;
     public Text TimeText;
     public Text HeartText;
@@ -24,6 +26,7 @@ public class InBattleScreenController : MonoBehaviour
         GameManager.Instance.BattleManager.OnTimeChanged += UpdateTime;
         GameManager.Instance.BattleManager.OnGoldChanged += UpdateGold;
         GameManager.Instance.BattleManager.OnHeartChanged += UpdateHeart;
+        GameManager.Instance.BattleManager.EndGame += EndGame;
 
         ButtonNextWave.onClick.AddListener(OnClickNextWave);
     }
@@ -40,6 +43,7 @@ public class InBattleScreenController : MonoBehaviour
         GameManager.Instance.BattleManager.OnTimeChanged -= UpdateTime;
         GameManager.Instance.BattleManager.OnGoldChanged -= UpdateGold;
         GameManager.Instance.BattleManager.OnHeartChanged -= UpdateHeart;
+        GameManager.Instance.BattleManager.EndGame -= EndGame;
 
         ButtonNextWave.onClick.RemoveAllListeners();
     }
@@ -81,11 +85,11 @@ public class InBattleScreenController : MonoBehaviour
     {
         if (isWin)
         {
-
+            PopupEndWinGame.Show();
         }
         else
         {
-
+            PopupEndLostGame.Show();
         }
     }
 
