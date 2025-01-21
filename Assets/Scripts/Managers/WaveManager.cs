@@ -61,13 +61,14 @@ namespace Managers
             return null;
         }
 
-        public bool AdvanceToNextWave()
+        public bool AdvanceToNextWave(out int currentWave)
         {
             if (_currentWaveIndex + 1 < _waves.Count)
             {
                 _currentWaveIndex++;
                 Debug.LogWarning($"Advanced to wave {_currentWaveIndex + 1}");
             }
+            currentWave = _currentWaveIndex;
             Debug.LogWarning($"No more waves to advance to next wave");
             return false;
         }

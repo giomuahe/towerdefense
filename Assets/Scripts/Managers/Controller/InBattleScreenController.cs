@@ -77,6 +77,18 @@ public class InBattleScreenController : MonoBehaviour
         HeartText.text = currentHeart.ToString("N0");
     }
 
+    private void EndGame(bool isWin)
+    {
+        if (isWin)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
     public void ShowUpgradeButton(int turretBaseId)
     {
         TurretBaseId = turretBaseId;
