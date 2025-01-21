@@ -138,13 +138,13 @@ public class TurretBullet : MonoBehaviour
     void HitTarget(GameObject enemy)
     {
         Debug.Log("Đã trúng");
-        EnemyBase enemyTakedame= enemy.GetComponent<EnemyBase>();
+        // EnemyBase enemyTakedame= enemy.GetComponent<EnemyBase>();
        
-        bool isEnemyDie;
-        GameManager.Instance.EnemyManager.SendDamage(enemyTakedame.EnemyID(), damage, out isEnemyDie);
+        // bool isEnemyDie;
+        // GameManager.Instance.EnemyManager.SendDamage(enemyTakedame.EnemyID(), damage, out isEnemyDie);
        
-        // EnemyDemo enemyDemo= enemy.GetComponent<EnemyDemo>();
-        // enemyDemo.TakeDamage(damage);
+        EnemyDemo enemyDemo= enemy.GetComponent<EnemyDemo>();
+        enemyDemo.TakeDamage(damage);
         Destroy(this.gameObject);
     }
     void HitEffect()
