@@ -23,9 +23,10 @@ public class TurretManager : MonoBehaviour
 
     }
 
-public void ClearTurrets(){
-    TurretOnMapDic.Clear();
-}
+    public void ClearTurrets()
+    {
+        TurretOnMapDic.Clear();
+    }
     void Start()
     {
 
@@ -46,6 +47,8 @@ public void ClearTurrets(){
 
         TurretOnMapDic[id] = newTurret;
         GameManager.Instance.MapManager.UpdateTurret(id, newTurret, turretType);
+        
+        GameManager.Instance.UIManager.SpawnHealthBarUI(turret.transform);
     }
     void Update()
     {

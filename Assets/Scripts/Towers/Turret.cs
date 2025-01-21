@@ -6,7 +6,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class Turret : MonoBehaviour
+public class Turret : MonoBehaviour, IHealthBar
 {
     public int id;
     [SerializeField]
@@ -184,6 +184,9 @@ public class Turret : MonoBehaviour
                 Die();
                 return;
             }
+            Debug.Log("Cur " + currentHp + ", max = " + TurretHealth);
+            var healthCheck = currentHp / TurretHealth;
+            OnHealthChange.Invoke(healthCheck);
         }
         else
         {
@@ -247,10 +250,13 @@ public class Turret : MonoBehaviour
         enemyTargetLayermark = LayerMask.GetMask("Enemy");
         currentHp = TurretHealth;
         attackCooldown = 0;
-
+        
     }
 
     public GameObject bulletPrefab;
+
+    public event Action<float> OnHealthChange;
+
     public virtual void Fire()
     {
 

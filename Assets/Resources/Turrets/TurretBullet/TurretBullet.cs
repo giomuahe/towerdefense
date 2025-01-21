@@ -109,17 +109,41 @@ public class TurretBullet : MonoBehaviour
 
         if (lightSourse != null)
         {
-
             projectilePS.Stop();
             projectilePS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
         col.enabled = false;
 
+        RaycastHit[] allEnemy = Physics.RaycastAll(transform.position, direction, speed * Time.deltaTime, enemyLayer);
+        if(allEnemy.Length > 0)
+        {
+
+        }
+
         RaycastHit raycastHit;
+        int targetId = target.GetComponent<EnemyBase>().GetEnemyInGameID();
 
         if (Physics.Raycast(transform.position, direction, out raycastHit, speed * Time.deltaTime, enemyLayer))
         {
-
+            RaycastHit enemyAttack;
+            RaycastHit[] allEnemyBeSide = Physics.SphereCastAll(raycastHit.point, 2, direction, enemyLayer);
+            foreach(var ray in allEnemyBeSide)
+            {
+                EnemyBase enemyBase = ray.collider.GetComponent<EnemyBase>();
+                if((enemyBase != null) && (enemyBase.GetEnemyInGameID() == targetId)){
+                    enemyAttack = ray;
+                    ParticleSystem hitEffect = hitPS;
+                    ParticleSystem effect = Instantiate(hitEffect, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
+                    Debug.Log("enemyId:" + enemyBase.GetEnemyInGameID());
+                    Destroy(effect.gameObject, 0.5f);
+                    HitTarget(enemyBase);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+            }
+            /*
             transform.position = Vector3.MoveTowards(transform.position, raycastHit.point, speed * Time.deltaTime);
             if (target != null)
             {
@@ -151,12 +175,12 @@ public class TurretBullet : MonoBehaviour
                     HitTarget(enemy);
 
                 }
-
             }
             else
             {
                 Destroy(gameObject);
             }
+            */
         }
         Quaternion toRotation = Quaternion.LookRotation(target.transform.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, rotateSpeed * Time.deltaTime);
