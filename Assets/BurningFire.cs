@@ -51,6 +51,7 @@ public class BurningFire : MonoBehaviour
         if (existTime > 0)
         {
             existTime -= Time.deltaTime;
+             particle.Play();
         }
         if(existTime<=0){
         
@@ -75,7 +76,10 @@ public class BurningFire : MonoBehaviour
     {
         EnemyDemo enemy = GetComponentInParent<EnemyDemo>();
         enemy.TakeDamage(damage);
-        particle.Play();
+    //     EnemyBase enemyBase= GetComponentInParent<EnemyBase>();
+    //     bool isDie;
+    //  GameManager.Instance.EnemyManager.SendDamage(enemyBase.GetEnemyInGameID(),  Mathf.RoundToInt(damage), out isDie);
+       
         attackCooldown = 1 / atkSpeed;
     }
    

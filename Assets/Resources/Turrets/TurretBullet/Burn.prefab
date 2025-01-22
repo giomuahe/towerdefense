@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5296978615608505252
 Transform:
   m_ObjectHideFlags: 0
@@ -4763,7 +4763,6 @@ GameObject:
   - component: {fileID: 3162112465097167697}
   - component: {fileID: 1766976288271518420}
   - component: {fileID: 4578833258169707821}
-  - component: {fileID: 6801519949245898997}
   m_Layer: 0
   m_Name: Burn
   m_TagString: Untagged
@@ -4796,14 +4795,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3339268025577951615}
   serializedVersion: 8
-  lengthInSec: 10
+  lengthInSec: 5
   simulationSpeed: 2
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -9399,18 +9398,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &6801519949245898997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3339268025577951615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d04094ff3258a2489d56a178012a022, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5017507344428224070
 GameObject:
   m_ObjectHideFlags: 0
@@ -9428,7 +9415,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1602239771078987434
 Transform:
   m_ObjectHideFlags: 0

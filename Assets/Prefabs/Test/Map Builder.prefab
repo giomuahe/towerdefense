@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8865527540849879320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3060713367820219802}
+  - component: {fileID: 5076391281609478982}
+  m_Layer: 0
+  m_Name: Map Builder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3060713367820219802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865527540849879320}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5076391281609478982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865527540849879320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f579b59d214024305b45bbd43f6e8dbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretSpotPrefab: {fileID: 4467630842506281840, guid: c4f4e810a458143a7ad7bed3b367c5b9, type: 3}
+  mainGatePrefab: {fileID: 1955930076884279516, guid: 60c0381c2cc944e0880a6fda7d9c245d, type: 3}
+  spawnGatePrefab: {fileID: 1234147590458700706, guid: 06bf6ef32221b4b21b3518b6b1aa5783, type: 3}
+  mapConfig: {fileID: 11400000, guid: b14fe1ec394964754b9077d3dad428da, type: 2}
+  mapManager: {fileID: 0}

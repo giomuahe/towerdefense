@@ -18,9 +18,10 @@ MonoBehaviour:
   AtkDamage: 20
   AtkSpeed: 1
   AtkRange: 20
+  AtkAngle: 30
   BulletSpeed: 0
   TurretType: 7
   Cost: 40
   prefabName: FireTurret
-  bulletPrefabPath: 
+  bulletPrefabPath: Burn
   UpgradeList: 

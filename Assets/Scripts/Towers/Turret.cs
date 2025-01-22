@@ -26,6 +26,7 @@ public class Turret : MonoBehaviour, IHealthBar
     protected float AtkDamage;
     protected float AtkSpeed;
     protected float AtkRange;
+    protected float AtkAngle;
     protected float BulletSpeed;
     protected string BulletPath;
     protected TurretType TurretType;
@@ -53,6 +54,7 @@ public class Turret : MonoBehaviour, IHealthBar
         UpgradeList = turretConfig.UpgradeList;
         BulletSpeed = turretConfig.BulletSpeed;
         BulletPath = turretConfig.bulletPrefabPath;
+        AtkAngle= turretConfig.AtkAngle;
     }
 
     void Update()
