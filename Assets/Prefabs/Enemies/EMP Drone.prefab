@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 9578480}
   - component: {fileID: 6558428}
   - component: {fileID: 7956855683268977948}
+  - component: {fileID: 5896022326705212436}
   m_Layer: 0
   m_Name: EMP Drone
   m_TagString: Untagged
@@ -120,6 +121,7 @@ Transform:
   - {fileID: 405186}
   - {fileID: 469610}
   - {fileID: 446544}
+  - {fileID: 429039463750911204}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3362526
@@ -235,7 +237,22 @@ NavMeshAgent:
   m_Height: 0.46831727
   m_BaseOffset: 0.23415864
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
+--- !u!114 &5896022326705212436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8297b9285bc84df4ea92fc1c4fc27763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainDistance: 0.5
+  shootPos: {fileID: 429039463750911204}
+  rotationSpeed: 3
 --- !u!1 &130798
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,3 +419,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4505792805151767622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 429039463750911204}
+  m_Layer: 0
+  m_Name: ShootPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &429039463750911204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4505792805151767622}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.14041609, z: 0.409}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 418564}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

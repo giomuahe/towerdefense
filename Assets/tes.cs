@@ -5,14 +5,18 @@ using UnityEngine;
 public class tes : MonoBehaviour
 {
     [SerializeField]
-    private Transform a;
+    private GameObject a;
+    [SerializeField]
+    private Transform b;
     // Start is called before the first frame update
-    void Update()
+    void Start()
     {
-        Vector3 direction = a.position - transform.position;
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime);
+        InvokeRepeating("Shoot", 1, 2);
     }
 
+    private void Shoot()
+    {
+        Instantiate(a, b);
+    }
 
 }

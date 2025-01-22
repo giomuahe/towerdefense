@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbd1d353525f5840aa772af1a4dee02, type: 3}
   m_Name: StealthInfiltrator
   m_EditorClassIdentifier: 
-  EnemyHealth: 0
-  EnemySpeed: 0
-  AttackSpeed: 0
-  EnemyNexusDamage: 0
-  EnemyTurretDamage: 0
-  AttackRange: 0
-  GoldDropAmount: 0
+  EnemyHealth: 100
+  EnemySpeed: 8
+  AttackSpeed: 4
+  EnemyTurretDamage: 20
+  AttackRange: 15
+  BulletSpeed: 30
+  GoldDropAmount: 15
+  BulletID: 104
   EnemyType: 2
-  EnemyPrefab: {fileID: 0}
+  EnemyPrefab: {fileID: 150684, guid: b37daab609aeb204c80873d303f25508, type: 3}
