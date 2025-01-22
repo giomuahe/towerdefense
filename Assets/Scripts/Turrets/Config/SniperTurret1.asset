@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6970abb7280f61f4588ea8cf8b8570fe, type: 3}
-  m_Name: FireTurretConfig
+  m_Name: SniperTurret1
   m_EditorClassIdentifier: 
-  TurretName: Flamer
-  TurretDescription: ssss
-  TurretHealth: 6000
-  AtkDamage: 20
-  AtkSpeed: 1
-  AtkRange: 20
-  AtkAngle: 30
-  BulletSpeed: 0
-  TurretType: 7
-  Cost: 40
-  prefabName: FireTurret
-  bulletPrefabPath: Burn
-  UpgradeList: 
+  TurretName: "\u1EE4 s\xFAng b\u1EAFn t\u1EC9a"
+  TurretDescription: "T\u1EA7m b\u1EAFn xa"
+  TurretHealth: 5000
+  AtkDamage: 40
+  AtkSpeed: 2
+  AtkRange: 25
+  AtkAngle: 0
+  BulletSpeed: 20
+  TurretType: 4
+  Cost: 20
+  prefabName: SnipperTurret1
+  bulletPrefabPath: SniperBullet1
+  UpgradeList: 05000000

@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6970abb7280f61f4588ea8cf8b8570fe, type: 3}
-  m_Name: GatlingTurret2Config
+  m_Name: FireTurretConfig
   m_EditorClassIdentifier: 
-  TurretName: Heavy Gatling
-  TurretDescription: ssss
-  TurretHealth: 4000
+  TurretName: "\u1EE4 S\xFAng Phun L\u1EEDa"
+  TurretDescription: "Thi\xEAu \u0111\u1ED1t t\u1EA5t c\u1EA3 k\u1EBB \u0111\u1ECBch
+    trong v\xF9ng"
+  TurretHealth: 6000
   AtkDamage: 20
-  AtkSpeed: 5
+  AtkSpeed: 1
   AtkRange: 20
-  BulletSpeed: 30
-  TurretType: 3
+  AtkAngle: 30
+  BulletSpeed: 0
+  TurretType: 7
   Cost: 40
-  prefabName: GatlingTurret2
-  bulletPrefabPath: GatlingBullet2
+  prefabName: FireTurret
+  bulletPrefabPath: FireBurn
   UpgradeList: 

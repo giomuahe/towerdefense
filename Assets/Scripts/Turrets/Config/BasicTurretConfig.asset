@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6970abb7280f61f4588ea8cf8b8570fe, type: 3}
-  m_Name: GatlingTurret1Config
+  m_Name: BasicTurretConfig
   m_EditorClassIdentifier: 
-  TurretName: Gatling
+  TurretName: BasicTurret
   TurretDescription: ssss
-  TurretHealth: 5000
+  TurretHealth: 3000
   AtkDamage: 20
-  AtkSpeed: 5
-  AtkRange: 18
-  BulletSpeed: 30
-  TurretType: 2
-  Cost: 20
-  prefabName: GatlingTurret1
-  bulletPrefabPath: GatlingBullet1
-  UpgradeList: 03000000
+  AtkSpeed: 2
+  AtkRange: 20
+  AtkAngle: 0
+  BulletSpeed: 20
+  TurretType: 1
+  Cost: 10
+  prefabName: BasicTurret
+  bulletPrefabPath: BasicBullet
+  UpgradeList: 040000000200000007000000

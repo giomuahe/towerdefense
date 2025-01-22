@@ -54,23 +54,29 @@ public class Turret : MonoBehaviour, IHealthBar
         UpgradeList = turretConfig.UpgradeList;
         BulletSpeed = turretConfig.BulletSpeed;
         BulletPath = turretConfig.bulletPrefabPath;
-        AtkAngle= turretConfig.AtkAngle;
+        AtkAngle = turretConfig.AtkAngle;
     }
 
     void Update()
     {
         UpdateTarget();
-        FindEnemy();
-        if (firePos != null)
+        if (CanFindEnemy())
+        {
+            FindEnemy();
+        }
+        if (CanAim())
         {
             Aim();
         }
-        if(attackCooldown<0){
-            attackCooldown=0;
+
+        if (attackCooldown < 0)
+        {
+            attackCooldown = 0;
         }
         UpdateAtkState();
     }
-    public virtual void UpdateAtkState(){
+    public virtual void UpdateAtkState()
+    {
 
     }
 
@@ -102,78 +108,60 @@ public class Turret : MonoBehaviour, IHealthBar
 
     void FindEnemy()
     {
-        if (CanFindEnemy())
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, AtkRange, enemyTargetLayermark);
+        float shortestDistance = Mathf.Infinity;
+        GameObject nearestEnemy = null;
+        foreach (var hit in hits)
         {
-            Collider[] hits = Physics.OverlapSphere(transform.position, AtkRange, enemyTargetLayermark);
-            float shortestDistance = Mathf.Infinity;
-            GameObject nearestEnemy = null;
-            foreach (var hit in hits)
+            float distanceToTarget = Vector3.Distance(transform.position, hit.transform.position);
+            if (distanceToTarget < shortestDistance)
             {
-                float distanceToTarget = Vector3.Distance(transform.position, hit.transform.position);
-                if (distanceToTarget < shortestDistance)
-                {
-                    shortestDistance = distanceToTarget;
-                    nearestEnemy = hit.gameObject;
-                }
+                shortestDistance = distanceToTarget;
+                nearestEnemy = hit.gameObject;
             }
-            target = nearestEnemy;
         }
-        else
-        {
-            return;
-        }
+        target = nearestEnemy;
+
     }
 
     public bool CanFindEnemy()
     {
-        if (target != null)
-        {
-            return false;
-        }
-        if (target == null)
-        {
-            return true;
-        }
-        return false;
+        return target == null;
     }
     void Aim()
     {
-        if (CanAim())
+        aimTransform.position = target.transform.position;
+        turretRig.weight = 1;
+        Vector3 directionToTarget = (target.transform.position - firePos.position).normalized;
+        // Tính góc giữa hướng nòng súng và hướng đến mục tiêu
+        float angle = Vector3.Angle(firePos.forward, directionToTarget);
+        if (angle < AtkAngle)
         {
-
-            aimTransform.position = target.transform.position;
-            turretRig.weight = 1;
-            Vector3 directionToTarget = (target.transform.position - firePos.position).normalized;
-
-            // Tính góc giữa hướng nòng súng và hướng đến mục tiêu
-            float angle = Vector3.Angle(firePos.forward, directionToTarget);
-            if (angle < 5f){
-                TryToAttack();
-                isAttacking=true;
-            }
-        }
-        else
-        {  isAttacking=false;
-            aimTransform.position = firePos.position;
-            turretRig.weight = 0;
+            TryToAttack();
         }
     }
 
 
     public bool CanAim()
     {
+        if(firePos==null){
+            return false;
+        }
         if (target == null)
         {
+            if(firePos==null){
+                firePos=this.transform;
+            }
+            aimTransform.position = firePos.position;
+            turretRig.weight = 0;
             return false;
         }
         if (TurretType == TurretType.Base)
         {
             return false;
         }
-        if (firePos == null)
-        {
-            return false;
-        }
+       
         if (target != null)
         {
             return true;
@@ -203,15 +191,7 @@ public class Turret : MonoBehaviour, IHealthBar
     }
     public bool CanTakeDamage()
     {
-        if (currentHp <= 0)
-        {
-            return false;
-        }
-        if (currentHp > 0)
-        {
-            return true;
-        }
-        return false;
+        return currentHp >= 0;
     }
     public void Die()
     {
@@ -229,7 +209,7 @@ public class Turret : MonoBehaviour, IHealthBar
     //     objectPooling.Pool.Get();
     // }
     public LayerMask enemyTargetLayermark;
-public bool isAttacking;
+
     public void Attack()
     {
         Debug.Log("shoot");
@@ -246,7 +226,7 @@ public bool isAttacking;
         else
         {
             attackCooldown -= Time.deltaTime;
-            
+
 
         }
     }
@@ -258,7 +238,7 @@ public bool isAttacking;
         enemyTargetLayermark = LayerMask.GetMask("Enemy");
         currentHp = TurretHealth;
         attackCooldown = 0;
-        
+
     }
 
     public GameObject bulletPrefab;

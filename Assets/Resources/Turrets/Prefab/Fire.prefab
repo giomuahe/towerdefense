@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 8645604631886897696}
   - component: {fileID: 6593967384922214151}
   - component: {fileID: 6613085007579794108}
-  - component: {fileID: 3095851426470799496}
+  - component: {fileID: 7400138057979696907}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -658,7 +658,7 @@ MonoBehaviour:
   - m_Rig: {fileID: 5498689913962951633}
     m_Active: 1
   m_Effectors: []
---- !u!114 &3095851426470799496
+--- !u!114 &7400138057979696907
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -679,14 +679,11 @@ MonoBehaviour:
   enemyTargetLayermark:
     serializedVersion: 2
     m_Bits: 0
-  isAttacking: 0
   attackCooldown: 0
-  bulletPrefab: {fileID: 3339268025577951615, guid: 02f55f01c8f06ad46a321bf14e9ea1df, type: 3}
-  burnDuration: 5
-  fireRate: 1
-  fireRateTime: 0
+  bulletPrefab: {fileID: 0}
+  burnDuration: 3
   FireMuzzle: {fileID: 3009708229559622684}
-  flameEffect: {fileID: 3132328065222398838}
+  flameEffect: {fileID: 0}
 --- !u!1 &7996534098136943894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,10 +1112,5 @@ GameObject:
 --- !u!4 &3010966192280334504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013285487154, guid: 3123da49cb81147489b444f2749aba47, type: 3}
-  m_PrefabInstance: {fileID: 3010423465882550938}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3132328065222398838 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198000014016860652, guid: 3123da49cb81147489b444f2749aba47, type: 3}
   m_PrefabInstance: {fileID: 3010423465882550938}
   m_PrefabAsset: {fileID: 0}

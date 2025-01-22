@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6970abb7280f61f4588ea8cf8b8570fe, type: 3}
   m_Name: IceTurretConfig
   m_EditorClassIdentifier: 
-  TurretName: IceGun
-  TurretDescription: ssss
+  TurretName: "\u1EE4 S\xFAng L\xE0m Ch\u1EADm"
+  TurretDescription: "Th\u1ED5i h\u01A1i l\u1EA1nh g\xE2y damage v\xE0 l\xE0m ch\u1EADm
+    t\u1EA5t c\u1EA3 k\u1EBB \u0111\u1ECBch trong v\xF9ng"
   TurretHealth: 6000
-  AtkDamage: 0
+  AtkDamage: 20
   AtkSpeed: 1
-  AtkRange: 8
+  AtkRange: 20
+  AtkAngle: 30
   BulletSpeed: 0
   TurretType: 8
   Cost: 40
   prefabName: IceTurret
-  bulletPrefabPath: 
+  bulletPrefabPath: IceBurn
   UpgradeList: 

@@ -147,55 +147,10 @@ public class TurretBullet : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
-                //  EnemyDemo enemyBase = ray.collider.GetComponent<EnemyDemo>();
-                // if((enemyBase != null) && (enemyBase.id == target.GetComponent<EnemyDemo>().id)){
-                //     enemyAttack = ray;
-                //     ParticleSystem hitEffect = hitPS;
-                //     ParticleSystem effect = Instantiate(hitEffect, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
-                //     Debug.Log("enemyId:" + enemyBase.id);
-                //     Destroy(effect.gameObject, 0.5f);
-                //     HitTarget(enemyBase);
-                // }
-                // else
-                // {
-                //     Destroy(gameObject);
-                // }
+               
             }
-            /*
+           
             
-            if (target != null)
-            {
-                // EnemyDemo enemy = raycastHit.collider.GetComponent<EnemyDemo>();
-
-                // if (enemy.id == target.GetComponent<EnemyDemo>().id)
-                // {
-                //     ParticleSystem hitEffect = hitPS;
-                //     ParticleSystem effect = Instantiate(hitEffect, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
-                //     // hitEffect.Play();
-
-                //     Debug.Log("enemyId:" + enemy.id);
-                //     Destroy(effect.gameObject, 0.5f);
-
-                //     HitTarget(enemy);
-
-                // }
-                EnemyBase enemy = raycastHit.collider.gameObject.GetComponent<EnemyBase>();
-                if (enemy.GetEnemyInGameID() == target.GetComponent<EnemyBase>().GetEnemyInGameID())
-                {
-                    ParticleSystem hitEffect = hitPS;
-                    ParticleSystem effect = Instantiate(hitEffect, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
-                    // hitEffect.Play();
-                    Debug.Log("enemyId:" + enemy.GetEnemyInGameID());
-                    Destroy(effect.gameObject, 0.5f);
-                    HitTarget(enemy);
-
-                }
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-            */
         }
         Quaternion toRotation = Quaternion.LookRotation(target.transform.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, rotateSpeed * Time.deltaTime);
@@ -210,22 +165,9 @@ public class TurretBullet : MonoBehaviour
         bool isEnemyDie;
         GameManager.Instance.EnemyManager.SendDamage(enemy.EnemyID(), damage, out isEnemyDie);
 
-
-        // enemy.TakeDamage(damage);
-        // Debug.Log("enemyId:" + enemy.id);
-
         Destroy(this.gameObject);
     }
-    // void HitTarget(EnemyDemo enemy)
-    // {
-     
-
-
-    //     enemy.TakeDamage(damage);
-    //     Debug.Log("enemyId:" + enemy.id);
-
-    //     Destroy(this.gameObject);
-    // }
+   
     void HitEffect()
     {
 

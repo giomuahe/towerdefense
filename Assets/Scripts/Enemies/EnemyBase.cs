@@ -40,7 +40,6 @@ public class EnemyBase : MonoBehaviour, IHealthBar
         enemyAgent.speed = enemySpeed;
         currentHealth = enemyHealth;
     }
-
     public int GetEnemyInGameID()
     {
         return enemyInGameID;

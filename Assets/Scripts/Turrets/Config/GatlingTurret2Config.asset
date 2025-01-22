@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6970abb7280f61f4588ea8cf8b8570fe, type: 3}
-  m_Name: SniperTurret2
+  m_Name: GatlingTurret2Config
   m_EditorClassIdentifier: 
-  TurretName: Heavy Sniper
-  TurretDescription: ssss
-  TurretHealth: 3000
-  AtkDamage: 100
-  AtkSpeed: 2
-  AtkRange: 40
-  BulletSpeed: 20
-  TurretType: 5
+  TurretName: Heavy Gatling
+  TurretDescription: "T\u1ED1c \u0111\u1ED9 t\u1EA5n c\xF4ng c\u1EF1c nhanh"
+  TurretHealth: 4000
+  AtkDamage: 20
+  AtkSpeed: 5
+  AtkRange: 20
+  AtkAngle: 0
+  BulletSpeed: 30
+  TurretType: 3
   Cost: 40
-  prefabName: SnipperTurret2
-  bulletPrefabPath: SniperBullet2
+  prefabName: GatlingTurret2
+  bulletPrefabPath: GatlingBullet2
   UpgradeList: 
