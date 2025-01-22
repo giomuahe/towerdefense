@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbd1d353525f5840aa772af1a4dee02, type: 3}
   m_Name: EMPDrone
   m_EditorClassIdentifier: 
-  EnemyHealth: 0
-  EnemySpeed: 0
-  AttackSpeed: 0
-  EnemyNexusDamage: 0
-  EnemyTurretDamage: 0
-  AttackRange: 0
-  GoldDropAmount: 0
-  BulletID: 0
+  EnemyHealth: 150
+  EnemySpeed: 10
+  AttackSpeed: 1
+  EnemyTurretDamage: 25
+  AttackRange: 10
+  BulletSpeed: 15
+  GoldDropAmount: 10
+  BulletID: 102
   EnemyType: 3
   EnemyPrefab: {fileID: 150684, guid: b37daab609aeb204c80873d303f25508, type: 3}

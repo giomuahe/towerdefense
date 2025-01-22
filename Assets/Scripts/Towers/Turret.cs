@@ -186,7 +186,6 @@ public class Turret : MonoBehaviour, IHealthBar
                 Die();
                 return;
             }
-            Debug.Log("Cur " + currentHp + ", max = " + TurretHealth);
             var healthCheck = currentHp / TurretHealth;
             OnHealthChange.Invoke(healthCheck);
         }
