@@ -13,7 +13,7 @@ public class AttackTurretEnemy : EnemyBase
     protected float enemyTurretDamage;
     protected float attackRange;
     protected float attackSpeed;
-    protected float bulletSpeed = 10;
+    protected float bulletSpeed;
     protected int baseTurretID;
     private Transform turretTarget;
 
@@ -40,6 +40,7 @@ public class AttackTurretEnemy : EnemyBase
     {
         attackRange = enemyConfig.AttackRange;
         attackSpeed = enemyConfig.AttackSpeed;
+        bulletSpeed = enemyConfig.BulletSpeed;
         enemyTurretDamage = enemyConfig.EnemyTurretDamage;
         isTargetBeingDestroy = false;
         base.SetUp(enemyConfig, moveLocations, enemyInGameID);
@@ -60,7 +61,7 @@ public class AttackTurretEnemy : EnemyBase
         };
         moveState.onFrame = delegate
         {
-            if(turretTarget != null)
+            if (turretTarget != null)
             {
                 if (CalculateDistance(transform.position, turretTarget.position) < attackRange)
                 {
@@ -111,6 +112,7 @@ public class AttackTurretEnemy : EnemyBase
     }
     private void RotateEnemy()
     {
+        if (turretTarget is null) return;
         Vector3 direction = turretTarget.position - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime*rotationSpeed);
@@ -125,19 +127,20 @@ public class AttackTurretEnemy : EnemyBase
 
     private void DamageTurret()
     {
+        if (turretTarget is null) return;
         Turret turret = turretTarget?.GetComponent<Turret>();
-        if (turret == null) return;
+        if (turret is null) return;
         GameManager.Instance.TurretManager.SendDamage(turret.id,200f);
     }
 
     private void LockTheNearestTurret(Dictionary<int,TurretBase> turretBases)
     {
-        if(turretBases == null || turretBases.Count == 0) return;
+        if(turretBases is null || turretBases.Count == 0) return;
         List<TurretBase> turretBasesList = turretBases.Values.ToList();
         float distance = float.MaxValue;
         foreach(var turretBase in turretBasesList)
         {
-            if (turretBase.Turret == null) continue;
+            if (turretBase.Turret is null) continue;
             float distanceTemp = CalculateDistance(transform.position, turretBase.Turret.transform.position);
             if(distanceTemp < distance) 
             { 
@@ -146,6 +149,7 @@ public class AttackTurretEnemy : EnemyBase
                 baseTurretID = turretBase.TurretBaseId;
             }
         }
+        Debug.Log(turretTarget.position);
         isTargetBeingDestroy = false;
     }
 
@@ -166,7 +170,6 @@ public class AttackTurretEnemy : EnemyBase
 
     private void Update()
     {
-        
         enemyStateMachine.Update();
     }
 

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbd1d353525f5840aa772af1a4dee02, type: 3}
   m_Name: CyberLeviathan
   m_EditorClassIdentifier: 
-  EnemyHealth: 0
-  EnemySpeed: 0
-  AttackSpeed: 0
-  EnemyNexusDamage: 0
-  EnemyTurretDamage: 0
-  AttackRange: 0
-  GoldDropAmount: 0
-  BulletID: 0
+  EnemyHealth: 1000
+  EnemySpeed: 2
+  AttackSpeed: 1
+  EnemyTurretDamage: 100
+  AttackRange: 10
+  BulletSpeed: 20
+  GoldDropAmount: 100
+  BulletID: 100
   EnemyType: 4
   EnemyPrefab: {fileID: 108062, guid: fe9effd36d82932419a7254b415acfac, type: 3}

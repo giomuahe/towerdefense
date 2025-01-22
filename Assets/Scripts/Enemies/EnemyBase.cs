@@ -11,7 +11,6 @@ public class EnemyBase : MonoBehaviour, IHealthBar
     protected float enemyHealth;
     protected float enemySpeed;
     protected float enemyNexusDamage;
-    protected EnemyType enemyType;
     private int goldDropAmount;
 
     protected List<Vector3> moveLocations;
@@ -35,11 +34,10 @@ public class EnemyBase : MonoBehaviour, IHealthBar
         this.enemyInGameID = enemyInGameID;
         enemyHealth = enemyConfig.EnemyHealth;
         enemySpeed = enemyConfig.EnemySpeed;
-        enemyNexusDamage = enemyConfig.EnemyNexusDamage;
-        enemyType = enemyConfig.EnemyType;
         goldDropAmount = enemyConfig.GoldDropAmount;
         this.moveLocations = moveLocations;
         enemyAgent = GetComponent<NavMeshAgent>();
+        enemyAgent.speed = enemySpeed;
         currentHealth = enemyHealth;
     }
 

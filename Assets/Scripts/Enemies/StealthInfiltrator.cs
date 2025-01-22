@@ -5,14 +5,5 @@ using UnityEngine;
 
 public class StealthInfiltrator: AttackTurretEnemy
 {
-    void ChangeLayer()
-    {
-        gameObject.layer = 6;
-    }
-
-    protected override void CreateState()
-    {
-        base.CreateState();
-        attackState.onEnter += ChangeLayer;
-    }
+    
 }
