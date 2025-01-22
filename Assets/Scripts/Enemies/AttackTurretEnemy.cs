@@ -127,19 +127,20 @@ public class AttackTurretEnemy : EnemyBase
 
     private void DamageTurret()
     {
+        if (turretTarget is null) return;
         Turret turret = turretTarget?.GetComponent<Turret>();
-        if (turret == null) return;
+        if (turret is null) return;
         GameManager.Instance.TurretManager.SendDamage(turret.id,200f);
     }
 
     private void LockTheNearestTurret(Dictionary<int,TurretBase> turretBases)
     {
-        if(turretBases == null || turretBases.Count == 0) return;
+        if(turretBases is null || turretBases.Count == 0) return;
         List<TurretBase> turretBasesList = turretBases.Values.ToList();
         float distance = float.MaxValue;
         foreach(var turretBase in turretBasesList)
         {
-            if (turretBase.Turret == null) continue;
+            if (turretBase.Turret is null) continue;
             float distanceTemp = CalculateDistance(transform.position, turretBase.Turret.transform.position);
             if(distanceTemp < distance) 
             { 
