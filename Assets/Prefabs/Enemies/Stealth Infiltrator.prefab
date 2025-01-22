@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 472984}
   - component: {fileID: 3382616}
   - component: {fileID: 2305228}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_Gatling_Up_Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 482814}
   - component: {fileID: 3379492}
   - component: {fileID: 2302880}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_Gatling_Up_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 6550526}
   - component: {fileID: 5387678986943050891}
   - component: {fileID: -7170783834030332328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stealth Infiltrator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 430774}
   - component: {fileID: 3354076}
   - component: {fileID: 2303458}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_Gatling_Up_Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6116480583036024034}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

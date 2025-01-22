@@ -68,6 +68,10 @@ public class Turret : MonoBehaviour, IHealthBar
         if(attackCooldown<0){
             attackCooldown=0;
         }
+        UpdateAtkState();
+    }
+    public virtual void UpdateAtkState(){
+
     }
 
     public void SetID(int currentId)
@@ -143,11 +147,13 @@ public class Turret : MonoBehaviour, IHealthBar
 
             // Tính góc giữa hướng nòng súng và hướng đến mục tiêu
             float angle = Vector3.Angle(firePos.forward, directionToTarget);
-            if (angle < 5f)
+            if (angle < 5f){
                 TryToAttack();
+                isAttacking=true;
+            }
         }
         else
-        {
+        {  isAttacking=false;
             aimTransform.position = firePos.position;
             turretRig.weight = 0;
         }
@@ -223,7 +229,7 @@ public class Turret : MonoBehaviour, IHealthBar
     //     objectPooling.Pool.Get();
     // }
     public LayerMask enemyTargetLayermark;
-
+public bool isAttacking;
     public void Attack()
     {
         Debug.Log("shoot");
@@ -240,6 +246,7 @@ public class Turret : MonoBehaviour, IHealthBar
         else
         {
             attackCooldown -= Time.deltaTime;
+            
 
         }
     }

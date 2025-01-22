@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 446544}
   - component: {fileID: 3318756}
   - component: {fileID: 2343252}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy_Scout_Up_Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 6558428}
   - component: {fileID: 7956855683268977948}
   - component: {fileID: 5896022326705212436}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EMP Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 405186}
   - component: {fileID: 3386598}
   - component: {fileID: 2343356}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy_Scout_Up_Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 469610}
   - component: {fileID: 3320102}
   - component: {fileID: 2399598}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy_Scout_Up_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 429039463750911204}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

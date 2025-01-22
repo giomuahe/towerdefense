@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6564882}
   - component: {fileID: 2851848658098344133}
   - component: {fileID: 5296832705795600212}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cyber Leviathan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 462988}
   - component: {fileID: 3304240}
   - component: {fileID: 2399922}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_TeslaGun_Up_Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 411896}
   - component: {fileID: 3349188}
   - component: {fileID: 2362550}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_TeslaGun_Up_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 473714}
   - component: {fileID: 3330686}
   - component: {fileID: 2340510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_TeslaGun_Up_Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6546773721724319479}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

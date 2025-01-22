@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 465052}
   - component: {fileID: 3328080}
   - component: {fileID: 2319428}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy_MG_Up_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 457626}
   - component: {fileID: 3304696}
   - component: {fileID: 2360324}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy_MG_Up_Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 6523008}
   - component: {fileID: 5125466051982634515}
   - component: {fileID: 1206160176025717376}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: DroneScout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 429298}
   - component: {fileID: 3314060}
   - component: {fileID: 2354530}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy_MG_Up_Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8067296241723721706}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
