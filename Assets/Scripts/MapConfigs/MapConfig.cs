@@ -14,14 +14,16 @@ namespace MapConfigs
         {
             public Vector3 position;
             public Vector3 rotation;
+            public Vector3 scale = Vector3.one;
         }
         
-        [Header("Map Name")]
+        [Header("Map Name")]    
         public string mapName;
         
         [Header("Gate Settings")]
         public SpawnPosition mainGatePosition;
         public SpawnPosition spawnGatePosition;
+        public List<SpawnGateConfig> multipleSpawnGatePositions;
         
         [Header("Turret Base Positions")]
         public List<Vector3> turretBasePositions =  new List<Vector3>();
