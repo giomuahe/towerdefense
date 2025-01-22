@@ -19,6 +19,6 @@ MonoBehaviour:
   AttackRange: 15
   BulletSpeed: 30
   GoldDropAmount: 15
-  BulletID: 104
+  BulletID: 101
   EnemyType: 2
   EnemyPrefab: {fileID: 150684, guid: b37daab609aeb204c80873d303f25508, type: 3}

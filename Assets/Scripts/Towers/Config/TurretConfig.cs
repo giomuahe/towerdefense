@@ -12,6 +12,7 @@ public class TurretConfig : ScriptableObject
     public float AtkDamage;
     public float AtkSpeed;
     public float AtkRange;
+    public float AtkAngle;
     public float BulletSpeed;
 
     public TurretType TurretType;

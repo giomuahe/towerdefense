@@ -31,10 +31,13 @@ public class TurretBullet : MonoBehaviour
         enemyLayerIndex = LayerMask.NameToLayer("Enemy");
         col = GetComponent<Collider>();
         lightSourse = GetComponent<Light>();
+        // Transform projectile = transform.Find("Projectile");
+        // projectilePS= projectile.GetComponent<ParticleSystem>();
 
     }
     protected void Start()
     {
+        
         if (!startChecker)
         {
             /*
@@ -122,13 +125,15 @@ public class TurretBullet : MonoBehaviour
 
         RaycastHit raycastHit;
         int targetId = target.GetComponent<EnemyBase>().GetEnemyInGameID();
+       
 
         if (Physics.Raycast(transform.position, direction, out raycastHit, speed * Time.deltaTime, enemyLayer))
         {
+             transform.position = Vector3.MoveTowards(transform.position, raycastHit.point, speed * Time.deltaTime);
             RaycastHit enemyAttack;
             RaycastHit[] allEnemyBeSide = Physics.SphereCastAll(raycastHit.point, 2, direction, enemyLayer);
             foreach(var ray in allEnemyBeSide)
-            {
+             {
                 EnemyBase enemyBase = ray.collider.GetComponent<EnemyBase>();
                 if((enemyBase != null) && (enemyBase.GetEnemyInGameID() == targetId)){
                     enemyAttack = ray;
@@ -142,9 +147,22 @@ public class TurretBullet : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
+                //  EnemyDemo enemyBase = ray.collider.GetComponent<EnemyDemo>();
+                // if((enemyBase != null) && (enemyBase.id == target.GetComponent<EnemyDemo>().id)){
+                //     enemyAttack = ray;
+                //     ParticleSystem hitEffect = hitPS;
+                //     ParticleSystem effect = Instantiate(hitEffect, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
+                //     Debug.Log("enemyId:" + enemyBase.id);
+                //     Destroy(effect.gameObject, 0.5f);
+                //     HitTarget(enemyBase);
+                // }
+                // else
+                // {
+                //     Destroy(gameObject);
+                // }
             }
             /*
-            transform.position = Vector3.MoveTowards(transform.position, raycastHit.point, speed * Time.deltaTime);
+            
             if (target != null)
             {
                 // EnemyDemo enemy = raycastHit.collider.GetComponent<EnemyDemo>();
@@ -198,6 +216,16 @@ public class TurretBullet : MonoBehaviour
 
         Destroy(this.gameObject);
     }
+    // void HitTarget(EnemyDemo enemy)
+    // {
+     
+
+
+    //     enemy.TakeDamage(damage);
+    //     Debug.Log("enemyId:" + enemy.id);
+
+    //     Destroy(this.gameObject);
+    // }
     void HitEffect()
     {
 
