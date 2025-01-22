@@ -11,6 +11,7 @@ namespace Managers
         private readonly Dictionary<int, TurretBase> _turretBases = new Dictionary<int, TurretBase>();
         //Dictionary contains 2 group of waypoint lists: Key = 0 : groupA, Key = 1 : groupB
         private readonly Dictionary<int, List<Vector3>> _waypointsDict = new Dictionary<int, List<Vector3>>();
+        private readonly List<GameObject> spawnGates = new List<GameObject>();
 
         public static MapManager Instance { get; private set; }
 
@@ -100,6 +101,19 @@ namespace Managers
         public MapConfig.SpawnPosition GetSpawnGatePosition()
         {
             return mapConfig.spawnGatePosition;
+        }
+
+        public GameObject FindSpawnGateById(int spawnGateId)
+        {
+            foreach (var gate in spawnGates)
+            {
+                var spawnGateConfig = gate.GetComponent<SpawnGateConfig>();
+                if(spawnGateConfig != null && spawnGateConfig.gateId == spawnGateId)
+                {
+                    return gate;
+                }
+            }
+            return null;
         }
 
         public WaveConfig GetWaveConfig(int waveIndex)

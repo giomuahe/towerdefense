@@ -1,4 +1,5 @@
 using Managers;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MapConfigs
@@ -11,11 +12,14 @@ namespace MapConfigs
         public MapConfig mapConfig;
         public MapManager mapManager;
 
+        public List<GameObject> spawnGates = new List<GameObject>();
+
         private void OnEnable()
         {
             CreateMainGates();
-            CreateSpawnGates();
+            //CreateSpawnGates();
             CreateTurretBases();
+            CreateMultipleSpawnGates();
         }
 
         private void CreateTurretBases()
@@ -45,13 +49,37 @@ namespace MapConfigs
         private void CreateMainGates()
         {
             Quaternion gateRotation = Quaternion.Euler(mapConfig.spawnGatePosition.rotation);
-            Instantiate(mainGatePrefab, mapConfig.mainGatePosition.position, gateRotation);
+            GameObject mainGateObj = Instantiate(mainGatePrefab, mapConfig.mainGatePosition.position, gateRotation);
+            mainGateObj.transform.localScale = mapConfig.mainGatePosition.scale;
         }
 
         private void CreateSpawnGates()
         {
             Quaternion spawnRotation = Quaternion.Euler(mapConfig.spawnGatePosition.rotation);
             Instantiate(spawnGatePrefab, mapConfig.spawnGatePosition.position, spawnRotation);
+        }
+
+        private void CreateMultipleSpawnGates()
+        {
+            if(mapConfig == null || spawnGatePrefab == null)
+            {
+                Debug.Log("Map Config or Prefab were not assigned");
+                return;
+            }
+
+            if(mapConfig.multipleSpawnGatePositions != null)
+            {
+                foreach (var gateConfig in mapConfig.multipleSpawnGatePositions)
+                {
+                    GameObject gateObj = Instantiate(spawnGatePrefab, gateConfig.postion, Quaternion.Euler(gateConfig.rotation));
+
+                    gateObj.transform.localScale = gateConfig.scale;
+
+                    spawnGates.Add(gateObj);
+
+                    Debug.Log($"Spawned Gate at position {gateConfig.postion}, rotation {gateConfig.rotation}, scale {gateConfig.scale}");
+                }
+            }
         }
     }
 }
