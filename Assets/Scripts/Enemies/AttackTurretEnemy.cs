@@ -149,7 +149,6 @@ public class AttackTurretEnemy : EnemyBase
                 baseTurretID = turretBase.TurretBaseId;
             }
         }
-        Debug.Log(turretTarget.position);
         isTargetBeingDestroy = false;
     }
 
