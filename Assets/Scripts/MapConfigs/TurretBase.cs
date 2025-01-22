@@ -9,6 +9,8 @@ namespace MapConfigs
         public GameObject Turret { get; set; }
         public TurretType TurretType { get; set; }
 
+        public Transform HealthBar;
+
         public void Initialize(int id, Vector3 position)
         {
             TurretBaseId = id;

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2395762}
   - component: {fileID: 9535380}
   - component: {fileID: 6564882}
+  - component: {fileID: 2851848658098344133}
+  - component: {fileID: 5296832705795600212}
   m_Layer: 0
   m_Name: Cyber Leviathan
   m_TagString: Untagged
@@ -36,6 +38,7 @@ Transform:
   - {fileID: 473714}
   - {fileID: 411896}
   - {fileID: 462988}
+  - {fileID: 6546773721724319479}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3365644
@@ -96,7 +99,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 2491566c25fdd834889be363e645f247, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -130,6 +133,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.360127, y: 0.52576596, z: 1.2570162}
   m_Center: {x: 0, y: 0.032787465, z: 0.03596452}
+--- !u!114 &2851848658098344133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2248f459fc85a84ea304bdfc1f31795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainDistance: 0.5
+  shootPos: {fileID: 6546773721724319479}
+  rotationSpeed: 1
+--- !u!195 &5296832705795600212
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108062}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.6800635
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.5913409
+  m_BaseOffset: 0.29567045
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &151554
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,3 +419,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6296004348287774863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6546773721724319479}
+  m_Layer: 0
+  m_Name: ShootPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6546773721724319479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296004348287774863}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.032787472, z: 0.906}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 410446}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

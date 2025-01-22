@@ -17,7 +17,7 @@ MonoBehaviour:
   TurretHealth: 3000
   AtkDamage: 20
   AtkSpeed: 2
-  AtkRange: 15
+  AtkRange: 20
   BulletSpeed: 20
   TurretType: 1
   Cost: 10

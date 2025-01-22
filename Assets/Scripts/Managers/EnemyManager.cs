@@ -2,6 +2,7 @@ using MapConfigs;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Managers
@@ -39,6 +40,17 @@ namespace Managers
                 Debug.Log("OK ID TowerSend : " + enemyDataID + ", Current : " + JsonConvert.SerializeObject(dictionaryOfEnemiesOnMap.Keys.ToList()));
             }
             dictionaryOfEnemiesOnMap[enemyDataID].OnHit(damgage, out isDie);
+        }
+
+        public void RestartEnemyManager()
+        {
+            if (dictionaryOfEnemiesOnMap.Count == 0) return;
+            foreach(EnemyBase enemy in dictionaryOfEnemiesOnMap.Values)
+            {
+                if(enemy != null && enemy.gameObject != null)
+                    Destroy(enemy.gameObject);
+            }
+            dictionaryOfEnemiesOnMap.Clear();
         }
     }
 }

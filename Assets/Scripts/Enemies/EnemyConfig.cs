@@ -10,9 +10,9 @@ public class EnemyConfig : ScriptableObject
     public float EnemyHealth;
     public float EnemySpeed;
     public float AttackSpeed;
-    public float EnemyNexusDamage;
     public float EnemyTurretDamage;
     public float AttackRange;
+    public float BulletSpeed;
     public int GoldDropAmount;
     public int BulletID;
     [Header("Others")]

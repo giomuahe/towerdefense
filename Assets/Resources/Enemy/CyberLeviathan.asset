@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbd1d353525f5840aa772af1a4dee02, type: 3}
+  m_Name: CyberLeviathan
+  m_EditorClassIdentifier: 
+  EnemyHealth: 1000
+  EnemySpeed: 2
+  AttackSpeed: 1
+  EnemyTurretDamage: 100
+  AttackRange: 10
+  BulletSpeed: 20
+  GoldDropAmount: 100
+  BulletID: 100
+  EnemyType: 4
+  EnemyPrefab: {fileID: 108062, guid: fe9effd36d82932419a7254b415acfac, type: 3}

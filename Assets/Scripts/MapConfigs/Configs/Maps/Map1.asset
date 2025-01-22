@@ -35,6 +35,7 @@ MonoBehaviour:
   - groupId: 1
     groupName: A
     waypoints:
+    - {x: 12, y: 3, z: 3}
     - {x: 24, y: 3, z: 6}
     - {x: 40, y: 3, z: 6}
     - {x: 60, y: 3, z: 6}
@@ -42,6 +43,7 @@ MonoBehaviour:
   - groupId: 2
     groupName: B
     waypoints:
+    - {x: 12, y: 3, z: -3}
     - {x: 24, y: 3, z: -6}
     - {x: 40, y: 3, z: -6}
     - {x: 60, y: 3, z: -6}

@@ -179,6 +179,8 @@ GameObject:
   - component: {fileID: 2328458}
   - component: {fileID: 9513850}
   - component: {fileID: 6550526}
+  - component: {fileID: 5387678986943050891}
+  - component: {fileID: -7170783834030332328}
   m_Layer: 0
   m_Name: Stealth Infiltrator
   m_TagString: Untagged
@@ -202,6 +204,7 @@ Transform:
   - {fileID: 430774}
   - {fileID: 482814}
   - {fileID: 472984}
+  - {fileID: 6116480583036024034}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3389796
@@ -296,6 +299,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8848633, y: 1.1329083, z: 2.8004174}
   m_Center: {x: 0, y: -0.052443236, z: 0.07433963}
+--- !u!114 &5387678986943050891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e4f4340037b1d40acee1ba44cd6d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainDistance: 0.5
+  shootPos: {fileID: 6116480583036024034}
+  rotationSpeed: 3
+--- !u!195 &-7170783834030332328
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150684}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.4745483
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.0280218
+  m_BaseOffset: 0.5140109
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &172134
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,3 +419,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6960048670360483077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6116480583036024034}
+  m_Layer: 0
+  m_Name: ShootPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6116480583036024034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6960048670360483077}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.052443266, z: 1.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 408740}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +20,8 @@ public class InBattleScreenController : MonoBehaviour
 
     private void OnEnable()
     {
+        //Debug.LogError("BATTLE_SCRREEN_ENABLE");
+
         GameManager.Instance.BattleManager.OnWaveChanged += UpdateWaveInfo;
         GameManager.Instance.BattleManager.OnTimeChanged += UpdateTime;
         GameManager.Instance.BattleManager.OnGoldChanged += UpdateGold;
@@ -29,6 +29,12 @@ public class InBattleScreenController : MonoBehaviour
         GameManager.Instance.BattleManager.EndGame += EndGame;
 
         ButtonNextWave.onClick.AddListener(OnClickNextWave);
+
+        TimeText.text = "N/A";
+        HeartText.text = "00";
+        GoldText.text = "0.000";
+
+        GameManager.Instance.BattleManager.RefeshActionUI();
     }
 
     private void Start()
@@ -39,11 +45,21 @@ public class InBattleScreenController : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.Instance.BattleManager.OnWaveChanged -= UpdateWaveInfo;
-        GameManager.Instance.BattleManager.OnTimeChanged -= UpdateTime;
-        GameManager.Instance.BattleManager.OnGoldChanged -= UpdateGold;
-        GameManager.Instance.BattleManager.OnHeartChanged -= UpdateHeart;
-        GameManager.Instance.BattleManager.EndGame -= EndGame;
+        Debug.LogError("BATTLE_SCRREEN_DISABLE");
+        if (GameManager.Instance.BattleManager != null)
+        {
+            GameManager.Instance.BattleManager.OnWaveChanged -= UpdateWaveInfo;
+            GameManager.Instance.BattleManager.OnTimeChanged -= UpdateTime;
+            GameManager.Instance.BattleManager.OnGoldChanged -= UpdateGold;
+            GameManager.Instance.BattleManager.OnHeartChanged -= UpdateHeart;
+            GameManager.Instance.BattleManager.EndGame -= EndGame;
+        }
+
+        //Ẩn các popup
+        PopupUpgrade.ClosePopup();
+        PopupPause.gameObject.SetActive(false);
+        PopupEndWinGame.Hide();
+        PopupEndLostGame.Hide();
 
         ButtonNextWave.onClick.RemoveAllListeners();
     }
@@ -83,6 +99,7 @@ public class InBattleScreenController : MonoBehaviour
 
     private void EndGame(bool isWin)
     {
+        Debug.LogWarning("CALL_END_GAME " + isWin);
         if (isWin)
         {
             PopupEndWinGame.Show();
@@ -114,7 +131,6 @@ public class InBattleScreenController : MonoBehaviour
     /// </summary>
     public void OnClickUpgradeTurret()
     {
-        Debug.Log("ClickUpgrade");
         if (PopupUpgrade)
             PopupUpgrade.ShowPopupUpgrade(TurretBaseId);
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,11 +52,11 @@ public class BurningFire : MonoBehaviour
         {
             existTime -= Time.deltaTime;
         }
-        else
-        {
-            Destroy(gameObject);
+        if(existTime<=0){
+        
+            Destroy(gameObject);}
 
-        }
+        
     }
     bool CanAttack()
     {
@@ -69,6 +70,7 @@ public class BurningFire : MonoBehaviour
             return false;
         }
     }
+    
     void Attack()
     {
         EnemyDemo enemy = GetComponentInParent<EnemyDemo>();
@@ -76,4 +78,5 @@ public class BurningFire : MonoBehaviour
         particle.Play();
         attackCooldown = 1 / atkSpeed;
     }
+   
 }

@@ -15,7 +15,8 @@ namespace Assets.Scripts.Managers
     /// <summary>
     /// Quản lý luồng logic khi vào scene "MAP"
     /// </summary>
-    public class BattleLogicManager
+    [Serializable]
+    public class BattleLogicManager 
     {
         //Core variable
         private string mapname = "";
@@ -34,7 +35,6 @@ namespace Assets.Scripts.Managers
         public event Action<int, int> OnWaveChanged;
         public event Action<long> OnGoldChanged;
         public event Action<int> OnHeartChanged;
-        public event Action<long> UpdateGameTime;
         public event Action<bool> EndGame;
         public event Action<int> OnTimeChanged;
 
@@ -124,7 +124,17 @@ namespace Assets.Scripts.Managers
 
         public bool ChangePause()
         {
+            //Chỉ khi combat mới pause được
+            if (GAME_STATE != EGAMESTATE.COMBAT)
+                return false;
+
             IsPause = !IsPause;
+            if (IsPause)
+                GAME_STATE = EGAMESTATE.PAUSE;
+            else
+                GAME_STATE = EGAMESTATE.COMBAT;
+            Time.timeScale = IsPause ? 0f : 1f;
+
             return IsPause;
         }
 
@@ -148,13 +158,13 @@ namespace Assets.Scripts.Managers
             {
                 //Lấy max wave trong map
                 maxWaveInMap = GameManager.Instance.WaveManager.GetWaves().Count;
-                GameManager.Instance.WriteDebug("NUM_WAVE " + maxWaveInMap);
+                GameManager.Instance.WriteDebug("MAX_WAVE " + maxWaveInMap);
             }
 
             //Cập nhật State sang Building
             GAME_STATE = EGAMESTATE.BUILDING;
             //Lấy số lượng quái sẽ có trong turn
-            numEnemyInCurWave = GameManager.Instance.WaveManager.GetTotalEnemyCount();
+            numEnemyInCurWave = GameManager.Instance.WaveManager.GetTotalEnemyInCurretWave();
             //Bắt đầu đếm thời gian xây dựng
             secRemainTime = GameConfigManager.SECOND_BUILD_EXPIRED;
             GameManager.Instance.StartCoroutine(CountdownCoroutine());
@@ -193,6 +203,7 @@ namespace Assets.Scripts.Managers
         /// </summary>
         private void EndWinGame()
         {
+            GAME_STATE = EGAMESTATE.END_GAME;
             EndGame?.Invoke(true);
         }
 
@@ -201,6 +212,7 @@ namespace Assets.Scripts.Managers
         /// </summary>
         private void EndLostGame()
         {
+            GAME_STATE = EGAMESTATE.END_GAME;
             EndGame?.Invoke(false);
         }
 
@@ -210,13 +222,19 @@ namespace Assets.Scripts.Managers
         public void OnEnemyDie(long goldBonus)
         {
             Debug.Log("ENEMY_DIE " + goldBonus);
-            UpdateGold(goldBonus, "Kill Enemy");
-            numEnemyInCurWave -= 1;
-            if(curretHeart <= 0)
-                EndLostGame();
-            if(numEnemyInCurWave <= 0)
+            if (GAME_STATE == EGAMESTATE.COMBAT) {
+                UpdateGold(goldBonus, "Kill Enemy");
+                numEnemyInCurWave -= 1;
+                if (curretHeart <= 0)
+                    EndLostGame();
+                if (numEnemyInCurWave <= 0)
+                {
+                    EndWave();
+                }
+            }
+            else
             {
-                EndWave();
+                Debug.Log("CANT_UPDATE_ENEMY_DIE_BECAUSE_END_GAME");
             }
         }
 
@@ -226,14 +244,22 @@ namespace Assets.Scripts.Managers
         public void OnEnemyEscape()
         {
             Debug.Log("ENEMY_ESCAPE");
-            numEnemyInCurWave -= 1;
-            UpdateHeart(-1);
-            if (curretHeart <= 0)
-                EndLostGame();
-            if (numEnemyInCurWave <= 0)
+            if (GAME_STATE == EGAMESTATE.COMBAT)
             {
-                EndWave();
+                numEnemyInCurWave -= 1;
+                UpdateHeart(-1);
+                if (curretHeart <= 0)
+                    EndLostGame();
+                if (numEnemyInCurWave <= 0)
+                {
+                    EndWave();
+                }
             }
+            else
+            {
+                Debug.Log("CANT_UPDATE_ENEMY_ESCAPE_BECAUSE_NOT_IN_COMBAT");
+            }
+
         }
 
         /// <summary>

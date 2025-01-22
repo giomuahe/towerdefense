@@ -6,13 +6,13 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class Turret : MonoBehaviour
+public class Turret : MonoBehaviour, IHealthBar
 {
     public int id;
     [SerializeField]
     protected Transform aimTransform;
     [SerializeField]
-    protected Transform target;
+    protected GameObject target;
     [SerializeField]
     protected Transform firePos;
 
@@ -84,7 +84,7 @@ public class Turret : MonoBehaviour
         if (target == null) return false;
         if (target != null)
         {
-            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
             if (distanceToTarget > AtkRange)
             {
                 return true;
@@ -100,14 +100,14 @@ public class Turret : MonoBehaviour
         {
             Collider[] hits = Physics.OverlapSphere(transform.position, AtkRange, enemyTargetLayermark);
             float shortestDistance = Mathf.Infinity;
-            Transform nearestEnemy = null;
+            GameObject nearestEnemy = null;
             foreach (var hit in hits)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, hit.transform.position);
                 if (distanceToTarget < shortestDistance)
                 {
                     shortestDistance = distanceToTarget;
-                    nearestEnemy = hit.transform;
+                    nearestEnemy = hit.gameObject;
                 }
             }
             target = nearestEnemy;
@@ -135,9 +135,9 @@ public class Turret : MonoBehaviour
         if (CanAim())
         {
 
-            aimTransform.position = target.position;
+            aimTransform.position = target.transform.position;
             turretRig.weight = 1;
-            Vector3 directionToTarget = (target.position - firePos.position).normalized;
+            Vector3 directionToTarget = (target.transform.position - firePos.position).normalized;
 
             // Tính góc giữa hướng nòng súng và hướng đến mục tiêu
             float angle = Vector3.Angle(firePos.forward, directionToTarget);
@@ -184,6 +184,8 @@ public class Turret : MonoBehaviour
                 Die();
                 return;
             }
+            var healthCheck = currentHp / TurretHealth;
+            OnHealthChange.Invoke(healthCheck);
         }
         else
         {
@@ -247,10 +249,13 @@ public class Turret : MonoBehaviour
         enemyTargetLayermark = LayerMask.GetMask("Enemy");
         currentHp = TurretHealth;
         attackCooldown = 0;
-
+        
     }
 
     public GameObject bulletPrefab;
+
+    public event Action<float> OnHealthChange;
+
     public virtual void Fire()
     {
 
