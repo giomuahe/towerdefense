@@ -48,7 +48,7 @@ public class TurretManager : MonoBehaviour
         TurretOnMapDic[id] = newTurret;
         GameManager.Instance.MapManager.UpdateTurret(id, newTurret, turretType);
         
-        GameManager.Instance.UIManager.SpawnHealthBarUI(turret.transform);
+        GameManager.Instance.UIManager.SpawnHealthBarUI(newTurret.transform);
     }
     void Update()
     {

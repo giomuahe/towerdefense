@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &46818134
 Transform:
   m_ObjectHideFlags: 0
@@ -240,7 +240,7 @@ Transform:
   m_GameObject: {fileID: 110412927}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.04, y: 15.58, z: 0.44}
+  m_LocalPosition: {x: 9.37, y: 17.89, z: 8.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -263,7 +263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &589349751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1872960271
 Transform:
   m_ObjectHideFlags: 0
@@ -858,6 +858,9 @@ MonoBehaviour:
   EnemyManager: {fileID: 0}
   MapManager: {fileID: 0}
   WaveManager: {fileID: 0}
+  BattleManager:
+    GAME_STATE: 0
+  isContinueOldMap: 0
 --- !u!1 &1978463728
 GameObject:
   m_ObjectHideFlags: 0

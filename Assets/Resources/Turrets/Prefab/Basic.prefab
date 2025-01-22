@@ -453,7 +453,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   attackCooldown: 0
-  bulletPrefab: {fileID: 13487630123469071}
+  bulletPrefab: {fileID: 1976014488594992, guid: e21698f843bc6d34aa160e7fc67de1c8, type: 3}
 --- !u!1 &4345764307537188778
 GameObject:
   m_ObjectHideFlags: 0
