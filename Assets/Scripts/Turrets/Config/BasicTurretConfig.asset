@@ -24,4 +24,4 @@ MonoBehaviour:
   Cost: 10
   prefabName: BasicTurret
   bulletPrefabPath: BasicBullet
-  UpgradeList: 040000000200000007000000
+  UpgradeList: 04000000020000000700000008000000

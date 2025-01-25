@@ -5309,7 +5309,7 @@ MonoBehaviour:
   aimTransform: {fileID: 4092228612402309999}
   target: {fileID: 0}
   firePos: {fileID: 8814608520436109012}
-  turretConfig: {fileID: 11400000, guid: f9f05e61cd689a942be8bccd01528155, type: 2}
+  turretConfig: {fileID: 11400000, guid: 0452c268f5c0e6d4dbfdfd4dfc3daa4a, type: 2}
   currentHp: 0
   enemyTargetLayermark:
     serializedVersion: 2
